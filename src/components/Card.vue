@@ -9,25 +9,34 @@
       </count-up>
     </div>
     <slot></slot>
-    <view class="absolute bubble-1"></view>
-    <view class="absolute bubble-2"></view>
-    <view class="absolute bubble-3"></view>
+    <span class="absolute bubble-1"></span>
+    <span class="absolute bubble-2"></span>
+    <span class="absolute bubble-3"></span>
+    <span class="absolute bubble-4"></span>
+    <audio controls="controls" hidden src="./music.mp3" ref="audio" class="hidden"></audio>
   </div>
 </template>
 
-<script>
+<script setup>
 import CountUp from 'vue-countup-v3'
-export default {
-  props: {
-    data: {
-      type: Object,
-      default: () => ({})
-    }
-  },
-  setup () {
-
+import { ref, watch, nextTick } from 'vue'
+const props = defineProps({
+  data: {
+    type: Object,
+    default: () => ({})
   }
-}
+})
+const audio = ref(null)
+watch(() => props.data, (val) => {
+  if (val.number > 60) {
+    nextTick(() => {
+      audio.value.play()
+      audio.value.loop = true
+    })
+  } else {
+    audio.value.pause()
+  }
+})
 
 </script>
 
@@ -39,51 +48,84 @@ export default {
   height: 100%;
   overflow: hidden;
 
+  &.warning {
+    transition: transform 0.3s ease;
+    animation: shadowAnimation 1s infinite ease-in-out;
+  }
+
   .bubble-1,
   .bubble-2,
-  .bubble-3 {
-    border-radius: 10000px;
-    background: rgba(255, 255, 255, .5);
-    opacity: 0.18;
+  .bubble-3,
+  .bubble-4 {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background: linear-gradient(0deg, transparent, rgba(255, 255, 255, 0.35));
+    border-radius: 100%;
+    opacity: 0.5;
+    animation: keyframes-rotate-blubs 4s infinite linear;
   }
 
   .bubble-1 {
-    top: -50px;
-    left: -100px;
-    width: 200px;
-    height: 200px;
-    animation: down 8s ease-in-out infinite;
+    top: -5%;
+    left: -5%;
+    width: 60px;
+    height: 60px;
+    animation-delay: .1s;
+    opacity: 0.3;
   }
 
   .bubble-2 {
-    top: -80px;
-    right: -80px;
-    width: 150px;
-    height: 150px;
-    animation: down 10s ease-in-out infinite;
-    animation-delay: -3s;
+    top: 60%;
+    left: -20%;
+    width: 80px;
+    height: 80px;
+    animation-delay: .2s;
+    opacity: 0.3;
   }
 
   .bubble-3 {
-    bottom: -100px;
-    right: -200px;
-    width: 400px;
-    height: 400px;
-    animation: down 12s ease-in-out infinite;
-    animation-delay: -10s;
+    top: 10%;
+    left: 60%;
+    animation-delay: .3s;
+    opacity: 0.6;
+  }
 
+  .bubble-4 {
+    top: 70%;
+    left: 50%;
+    width: 90px;
+    height: 90px;
+    animation-delay: .4s;
+    opacity: 0.4;
   }
 }
 
-@keyframes down {
-
-  0%,
-  100% {
-    transform: translateY(-20px);
+@keyframes keyframes-rotate-blubs {
+  0% {
+    transform: translate(10px) rotate(360deg);
   }
 
   50% {
-    transform: translateY(20px);
+    transform: translate(-5px, 10px) rotate(180deg);
+  }
+
+  100% {
+    transform: translate(10px) rotate(0deg);
+  }
+}
+
+@keyframes shadowAnimation {
+  0% {
+    box-shadow: 0 0 30px #ca2121, 0 0 30px #ca2121;
+  }
+
+  50% {
+    box-shadow: 0 0 0 #bd3f3f, 0 0 0 #b93131;
+  }
+
+  100% {
+    box-shadow: 0 0 30px #ca2727, 0 0 30px #bd3f3f;
   }
 }
 </style>

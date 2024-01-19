@@ -5,10 +5,9 @@
     },
   }">
     <a-layout class="h-full">
-      <Warning />
       <a-layout-header class="!px-24">
         <a-flex justify="space-between" align="center" class="h-64">
-          <h1 class="text-white">税务局环境数据监测</h1>
+          <h1 class="text-white">环境数据监测系统</h1>
           <div class="text-white">
             <a-flex align="center">
               <div class="text-size-32 font-bold">
@@ -25,7 +24,12 @@
       <a-layout-content>
         <a-row class="h-full px-10% py-10%">
           <a-col :span="8" v-for="(item, index) in list" :key="index" class="flex">
-            <Card :data="item" :class="`card-${index}`" @click="onClick(item)">
+            <Card :data="item" :class="{
+              'card-0': index === 0,
+              'card-1': index === 1,
+              'card-2': index === 2,
+              warning: item.number > 60 && index < 2
+            }" @click="onClick(item)">
               <img width="40%" class="mt-2% mx-auto" src="@/assets/icon-temp.svg" v-if="index == 0" />
               <img width="40%" class="mt-2% mx-auto" src="@/assets/icon-pressure.svg" v-if="index == 1" />
               <img width="40%" class="mt-2% mx-auto" src="@/assets/icon-alarm.svg" v-if="index == 2" />
@@ -39,64 +43,60 @@
     </a-modal>
   </a-config-provider>
 </template>
-<script>
+<script setup>
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import { ref, reactive, onUnmounted } from 'vue'
 import Card from '@/components/Card.vue'
-import Warning from '@/components/Warning.vue'
 dayjs.locale('zh-cn')
-export default {
-  components: {
-    Card,
-    Warning
-  },
-  setup () {
-    const date = reactive({
-      day: dayjs().format('YYYY年MM月DD日'),
-      week: dayjs().format('dddd'),
-      time: dayjs().format('HH:mm:ss'),
-    })
-    const list = ref([{
-      title: '温度',
-      number: '32',
-      unit: '°C',
-      icon: 'icon-temp'
-    }, {
-      title: '压力',
-      number: '98',
-      unit: 'V',
-      icon: 'icon-pressure'
-    }, {
-      title: '告警',
-      number: '10',
-      unit: '条',
-      icon: 'icon-alarm'
-    }])
-    const open = ref(false)
-    let timer = null
-    timer = setInterval(() => {
-      date.time = dayjs().format('HH:mm:ss')
-    }, 1000)
-
-    function onClick (item) {
-      console.log(item)
-      open.value = true
-    }
-
-    onUnmounted(() => {
-      clearInterval(timer)
-      timer = null
-    })
-
-    return {
-      date,
-      list,
-      open,
-      onClick,
-    }
-  }
+function createList () {
+  return [{
+    title: '温度',
+    number: parseInt(Math.random() * 100),
+    unit: '°C',
+    icon: 'icon-temp'
+  }, {
+    title: '压力',
+    number: parseInt(Math.random() * 100),
+    unit: 'V',
+    icon: 'icon-pressure'
+  }, {
+    title: '告警',
+    number: parseInt(Math.random() * 100),
+    unit: '条',
+    icon: 'icon-alarm'
+  }]
 }
+
+const date = reactive({
+  day: dayjs().format('YYYY年MM月DD日'),
+  week: dayjs().format('dddd'),
+  time: dayjs().format('HH:mm:ss'),
+})
+const list = ref(createList())
+const open = ref(false)
+let timer = null
+let timer2 = null
+
+
+timer = setInterval(() => {
+  date.time = dayjs().format('HH:mm:ss')
+}, 1000)
+
+timer2 = setInterval(() => {
+  list.value = createList()
+}, 5000)
+function onClick (item) {
+  console.log(item)
+  open.value = true
+}
+
+onUnmounted(() => {
+  clearInterval(timer)
+  clearInterval(timer2)
+  timer = null
+  timer2 = null
+})
 </script>
 
 <style lang="less" scoped>
@@ -115,6 +115,7 @@ export default {
 
 .card-0 {
   background-image: linear-gradient(to bottom, #46B9FE, #1572FE);
+
 }
 
 .card-1 {
@@ -123,5 +124,9 @@ export default {
 
 .card-2 {
   background-image: linear-gradient(to bottom, #FF9B5B, #FF001F);
+}
+
+.warning {
+  background-image: linear-gradient(to bottom, #ff0000, #bd0016);
 }
 </style>
