@@ -9,17 +9,14 @@
       </count-up>
     </div>
     <slot></slot>
-    <span class="absolute bubble-1"></span>
-    <span class="absolute bubble-2"></span>
-    <span class="absolute bubble-3"></span>
-    <span class="absolute bubble-4"></span>
+    <span :class="`absolute bubble-${index + 1}`" :style="item" :key="index" v-for="(item, index) in data.style"></span>
     <audio controls="controls" hidden src="./music.mp3" ref="audio" class="hidden"></audio>
   </div>
 </template>
 
 <script setup>
 import CountUp from 'vue-countup-v3'
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, computed } from 'vue'
 const props = defineProps({
   data: {
     type: Object,
@@ -37,6 +34,7 @@ watch(() => props.data, (val) => {
     audio.value.pause()
   }
 })
+
 
 </script>
 
