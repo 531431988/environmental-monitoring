@@ -4,10 +4,11 @@
       colorPrimary: '#000000',
     },
   }">
+    <Bg />
     <a-layout class="h-full">
       <a-layout-header class="!px-24">
         <a-flex justify="space-between" align="center" class="h-64">
-          <h1 class="text-white">环境数据监测系统</h1>
+          <h1 class="text-white title">环境数据监测系统</h1>
           <div class="text-white">
             <a-flex align="center">
               <div class="text-size-32 font-bold">
@@ -48,6 +49,7 @@ import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 import { ref, reactive, onUnmounted } from 'vue'
 import Card from '@/components/Card.vue'
+import Bg from '@/components/Bg.vue'
 dayjs.locale('zh-cn')
 function createList () {
   return [{
@@ -103,6 +105,14 @@ onUnmounted(() => {
 .ant-layout {
   background: transparent;
 
+  .title {
+    background: #fff -webkit-linear-gradient(left, #fff, #e1e1e1 50%, #e1e1e1 90%, #fff) no-repeat 0 0;
+    background-size: 20% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideShine 1s linear infinite;
+  }
+
   .ant-layout-header {
     line-height: 1;
     background: rgba(0, 0, 0, .5);
@@ -128,5 +138,17 @@ onUnmounted(() => {
 
 .warning {
   background-image: linear-gradient(to bottom, #ff0000, #bd0016);
+}
+
+@keyframes slideShine {
+
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+
 }
 </style>
