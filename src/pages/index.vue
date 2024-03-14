@@ -64,6 +64,7 @@
       </a-row>
     </div>
   </div>
+  <LoginModal v-model:open="open" />
 </template>
 <script setup lang="ts">
 import { exit } from '@tauri-apps/api/process';
@@ -158,7 +159,11 @@ const tableData = reactive([{
   date: '2024-03-13'
 }])
 
-function onSet() { }
+const open = ref(false)
+
+function onSet() {
+  open.value = true
+}
 function onLogout() {
   Modal.confirm({
     centered: true,
