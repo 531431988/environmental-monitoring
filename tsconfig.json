@@ -2,18 +2,24 @@
   "compilerOptions": {
     "target": "ESNext",
     "jsx": "preserve",
-    "lib": ["DOM", "ESNext"],
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
     "baseUrl": ".",
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "resolveJsonModule": true,
     "types": [
       "vite/client",
       "vite-plugin-vue-layouts/client",
-      "unplugin-vue-router/client"
+      "unplugin-vue-router/client",
+      "vite-plugin-pages/client",
     ],
     "allowJs": true,
     "strict": true,
@@ -25,7 +31,15 @@
     "skipLibCheck": true
   },
   "include": [
-    "./typed-router.d.ts"
+    "typed-router.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "auto-imports.d.ts" // 此处引入该声明文件
   ],
-  "exclude": ["dist", "node_modules"]
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

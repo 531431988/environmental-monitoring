@@ -2,20 +2,16 @@ import { createApp } from "vue";
 import {
   createRouter,
   createWebHistory,
-  DataLoaderPlugin,
 } from 'vue-router/auto'
+import { setupLayouts } from 'virtual:generated-layouts'
 import App from "./App.vue";
-import "./styles.css";
 import 'uno.css'
-
-const app = createApp(App)
+import './style.less'
 const router = createRouter({
   history: createWebHistory(),
-  extendRoutes: (routes) => {
-    // routes.find((r) => r.name === '/')!.meta = {}
-    return routes
-  },
+  extendRoutes: (routes) => setupLayouts(routes),
 })
-app.use(DataLoaderPlugin, { router })
+const app = createApp(App)
+
 app.use(router)
   app.mount("#app");
