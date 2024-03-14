@@ -14,7 +14,7 @@
         <Card title="实时电压监控">
           <a-row :gutter="[12, 12]">
             <a-col :span="6" v-for="item in data">
-              <Chart :title="item.title" :data="item.data" />
+              <Chart :title="item.title" :data="item.data" color="#02FFEE" />
             </a-col>
           </a-row>
         </Card>

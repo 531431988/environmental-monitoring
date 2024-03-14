@@ -24,7 +24,7 @@ defineProps({
     position: absolute;
     width: 100%;
     height: 100%;
-
+    pointer-events: none;
     &:nth-child(1),
     &:nth-child(2),
     &:nth-child(3),
@@ -123,7 +123,7 @@ defineProps({
   }
 
   .title {
-    color: #B0D9D9;
+    color: #bfffff;
   }
 
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="" style="background: rgba(255, 255, 255, 0.1);">
-    <v-chart class="chart" :option="option" />
+    <v-chart class="chart" :option="option" :autoresize="true" />
   </div>
 </template>
 
@@ -16,7 +16,8 @@ import VChart from "vue-echarts";
 
 const props = defineProps({
   data: Array,
-  title: String
+  title: String,
+  color: String
 })
 use([
   CanvasRenderer,
@@ -30,8 +31,10 @@ const option = reactive({
     top: 16,
     left: "center",
     textStyle: {
-      color: 'rgba(255,255,255,0.8)',
-      fontSize: 18
+      color: '#bfffff',
+      fontSize: 18,
+      fontWeight: 400,
+      fontFamily: 'ddjbt',
     }
   },
   grid: {
@@ -78,23 +81,18 @@ const option = reactive({
       smooth: true,
       data: [],
       lineStyle: {
-        normal: {
-          color: "#23AF84", // 线条颜色
-        },
-        borderColor: '#f0f'
+        color: "#23AF84", // 线条颜色
       },
       areaStyle: { //区域填充样式
-        normal: {
-          color: new graphic.LinearGradient(0, 0, 0, 1, [{
-            offset: 0,
-            color: '#23AF84'
-          },
-          {
-            offset: 1,
-            color: 'rgba(0,0,0,0)'
-          }
-          ], false),
+        color: new graphic.LinearGradient(0, 0, 0, 1, [{
+          offset: 0,
+          color: '#23AF84'
+        },
+        {
+          offset: 1,
+          color: 'rgba(0,0,0,0)'
         }
+        ], false),
       },
     }
   ]
@@ -103,6 +101,18 @@ const option = reactive({
 onMounted(() => {
   option.xAxis.data = props.data.map(item => item.name) || []
   option.series[0].data = props.data || []
+  option.series[0].lineStyle.color = props.color || '#23AF84'
+  option.series[0].areaStyle = {
+    color: new graphic.LinearGradient(0, 0, 0, 1, [{
+      offset: 0,
+      color: props.color || '#23AF84'
+    },
+    {
+      offset: 1,
+      color: 'rgba(0,0,0,0)'
+    }
+    ], false),
+  }
   option.title.text = props.title || ''
 })
 </script>
