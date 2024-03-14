@@ -15,6 +15,13 @@ export default defineConfig({
   transformers: [
     transformerVariantGroup(),
   ],
+  theme: {
+    // ...
+    colors: {
+      'success': '#23AF98',
+      'error': '#F44546',
+    },
+  },
   rules: [
     /*  [/^m-([\.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })],
      [/^mx-([\.\d]+)$/, ([_, num]) => ({ 'margin-left': `${num}px`, 'margin-right': `${num}px` })],

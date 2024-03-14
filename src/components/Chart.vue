@@ -30,7 +30,7 @@ const option = reactive({
     top: 16,
     left: "center",
     textStyle: {
-      color: '#B0D9D9',
+      color: 'rgba(255,255,255,0.8)',
       fontSize: 18
     }
   },
@@ -47,7 +47,7 @@ const option = reactive({
     },
     axisLabel: {
       textStyle: {
-        color: '#829F9F',
+        color: 'rgba(255,255,255,0.5)',
         fontSize: 15
       },
     },
@@ -65,7 +65,7 @@ const option = reactive({
     },
     axisLabel: {
       textStyle: {
-        color: '#829F9F',
+        color: 'rgba(255,255,255,0.5)',
         fontSize: 15
       },
     },

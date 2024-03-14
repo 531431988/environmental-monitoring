@@ -42,12 +42,20 @@
           </Card>
         </a-col>
         <a-col :span="12" class="h-full">
-          <div class="flex flex-col items-end h-full">
+          <div class="flex flex-col h-full">
             <div class="flex-1">&nbsp;</div>
-            <div class="text-right">
-              <a-button type="primary" class="mx-16" @click="onSet">设置</a-button>
-              <a-button type="primary" @click="onLogout">退出</a-button>
-              <div class="mt-16" style="color: #829F9F">
+            <div>
+              <div class="flex items-center justify-end text-center">
+                <div class="mx-32" @click="onSet">
+                  <div class="i-ant-design:setting-outlined m-auto text-size-48 text-color-success"></div>
+                  <div  class="text-cool-gray">设置</div>
+                </div>
+                <div @click="onLogout">
+                  <div class="i-wpf:shutdown m-auto text-size-40 mb-5 text-color-error"></div>
+                  <div class="text-cool-gray">退出</div>
+                </div>
+              </div>
+              <div class="mt-16 text-right" style="color: #829F9F">
                 运行时间：108天10小时25分28秒 当前版本：v1.240313
               </div>
             </div>
@@ -185,7 +193,8 @@ function onLogout() {
       background: #013B40;
     }
 
-    .ant-table-cell,.ant-badge-status-text {
+    .ant-table-cell,
+    .ant-badge-status-text {
       color: #B0D9D9;
     }
   }
