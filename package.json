@@ -10,7 +10,9 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@iconify-json/streamline": "^1.1.8",
     "@tauri-apps/api": "^1",
+    "@unocss/reset": "^0.58.5",
     "ant-design-vue": "^4.1.2",
     "dayjs": "^1.11.10",
     "vue": "^3.3.4",
@@ -20,6 +22,7 @@
     "@antfu/eslint-config": "^2.8.1",
     "@tauri-apps/cli": "^1",
     "@unocss/eslint-config": "^0.58.5",
+    "@unocss/preset-icons": "^0.58.5",
     "@unocss/preset-rem-to-px": "^0.58.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "eslint": "^8.57.0",

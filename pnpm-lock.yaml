@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@iconify-json/streamline':
+    specifier: ^1.1.8
+    version: 1.1.8
   '@tauri-apps/api':
     specifier: ^1
     version: 1.5.3
+  '@unocss/reset':
+    specifier: ^0.58.5
+    version: 0.58.5
   ant-design-vue:
     specifier: ^4.1.2
     version: 4.1.2(vue@3.4.21)
@@ -31,6 +37,9 @@ devDependencies:
   '@unocss/eslint-config':
     specifier: ^0.58.5
     version: 0.58.5(eslint@8.57.0)(typescript@5.4.2)
+  '@unocss/preset-icons':
+    specifier: ^0.58.5
+    version: 0.58.5
   '@unocss/preset-rem-to-px':
     specifier: ^0.58.5
     version: 0.58.5
@@ -845,9 +854,14 @@ packages:
     resolution: {integrity: sha512-6EwiSjwWYP7pTckG6I5eyFANjPhmPjUX9JRLUSfNPC7FX7zK9gyZAfUEaECL6ALTpGX5AjnBq3C9XmVWPitNpw==}
     dev: true
 
+  /@iconify-json/streamline@1.1.8:
+    resolution: {integrity: sha512-9G9y1BYgh3VTZdE8CPUVSfzjHL39/PkkdPpyVCeWYZ64flyPEEBMeRz4YyoOU8A8MMTUj2zCq9GcsLpZb9Yg1Q==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
-    dev: true
 
   /@iconify/utils@2.1.22:
     resolution: {integrity: sha512-6UHVzTVXmvO8uS6xFF+L/QTSpTzA/JZxtgU+KYGFyDYMEObZ1bu/b5l+zNJjHy+0leWjHI+C0pXlzGvv3oXZMA==}
@@ -1646,7 +1660,6 @@ packages:
 
   /@unocss/reset@0.58.5:
     resolution: {integrity: sha512-2wMrkCj3SSb5hrx9TKs5jZa34QIRkHv9FotbJutAPo7o8hx+XXn56ogzdoUrcFPJZJUx2R2nyOVbSlGMIjtFtw==}
-    dev: true
 
   /@unocss/rule-utils@0.58.5:
     resolution: {integrity: sha512-w0sGJoeUGwMWLVFLEE9PDiv/fQcQqZnTIIQLYNCjTdqXDRlwTp9ACW0h47x/hAAIXdOtEOOBuTfjGD79GznUmA==}
