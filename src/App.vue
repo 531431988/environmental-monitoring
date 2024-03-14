@@ -1,17 +1,13 @@
 <template>
   <a-config-provider :theme="{
     token: {
-      colorBgBase: '#022F30',
-      colorTextBase: '#fff',
+      colorTextBase: '#000',
       colorPrimary: '#23af98',
       colorLink: '#23af98',
       colorWarning: '#ffe703',
       colorError: '#f44546',
-      fontSize: 18,
-    },
-  algorithm: theme.darkAlgorithm,
-  components: {
-  }
+      colorBorderSecondary: 'transparent',
+    }
   }">
     <RouterView />
   </a-config-provider>
@@ -23,16 +19,21 @@ import { theme } from 'ant-design-vue';
 body,
 html {
   height: 100%;
+  background-color: #022F30;
 }
 
 body {
   margin: 0;
+  overflow: hidden;
 }
-ul{
+
+ul {
   padding: 0;
   margin: 0;
 }
+
 #app {
   height: 100%;
+  overflow: hidden;
 }
 </style>

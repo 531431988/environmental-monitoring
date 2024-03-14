@@ -7,7 +7,7 @@ import { ref, onMounted } from 'vue'
 const canvas = ref(null)
 /*
 *   Gradient Animation
-*   ScrollObserver functionality to disable animation when not scrolled into view has been disabled and 
+*   ScrollObserver functionality to disable animation when not scrolled into view has been disabled and
 *   commented out for now.
 */
 
@@ -108,7 +108,7 @@ class MiniGl {
                 return name_no_prefix =
                   name_no_prefix.charAt(0).toUpperCase() +
                   name_no_prefix.slice(1),
-                  `uniform struct ${name_no_prefix} 
+                  `uniform struct ${name_no_prefix}
                                 {\n` +
                   Object.entries(uniform.value).map(([name, uniform]) =>
                     uniform.getDeclaration(name, type)
@@ -346,7 +346,7 @@ class Gradient {
         this.scrollObserver.observe(this.el),
         this.scrollObserver.onSeparate(() => {
             window.removeEventListener("scroll", this.handleScroll), window.removeEventListener("mousedown", this.handleMouseDown), window.removeEventListener("mouseup", this.handleMouseUp), window.removeEventListener("keydown", this.handleKeyDown), this.isIntersecting = !1, this.conf.playing && this.pause()
-        }), 
+        }),
         this.scrollObserver.onIntersect(() => {
             window.addEventListener("scroll", this.handleScroll), window.addEventListener("mousedown", this.handleMouseDown), window.addEventListener("mouseup", this.handleMouseUp), window.addEventListener("keydown", this.handleKeyDown), this.isIntersecting = !0, this.addIsLoadedClass(), this.play()
         })*/
@@ -536,7 +536,7 @@ onMounted(() => {
   height: 100%;
   --gradient-color-1: #021113;
   --gradient-color-2: #102832;
-  --gradient-color-3: #083431;
+  --gradient-color-3: #115f5a;
   --gradient-color-4: #021113;
 }
 </style>

@@ -25,7 +25,8 @@
       {
         "title": "vite-vue3-ts",
         "width": 800,
-        "height": 600
+        "height": 600,
+        "fullscreen": true
       }
     ],
     "security": {
