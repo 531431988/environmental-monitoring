@@ -1,0 +1,134 @@
+<template>
+  <div class="device-card p-24" :class="{ warn: data.status === '告警', error: data.status === '连接失败' }">
+    <div class="flex justify-between">
+      <div class="flex items-center">
+        <template v-if="data.status === '正常'">
+          <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
+          <span class="web-font-dd text-size-20 text-success">{{ data.status }}</span>
+        </template>
+        <template v-if="data.status === '告警'">
+          <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
+          <span class="web-font-dd text-size-20 text-error">{{ data.status }}</span>
+        </template>
+        <template v-if="data.status === '连接失败'">
+          <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
+          <span class="web-font-dd text-size-20 text-warning">{{ data.status }}</span>
+        </template>
+      </div>
+      <span class="web-font-dd text-size-20 text-white">{{ data.type }}</span>
+    </div>
+    <h1 class="web-font-dd text-size-32 text-white">{{ data.name }}</h1>
+    <a-row>
+      <a-col :span="8">串口号：{{ data.prot }}</a-col>
+      <a-col :span="8" :offset="8">波特率：{{ data.baud }}</a-col>
+    </a-row>
+    <a-row class="mt-8">
+      <a-col :span="8">校验：{{ data.check }}</a-col>
+      <a-col :span="8">数据位：{{ data.data }}</a-col>
+      <a-col :span="8">停止位：{{ data.stop }}</a-col>
+    </a-row>
+    <div class="line"></div>
+    <transition>
+      <div class="operate flex justify-center items-center" v-if="data.show">
+        <div class="i-ant-design:edit-outlined text-size-48 text-success" @click.stop="onEdit"></div>
+        <div class="i-ant-design:delete-outlined  text-size-48 ml-32 text-error" @click.stop="onDel"></div>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script lang="ts" setup>
+const props = defineProps({
+  data: Object
+})
+const style = computed(() => {
+  const color = {
+    '正常': 'linear-gradient(to right, rgba(255, 255, 255, .2), rgba(128, 128, 128, .2))',
+    '告警': 'linear-gradient(to right, rgba(244, 69, 70, .5), rgba(210, 38, 39, .5))',
+    '连接失败': 'linear-gradient(to right, rgba(246, 184, 68, .5), rgba(226, 179, 51, .5))',
+  }
+  return {
+    "background": color[props.data?.status]
+  }
+})
+function onDel() { }
+</script>
+
+<style lang="less" scoped>
+.device-card {
+  position: relative;
+  color: #DCDCDC;
+  border-radius: 8px;
+  overflow: hidden;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, .2), rgba(128, 128, 128, .2));
+
+  &.warn {
+    background: rgba(244, 69, 70, .1);
+    animation: warnBg 1s linear infinite;
+  }
+
+  :deep(.ant-badge-status-text) {
+    font-size: 20px;
+    color: #fff;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, .08);
+    border-radius: 50%;
+    top: -50px;
+    left: -50px;
+  }
+
+  .line {
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      transform: rotate(45deg) scaleY(2);
+    }
+
+    &::before {
+      background: rgba(255, 255, 255, .05);
+      width: 100px;
+      right: 92px;
+      height: 300px;
+    }
+
+    &::after {
+      width: 50px;
+      right: -58px;
+      background: rgba(255, 255, 255, .1);
+      height: 300px;
+    }
+  }
+
+  .operate {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.8);
+  }
+}
+
+@keyframes warnBg {
+  0% {
+    background: rgba(244, 69, 70, .1);
+  }
+
+  50% {
+    background: rgba(244, 69, 70, .5);
+  }
+
+  100% {
+    background: rgba(244, 69, 70, .2);
+  }
+}
+</style>

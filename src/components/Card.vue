@@ -21,7 +21,6 @@ defineProps({
   position: relative;
 
   .line {
-    position: absolute;
     width: 100%;
     height: 100%;
     pointer-events: none;
@@ -38,9 +37,6 @@ defineProps({
     }
 
     &:nth-child(1) {
-      left: 0;
-      top: 0;
-
       &::after,
       &::before {
         left: 0;
@@ -59,9 +55,6 @@ defineProps({
     }
 
     &:nth-child(2) {
-      right: 0;
-      top: 0;
-
       &::after,
       &::before {
         right: 0;
@@ -80,9 +73,6 @@ defineProps({
     }
 
     &:nth-child(3) {
-      bottom: 0;
-      right: 0;
-
       &::after,
       &::before {
         bottom: 0;
@@ -101,9 +91,6 @@ defineProps({
     }
 
     &:nth-child(4) {
-      bottom: 0;
-      left: 0;
-
       &::after,
       &::before {
         bottom: 0;

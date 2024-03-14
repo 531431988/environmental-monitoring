@@ -18,7 +18,8 @@ export default defineConfig({
   theme: {
     // ...
     colors: {
-      'success': '#23AF98',
+      'success': '#4BECD3',
+      'warning': '#FFE703',
       'error': '#F44546',
     },
   },

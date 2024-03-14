@@ -48,11 +48,11 @@
               <div class="flex items-center justify-end text-center">
                 <div class="mx-32" @click="onSet">
                   <div class="i-ant-design:setting-outlined m-auto text-size-48 text-color-success"></div>
-                  <div  class="text-cool-gray">设置</div>
+                  <div  class="text-cool-gray mt-8">设置</div>
                 </div>
                 <div @click="onLogout">
-                  <div class="i-wpf:shutdown m-auto text-size-40 mb-5 text-color-error"></div>
-                  <div class="text-cool-gray">退出</div>
+                  <div class="i-wpf:shutdown m-auto text-size-40 text-color-error"></div>
+                  <div class="text-cool-gray mt-13">退出</div>
                 </div>
               </div>
               <div class="mt-16 text-right" style="color: #829F9F">

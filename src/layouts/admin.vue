@@ -1,8 +1,8 @@
 <template>
   <a-layout class="!bg-transparent h-full relative z-50">
-    <a-layout-header class="!px-16 flex items-center">
+    <a-layout-header class="!px-16 flex items-center" style="background: rgba(255,255,255,.05);">
       <ul class="nav flex-1">
-        <li v-for="item in navs" :key="item.key" :class="{ active: item.key === active }" @click="onclick(item)">
+        <li v-for="item in navs" :key="item.key" class="text-size-30" :class="{ active: item.key === active }" @click="onclick(item)">
           {{ item.title }}
         </li>
       </ul>
