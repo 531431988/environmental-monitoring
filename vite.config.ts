@@ -30,7 +30,8 @@ export default defineConfig(async () => ({
     Layouts({
       layoutsDirs: 'src/layouts', // 指定布局文件（Layout）的目录路径
       pagesDirs: 'src/pages',
-      // importMode: () => 'sync'
+      defaultLayout: 'default', //对应 src/layouts/default.vue
+      importMode: () => 'sync'
     }),
     // https://github.com/antfu/unplugin-auto-import
     AutoImport({
