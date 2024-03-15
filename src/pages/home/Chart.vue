@@ -109,6 +109,7 @@ onMounted(() => {
 
 <style scoped>
 .chart {
-  height: 200px;
+  overflow: hidden;
+  height: calc((65vh - 296px) / 2);
 }
 </style>
