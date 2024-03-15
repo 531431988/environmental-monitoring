@@ -30,8 +30,8 @@
     <div class="line"></div>
     <transition>
       <div class="operate flex justify-center items-center" v-if="data.show">
-        <div class="i-ant-design:form-outlined text-size-48 text-success" @click.stop="onEdit"></div>
-        <div class="i-ant-design:delete-outlined  text-size-48 ml-32 text-error" @click.stop="onDel"></div>
+        <div class="i-ant-design:form-outlined text-size-52 text-success" @click.stop="$emit('edit')"></div>
+        <div class="i-ant-design:delete-outlined  text-size-52 ml-32 text-error" @click.stop="$emit('del')"></div>
       </div>
     </transition>
   </div>
@@ -51,6 +51,7 @@ const props = defineProps<{
     show: boolean
   }
 }>()
+defineEmits(['edit', 'del'])
 const className = computed(() => {
   return {
     c: props.data.type === '温度',
@@ -60,8 +61,6 @@ const className = computed(() => {
   }
 
 })
-function onEdit() { }
-function onDel() { }
 </script>
 
 <style lang="less" scoped>

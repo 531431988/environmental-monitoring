@@ -6,8 +6,15 @@
       colorLink: '#23af98',
       colorWarning: '#ffe703',
       colorError: '#f44546',
-      colorBorderSecondary: 'transparent',
-    }
+    colorBorderSecondary: 'transparent',
+    controlHeight: 48,
+    fontSize: 20
+    },
+    components: {
+      Select: {
+        colorPrimary: 'red',
+      },
+    },
   }">
     <RouterView />
   </a-config-provider>

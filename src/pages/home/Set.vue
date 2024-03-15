@@ -17,6 +17,7 @@
   <LoginModal v-model:open="open" />
 </template>
 <script setup lang="ts">
+import LoginModal from './LoginModal.vue';
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn'
 dayjs.locale('zh-cn')
