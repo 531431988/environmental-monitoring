@@ -4,7 +4,8 @@
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-    <h2 class="web-font-dd title mt-0">{{ title }}</h2>
+    <slot name="title" v-if="$slots.title"></slot>
+    <div class="web-font-dd title mb-8 text-size-24" v-if="title && !$slots.title">{{ title }}</div>
     <slot></slot>
   </div>
 </template>
@@ -19,6 +20,7 @@ defineProps({
 .card {
   background: rgba(4, 59, 70, 0.3);
   position: relative;
+  overflow: hidden;
   backdrop-filter: blur(4px);
 
   .line {

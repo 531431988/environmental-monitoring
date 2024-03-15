@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col"  style="height: 35vh">
     <div class="flex-1">&nbsp;</div>
     <div>
-      <div class="flex justify-end" @click="onSet">
-        <div class="text-center">
+      <div class="flex justify-end">
+        <div class="text-center" @click="onSet">
           <div class="i-ant-design:setting-outlined text-size-48 text-color-success"></div>
           <div class="text-cool-gray mt-8">设置</div>
         </div>

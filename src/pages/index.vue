@@ -2,7 +2,7 @@
   <div class="h-full flex flex-col p-48">
     <a-row :gutter="24">
       <a-col :span="12">
-        <Card title="实时温度监控">
+        <Card title="实时温度监控" style="height: calc(100vh - 35vh - 120px)">
           <a-row :gutter="[12, 12]">
             <a-col :span="6" v-for="item in data">
               <Chart :title="item.title" :data="item.data" />
@@ -11,7 +11,7 @@
         </Card>
       </a-col>
       <a-col :span="12">
-        <Card title="实时电压监控">
+        <Card title="实时电压监控"  style="height: calc(100vh - 35vh - 120px)">
           <a-row :gutter="[12, 12]">
             <a-col :span="6" v-for="item in data">
               <Chart :title="item.title" :data="item.data" color="#02FFEE" />
@@ -21,11 +21,11 @@
       </a-col>
     </a-row>
     <div class="flex-1 mt-24">
-      <a-row :gutter="24" class="h-full">
-        <a-col :span="12" class="h-full">
+      <a-row :gutter="24">
+        <a-col :span="12">
           <Warn />
         </a-col>
-        <a-col :span="12" class="h-full">
+        <a-col :span="12">
           <Set />
         </a-col>
       </a-row>

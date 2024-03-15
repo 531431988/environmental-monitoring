@@ -13,7 +13,6 @@
   </a-config-provider>
 </template>
 <script setup lang="ts">
-import { theme } from 'ant-design-vue';
 </script>
 <style>
 body,
