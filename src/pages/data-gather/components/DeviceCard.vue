@@ -1,5 +1,5 @@
 <template>
-  <div class="device-card p-24" :class="{ warn: data.status === '告警', error: data.status === '连接失败' }">
+  <div class="device-card p-24" :class="className">
     <div class="flex justify-between">
       <div class="flex items-center">
         <template v-if="data.status === '正常'">
@@ -30,7 +30,7 @@
     <div class="line"></div>
     <transition>
       <div class="operate flex justify-center items-center" v-if="data.show">
-        <div class="i-ant-design:edit-outlined text-size-48 text-success" @click.stop="onEdit"></div>
+        <div class="i-ant-design:form-outlined text-size-48 text-success" @click.stop="onEdit"></div>
         <div class="i-ant-design:delete-outlined  text-size-48 ml-32 text-error" @click.stop="onDel"></div>
       </div>
     </transition>
@@ -38,19 +38,29 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
-  data: Object
-})
-const style = computed(() => {
-  const color = {
-    '正常': 'linear-gradient(to right, rgba(255, 255, 255, .2), rgba(128, 128, 128, .2))',
-    '告警': 'linear-gradient(to right, rgba(244, 69, 70, .5), rgba(210, 38, 39, .5))',
-    '连接失败': 'linear-gradient(to right, rgba(246, 184, 68, .5), rgba(226, 179, 51, .5))',
+const props = defineProps<{
+  data: {
+    name: string,
+    type: string,
+    prot: number,
+    baud: string,
+    check: string,
+    data: string,
+    stop: string,
+    status: string,
+    show: boolean
   }
+}>()
+const className = computed(() => {
   return {
-    "background": color[props.data?.status]
+    c: props.data.type === '温度',
+    v: props.data.type === '电压',
+    warn: props.data.status === '告警',
+    error: props.data.status === '连接失败'
   }
+
 })
+function onEdit() { }
 function onDel() { }
 </script>
 
@@ -67,14 +77,38 @@ function onDel() { }
     animation: warnBg 1s linear infinite;
   }
 
+  &.error {
+    background: linear-gradient(to right, rgba(246, 184, 68, .5), rgba(226, 179, 51, .5));
+  }
+
   :deep(.ant-badge-status-text) {
     font-size: 20px;
     color: #fff;
   }
 
+  &::after,
   &::before {
     content: "";
     position: absolute;
+  }
+
+  &::after {
+    font-family: ddjbt;
+    top: 50px;
+    right: 40px;
+    font-size: 48px;
+    opacity: 0.2;
+  }
+
+  &.c::after {
+    content: "°C";
+  }
+
+  &.v::after {
+    content: "V";
+  }
+
+  &::before {
     width: 100px;
     height: 100px;
     background: rgba(255, 255, 255, .08);

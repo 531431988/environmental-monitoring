@@ -76,7 +76,7 @@ const data = reactive([{
   data: 8,
   stop: 1
 }, {
-  type: '温度',
+  type: '电压',
   status: '连接失败',
   name: '1机柜1号UPS',
   port: '121313',
@@ -85,7 +85,7 @@ const data = reactive([{
   data: 8,
   stop: 1
 }, {
-  type: '温度',
+  type: '电压',
   status: '正常',
   name: '1机柜1号UPS',
   port: '121313',
