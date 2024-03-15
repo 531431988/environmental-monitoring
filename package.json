@@ -20,7 +20,8 @@
     "echarts": "^5.5.0",
     "vue": "^3.3.4",
     "vue-echarts": "^6.6.9",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue3-seamless-scroll": "^2.0.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.8.1",
