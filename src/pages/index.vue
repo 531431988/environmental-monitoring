@@ -33,6 +33,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import Chart from './home/Chart.vue'
 import Warn from './home/Warn.vue'
 import Set from './home/Set.vue'
 const data = reactive([
