@@ -18,18 +18,25 @@
           </a-radio-group>
         </a-form-item>
         <a-form-item label="工作区间" :rules="[{ required: true, message: '请选择' }]">
-          <a-radio-group v-model:value="form.type" button-style="solid">
-            <a-radio-button value="大于">大于</a-radio-button>
-            <a-radio-button value="小于">小于</a-radio-button>
-            <a-radio-button value="等于">等于</a-radio-button>
-            <a-radio-button value="区间值">区间值</a-radio-button>
-          </a-radio-group>
+          <div class="flex">
+            <a-select v-model:value="form.range" placeholder="请选择" class="!w-100">
+              <a-select-option value="大于">大于</a-select-option>
+              <a-select-option value="小于">小于</a-select-option>
+              <a-select-option value="等于">等于</a-select-option>
+              <a-select-option value="区间值">区间值</a-select-option>
+            </a-select>
+            <div class="flex-1 pl-24">
+              <a-slider v-model:value="form.warn"/>
+            </div>
+          </div>
         </a-form-item>
         <a-form-item label="一级报警" :rules="[{ required: true, message: '请选择' }]">
-          <a-slider v-model:value="form.warn" :range="false" />
+          <a-slider v-model:value="form.warnRange" range v-if="form.range === '区间值'" />
+          <a-slider v-model:value="form.warn" v-else />
         </a-form-item>
         <a-form-item label="二级报警" :rules="[{ required: true, message: '请选择' }]">
-          <a-slider v-model:value="form.warn" :range="false" />
+          <a-slider v-model:value="form.warnRange" range v-if="form.range === '区间值'" />
+          <a-slider v-model:value="form.warn" v-else />
         </a-form-item>
         <a-row>
           <a-col :span="12">
@@ -101,7 +108,9 @@ const form = reactive({
   name: '',
   type: '',
   port: '',
-  warn: 0
+  range: '',
+  warn: 0,
+  warnRange: [10, 50]
 });
 const onFinish = (values: any) => {
 };
