@@ -1,6 +1,6 @@
 <template>
   <a-modal :open="open" centered :maskClosable="false" :closable="false" :footer="null">
-    <h1 class="web-font-dd text-center text-color-success mb-32">UPS监测控制系统</h1>
+    <h1 class="web-font-dd text-center mb-32" style="color:#23AF98">UPS监测控制系统</h1>
     <a-form :model="formState" autocomplete="off" @finish="onFinish">
       <a-form-item name="password" :rules="[{ required: true, message: '请输入管理密码' }]">
         <a-input-password v-model:value="formState.password" class="h-64" placeholder="" />
@@ -8,7 +8,7 @@
       <div class="flex flex-col mt-64">
         <a-button type="primary" class="h-64 rounded-100 text-size-24"
           html-type="submit">登录</a-button>
-        <a-button type="link" class="h-64  text-size-24" @click="$emit('update:open', false)">取消</a-button>
+        <a-button type="link" class="h-64  text-size-24" @click="formState.password = ''; $emit('update:open', false)">取消</a-button>
       </div>
     </a-form>
   </a-modal>

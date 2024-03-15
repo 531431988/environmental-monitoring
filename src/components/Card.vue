@@ -19,17 +19,20 @@ defineProps({
 .card {
   background: rgba(4, 59, 70, 0.3);
   position: relative;
+  backdrop-filter: blur(4px);
 
   .line {
     width: 100%;
     height: 100%;
     pointer-events: none;
+
     &:nth-child(1),
     &:nth-child(2),
     &:nth-child(3),
     &:nth-child(4) {
+
       &::before,
-      &::after{
+      &::after {
         position: absolute;
         content: "";
         background: #23AF98;
@@ -37,6 +40,7 @@ defineProps({
     }
 
     &:nth-child(1) {
+
       &::after,
       &::before {
         left: 0;
@@ -55,6 +59,7 @@ defineProps({
     }
 
     &:nth-child(2) {
+
       &::after,
       &::before {
         right: 0;
@@ -73,6 +78,7 @@ defineProps({
     }
 
     &:nth-child(3) {
+
       &::after,
       &::before {
         bottom: 0;
@@ -91,6 +97,7 @@ defineProps({
     }
 
     &:nth-child(4) {
+
       &::after,
       &::before {
         bottom: 0;

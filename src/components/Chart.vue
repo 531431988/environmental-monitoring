@@ -1,5 +1,6 @@
 <template>
   <div class="" style="background: rgba(255, 255, 255, 0.1);">
+    <p class="web-font-dd text-center my-0 pt-16 text-size-20" style="color: #bfffff;">{{ title }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" />
   </div>
 </template>
@@ -26,18 +27,8 @@ use([
   GridComponent
 ]);
 const option = reactive({
-  title: {
-    text: "",
-    top: 16,
-    left: "center",
-    textStyle: {
-      color: '#bfffff',
-      fontSize: 18,
-      fontWeight: 400,
-      fontFamily: 'ddjbt',
-    }
-  },
   grid: {
+    top: '10%',
     left: '20%',
     right: '10%',
     bottom: '20%',
@@ -113,7 +104,6 @@ onMounted(() => {
     }
     ], false),
   }
-  option.title.text = props.title || ''
 })
 </script>
 
