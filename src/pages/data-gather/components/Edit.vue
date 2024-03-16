@@ -6,7 +6,8 @@
       <div class="py-32">
         <a-form-item label="设备名称" name="name" :rules="[{ required: true, message: '请选择' }]">
           <div class="flex">
-            <a-input readonly v-model:value="form.name" class="flex-1" placeholder="请选择" suffix="柜" />
+            <a-input readonly v-model:value="form.name" class="flex-1" placeholder="请选择" suffix="柜"
+              @click="onClick('name')" />
             <a-input readonly v-model:value="form.name" class="flex-1 mx-16" placeholder="请选择" suffix="层" />
             <a-input readonly v-model:value="form.name" class="flex-1" placeholder="请选择" suffix="号" />
           </div>
@@ -26,7 +27,7 @@
               <a-select-option value="区间值">区间值</a-select-option>
             </a-select>
             <div class="flex-1 pl-24">
-              <a-slider v-model:value="form.warn"/>
+              <a-slider v-model:value="form.warn" />
             </div>
           </div>
         </a-form-item>
@@ -95,6 +96,7 @@
       </div>
     </a-form>
   </a-modal>
+  <Keyboard v-model:open="show" @ok="onOk" />
 </template>
 
 <script lang="ts" setup>
@@ -104,6 +106,8 @@ defineProps({
 })
 const emits = defineEmits(['update:open'])
 
+const show = ref(false)
+const key = ref('')
 const form = reactive({
   name: '',
   type: '',
@@ -112,6 +116,11 @@ const form = reactive({
   warn: 0,
   warnRange: [10, 50]
 });
+function onClick(name) {
+  key.value = name
+  show.value = true
+}
+
 const onFinish = (values: any) => {
 };
 
@@ -119,6 +128,9 @@ function onCancel() {
   emits('update:open', false)
 }
 
+function onOk(val) {
+  form[key.value] = val
+}
 
 
 </script>
