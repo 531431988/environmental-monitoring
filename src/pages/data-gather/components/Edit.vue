@@ -4,7 +4,7 @@
     <div slot="title" class="text-size-24">新增设备</div>
     <a-form ref="formRef" :model="form" autocomplete="off" :label-col="{ style: { width: '120px' } }"
       @finish="onFinish">
-      <div class="py-32">
+      <div class="pt-32">
         <a-row :gutter="16">
           <a-col :span="12">
             <a-form-item label="设备名称" name="cupboard" :rules="[{ required: true, message: '请输入' }]">
@@ -83,9 +83,7 @@
           <a-form-item label="二级报警" name="twoWarn1" :rules="[{ required: true, message: '请选择' }]">
             <a-input readonly v-model:value="form.twoWarn1" placeholder="请输入" @click="onClick('twoWarn1')" />
           </a-form-item>
-
         </template>
-
         <a-row>
           <a-col :span="12">
             <a-form-item label="串口" name="com" :rules="[{ required: true, message: '请选择' }]">
@@ -138,6 +136,7 @@
         </a-form-item>
       </div>
       <div slot="footer" class="text-right">
+        <a-button type="primary">连接测试</a-button>
         <a-button type="primary" ghost class="mx-16" @click="onCancel">取消</a-button>
         <a-button type="primary" html-type="submit">确定</a-button>
       </div>
