@@ -1,5 +1,5 @@
 <template>
-  <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" style="bottom: -40%;top:initial">
+  <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" centered>
     <div class="p-24">
       <div class="m-auto text-center">
         <a-input v-model:value="number" readonly class="mb-24 w-400 m-auto h-64" placeholder="请输入" style="font-size: 32px;" />
@@ -9,15 +9,20 @@
             <a-button type="primary" class="h-80 w-80" @click="onClick(item)">{{ item }}</a-button>
           </div>
           <div class="m-12">
-            <a-button type="primary" class="w-184 h-80" @click="onDel">
+            <a-button type="primary" class="w-80 h-80" @click="onDel">
               <span class="i-ant-design:swap-left-outlined text-size-20"></span>
+            </a-button>
+          </div>
+          <div class="m-12">
+            <a-button type="primary" danger class="w-80 h-80" @click="number = ''">
+              <span class="i-ant-design:delete-outlined text-size-20"></span>
             </a-button>
           </div>
         </div>
     </div>
     <template #footer>
       <div class="text-center">
-        <a-button class="mx-8 h-64 w-120" @click="$emit('update:open', false)">取消</a-button>
+        <a-button class="mx-8 h-64 w-120" @click="number = ''; $emit('update:open', false)">取消</a-button>
         <a-button type="primary" class="h-64 w-120" @click="onOk">确定</a-button>
       </div>
     </template>
@@ -46,6 +51,7 @@ function onDel() {
 function onOk() {
   emits('update:open', false)
   emits('ok', number.value)
+  number.value = ''
 }
 </script>
 
