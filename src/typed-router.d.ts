@@ -23,8 +23,6 @@ declare module 'vue-router/auto-routes' {
     '/data-gather/components/DeviceCard': RouteRecordInfo<'/data-gather/components/DeviceCard', '/data-gather/components/DeviceCard', Record<never, never>, Record<never, never>>,
     '/data-gather/components/Edit': RouteRecordInfo<'/data-gather/components/Edit', '/data-gather/components/Edit', Record<never, never>, Record<never, never>>,
     '/home/Chart': RouteRecordInfo<'/home/Chart', '/home/Chart', Record<never, never>, Record<never, never>>,
-    '/home/LoginModal': RouteRecordInfo<'/home/LoginModal', '/home/LoginModal', Record<never, never>, Record<never, never>>,
-    '/home/Set': RouteRecordInfo<'/home/Set', '/home/Set', Record<never, never>, Record<never, never>>,
     '/home/Warn': RouteRecordInfo<'/home/Warn', '/home/Warn', Record<never, never>, Record<never, never>>,
     '/warning-config/': RouteRecordInfo<'/warning-config/', '/warning-config', Record<never, never>, Record<never, never>>,
     '/warning-config/Set': RouteRecordInfo<'/warning-config/Set', '/warning-config/Set', Record<never, never>, Record<never, never>>,

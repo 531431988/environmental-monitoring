@@ -210,7 +210,7 @@ onUnmounted(() => {
 
   0% {
     color: #fff;
-    text-shadow: 0 0 30px rgba(255, 255, 255, .2);
+    text-shadow: 0 0 30px rgba(255, 255, 255, .5);
   }
 }
 </style>

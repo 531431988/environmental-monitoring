@@ -25,6 +25,7 @@ html,
   height: 100%;
   background: #022F30;
   font-family: 'ddjbt';
+  color: #B0D9D9;
 }
 
 body {
