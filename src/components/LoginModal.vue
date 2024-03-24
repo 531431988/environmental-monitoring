@@ -1,5 +1,6 @@
 <template>
-  <a-modal :open="open" centered :maskClosable="false" :closable="false" :footer="null">
+  <a-modal :getContainer="useModalContainer" :open="open" centered :maskClosable="false" :closable="false"
+    :footer="null">
     <div
       class="absolute -top-60 left-50% -translate-x-50% w-100 h-100 rounded-100 bg-white flex justify-center items-center shadow-lg shadow-gray-300">
       <div class="i-ant-design:user-outlined text-size-48 text-gray-500"></div>
@@ -19,11 +20,13 @@
 </template>
 
 <script lang="ts" setup>
-import {USER_INFO} from '@/enume/cache'
+import { USER_INFO } from '@/enume/cache'
+import { useModalContainer } from '@/hooks/common'
 defineProps({
   open: Boolean
 })
 const emits = defineEmits(['update:open'])
+
 
 const router = useRouter()
 const formState = reactive({

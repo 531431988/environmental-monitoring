@@ -10,7 +10,7 @@
       fontSize: 20
     }
   }">
-    <Datav mode="fit" class="flex flex-col">
+    <Datav id="datav" mode="fit" class="flex flex-col">
       <Header />
       <RouterView />
     </Datav>
