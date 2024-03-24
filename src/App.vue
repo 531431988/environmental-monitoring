@@ -4,28 +4,27 @@
       colorTextBase: '#000',
       colorPrimary: '#23af98',
       colorLink: '#23af98',
-      colorWarning: '#ffe703',
       colorError: '#f44546',
-    colorBorderSecondary: 'transparent',
-    controlHeight: 48,
-    fontSize: 20
-    },
-    components: {
-      Select: {
-        colorPrimary: 'red',
-      },
-    },
+      colorBorderSecondary: 'transparent',
+      controlHeight: 48,
+      fontSize: 20
+    }
   }">
-    <RouterView />
+    <Datav mode="fit" class="flex flex-col">
+      <Header />
+      <RouterView />
+    </Datav>
   </a-config-provider>
 </template>
 <script setup lang="ts">
 </script>
 <style>
 body,
-html {
+html,
+#app {
   height: 100%;
-  background-color: #022F30;
+  background: #022F30;
+  font-family: 'ddjbt';
 }
 
 body {
@@ -39,7 +38,12 @@ ul {
 }
 
 #app {
-  height: 100%;
   overflow: hidden;
+
+  .datav {
+    background-color: #000;
+    user-select: none;
+
+  }
 }
 </style>

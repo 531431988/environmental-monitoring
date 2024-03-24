@@ -60,7 +60,20 @@ export default defineConfig(async () => ({
       Vue(),
       UnoCSS()
     ],
-
+  css: {
+    preprocessorOptions: {
+      less: {
+        modifyVars: {
+          'primary-color': '#14C0FF',
+          'info-color': '#B7E6FF',
+          'error-color': '#ee3f3f',
+          'success-color': '#3fee62',
+          'warning-color': '#fff821',
+        },
+        javascriptEnabled: true,
+      },
+    },
+},
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
   // 1. prevent vite from obscuring rust errors
