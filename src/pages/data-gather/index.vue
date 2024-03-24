@@ -15,11 +15,13 @@
   </div>
   <Edit v-model:open="open" :data="row" />
 </template>
-<route lang="yaml">
-  meta:
-    layout: admin
-  </route>
-
+<route lang="json">{
+  "name": "data-gather",
+  "meta": {
+    "requiresAuth": true,
+    "layout": "admin"
+  }
+}</route>
 <script lang="ts" setup>
 import DeviceCard from './components/DeviceCard.vue';
 import Edit from './components/Edit.vue';
@@ -96,7 +98,7 @@ const data = reactive([{
   check: '奇',
   data: 8,
   stop: 1
-  }])
+}])
 const open = ref(false)
 const row = ref({})
 function onShow(item) {
