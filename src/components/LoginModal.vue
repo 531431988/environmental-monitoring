@@ -34,7 +34,7 @@ const formState = reactive({
 });
 const onFinish = (values: any) => {
   localStorage.setItem(USER_INFO, 'ups-tosk')
-  router.push('/data-gather')
+  router.push('/device-manage')
   emits('update:open', false)
 };
 

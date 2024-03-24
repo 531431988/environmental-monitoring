@@ -33,11 +33,16 @@
 
     <div class="flex items-center absolute left-24 right-24 top-16">
       <div class="flex-1 flex items-center">
-        <div class="text-size-20 text-success pr-24">
-          <div class="mb-6">{{ week }}</div>
-          <div>{{ date }}</div>
-        </div>
-        <span class="text-size-32 ">{{ time }}</span>
+        <template v-if="isHome">
+          <div class="text-size-20 text-success pr-24">
+            <div class="mb-6">{{ week }}</div>
+            <div>{{ date }}</div>
+          </div>
+          <span class="text-size-32 ">{{ time }}</span>
+        </template>
+        <ul class="nav list-none flex">
+          <li v-for="(item, index) in navList" :class="{item: true, active: $route.path === item.to}" :key="index" @click="$router.push(item.to)">{{ item.text }}</li>
+        </ul>
       </div>
       <div class="flex items-center justify-between w-480px">
         <div class="pl-45">
@@ -89,6 +94,14 @@ const isHome = computed(() => {
   return route.path === '/'
 })
 const open = ref(false)
+
+const navList = ref([{
+  to: '/device-manage',
+  text: '设备管理'
+}, {
+  to: '/warning-config',
+  text: '报警配置'
+}])
 function onSet () {
   open.value = true
 }
@@ -151,7 +164,18 @@ onUnmounted(() => {
   .btn {
     background: linear-gradient(to bottom, #013b4090, #23af9854);
   }
-
+.nav {
+  .item{
+    font-size: 24px;
+    border-bottom: 5px solid transparent;
+    padding: 16px; cursor: pointer;
+    margin-right: 24px;
+    &.active{
+      color: #4BECD3;
+      border-color: #4BECD3;
+    }
+  }
+}
   .title {
     left: 50%;
     transform: translateX(-50%);

@@ -19,9 +19,9 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
-    'data-gather': RouteRecordInfo<'data-gather', '/data-gather', Record<never, never>, Record<never, never>>,
-    '/data-gather/components/DeviceCard': RouteRecordInfo<'/data-gather/components/DeviceCard', '/data-gather/components/DeviceCard', Record<never, never>, Record<never, never>>,
-    '/data-gather/components/Edit': RouteRecordInfo<'/data-gather/components/Edit', '/data-gather/components/Edit', Record<never, never>, Record<never, never>>,
+    'data-gather': RouteRecordInfo<'data-gather', '/device-manage', Record<never, never>, Record<never, never>>,
+    '/device-manage/components/DeviceCard': RouteRecordInfo<'/device-manage/components/DeviceCard', '/device-manage/components/DeviceCard', Record<never, never>, Record<never, never>>,
+    '/device-manage/components/Edit': RouteRecordInfo<'/device-manage/components/Edit', '/device-manage/components/Edit', Record<never, never>, Record<never, never>>,
     '/home/Chart': RouteRecordInfo<'/home/Chart', '/home/Chart', Record<never, never>, Record<never, never>>,
     '/home/Warn': RouteRecordInfo<'/home/Warn', '/home/Warn', Record<never, never>, Record<never, never>>,
     '/warning-config/': RouteRecordInfo<'/warning-config/', '/warning-config', Record<never, never>, Record<never, never>>,

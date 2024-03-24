@@ -18,8 +18,7 @@
 <route lang="json">{
   "name": "data-gather",
   "meta": {
-    "requiresAuth": true,
-    "layout": "admin"
+    "requiresAuth": true
   }
 }</route>
 <script lang="ts" setup>

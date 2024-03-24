@@ -17,9 +17,6 @@ const router = useRouter()
 const formState = reactive({
   password: ''
 });
-const onFinish = (values: any) => {
-  router.push('/data-gather')
-};
 
 
 

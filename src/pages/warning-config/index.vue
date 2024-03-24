@@ -20,10 +20,7 @@
   </a-config-provider>
   <Set v-modal:open="open" />
 </template>
-<route lang="yaml">
-  meta:
-    layout: admin
-  </route>
+
 
 <script setup>
 import Set from './Set.vue'
