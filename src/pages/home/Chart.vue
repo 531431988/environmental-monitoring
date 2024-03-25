@@ -1,5 +1,5 @@
 <template>
-  <div class="" style="background: rgba(255, 255, 255, 0.1);">
+  <div style="background: rgba(255, 255, 255, 0.1);">
     <p class="web-font-dd text-center my-0 pt-16 text-size-20" style="color: #bfffff;">{{ title }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" />
   </div>
@@ -110,6 +110,6 @@ onMounted(() => {
 <style scoped>
 .chart {
   overflow: hidden;
-  height: calc((65vh - 296px) / 2);
+  height: 240px;
 }
 </style>

@@ -4,16 +4,17 @@
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-    <slot name="title" v-if="$slots.title"></slot>
-    <div class="web-font-dd title mb-8 text-size-24" v-if="title && !$slots.title">{{ title }}</div>
+    <div class="web-font-dd hd mb-16 text-size-24">
+      <span class="title">{{ title }}</span>
+    </div>
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts" setup>
 defineProps({
-  title: String
-});
+  title: String,
+})
 </script>
 
 <style lang="less" scoped>
@@ -32,17 +33,15 @@ defineProps({
     &:nth-child(2),
     &:nth-child(3),
     &:nth-child(4) {
-
       &::before,
       &::after {
         position: absolute;
-        content: "";
-        background: #23AF98;
+        content: '';
+        background: #23af98;
       }
     }
 
     &:nth-child(1) {
-
       &::after,
       &::before {
         left: 0;
@@ -61,7 +60,6 @@ defineProps({
     }
 
     &:nth-child(2) {
-
       &::after,
       &::before {
         right: 0;
@@ -80,7 +78,6 @@ defineProps({
     }
 
     &:nth-child(3) {
-
       &::after,
       &::before {
         bottom: 0;
@@ -99,7 +96,6 @@ defineProps({
     }
 
     &:nth-child(4) {
-
       &::after,
       &::before {
         bottom: 0;
@@ -117,10 +113,20 @@ defineProps({
       }
     }
   }
-
-  .title {
-    color: #bfffff;
+  .hd {
+    .title {
+      position: relative;
+      color: #bfffff;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 50%;
+        height: 3px;
+        background: #ffffff95;
+      }
+    }
   }
-
 }
 </style>

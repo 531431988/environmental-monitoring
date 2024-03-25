@@ -1,5 +1,5 @@
 <template>
-  <Card title="历史报警" style="height: calc(100vh - 135px)">
+  <Card title="历史报警" class="h-full">
     <div class="flex justify-between table-th">
       <span class="w-200">设备</span>
       <span class="w-100">类型</span>
@@ -115,18 +115,18 @@ const tableData = reactive([{
   overflow: hidden;
 
   :deep(.ant-badge-status-text) {
-    color: #B0D9D9;
+    color: #b0d9d9;
   }
 }
 
 .table-th {
-  background: #013B40;
+  background: #013b40;
 }
 
 .table-th,
 .table-td {
   font-size: 18px;
-  color: #B0D9D9;
+  color: #b0d9d9;
   padding: 6px 12px;
 }
 
@@ -140,12 +140,12 @@ const tableData = reactive([{
     }
 
     .ant-table-thead .ant-table-cell {
-      background: #013B40;
+      background: #013b40;
     }
 
     .ant-table-cell,
     .ant-badge-status-text {
-      color: #B0D9D9;
+      color: #b0d9d9;
     }
   }
 }

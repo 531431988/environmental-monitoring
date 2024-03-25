@@ -18,14 +18,14 @@
 </template>
 <script setup lang="ts">
 </script>
-<style>
+<style lang="less">
 body,
 html,
 #app {
   height: 100%;
-  background: #022F30;
+  background: #022f30;
   font-family: 'ddjbt';
-  color: #B0D9D9;
+  color: #b0d9d9;
 }
 
 body {
@@ -44,7 +44,7 @@ ul {
   .datav {
     background-color: #000;
     user-select: none;
-
+    height: 100vh;
   }
 }
 </style>
