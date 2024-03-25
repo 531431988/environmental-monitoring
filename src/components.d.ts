@@ -19,6 +19,7 @@ declare module 'vue' {
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     AModal: typeof import('ant-design-vue/es')['Modal']
     ARow: typeof import('ant-design-vue/es')['Row']
+    ASwitch: typeof import('ant-design-vue/es')['Switch']
     Bg: typeof import('./components/Bg.vue')['default']
     Card: typeof import('./components/Card.vue')['default']
     Datav: typeof import('./components/datav/index.vue')['default']

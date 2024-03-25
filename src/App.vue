@@ -6,8 +6,9 @@
       colorLink: '#23af98',
       colorError: '#f44546',
       colorBorderSecondary: 'transparent',
-      controlHeight: 48,
-      fontSize: 20
+      controlHeight: 64,
+    fontSize: 24,
+    switchHeight: 64
     }
   }">
     <Datav id="datav" mode="fit" class="flex flex-col">
