@@ -16,88 +16,97 @@
   <Edit v-model:open="open" :data="row" />
 </template>
 <route lang="json">{
-  "name": "data-gather",
+  "name": "device-manage",
   "meta": {
     "requiresAuth": true
   }
 }</route>
 <script lang="ts" setup>
-import DeviceCard from './components/DeviceCard.vue';
-import Edit from './components/Edit.vue';
-import { Modal } from 'ant-design-vue';
-const data = reactive([{
-  type: '温度',
-  status: '正常',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1,
-}, {
-  type: '温度',
-  status: '正常',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}, {
-  type: '温度',
-  status: '告警',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}, {
-  type: '温度',
-  status: '正常',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}, {
-  type: '温度',
-  status: '正常',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}, {
-  type: '温度',
-  status: '正常',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}, {
-  type: '电压',
-  status: '连接失败',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}, {
-  type: '电压',
-  status: '正常',
-  name: '1机柜1号UPS',
-  port: '121313',
-  baud: '9300',
-  check: '奇',
-  data: 8,
-  stop: 1
-}])
+import DeviceCard from './components/DeviceCard.vue'
+import Edit from './components/Edit.vue'
+import { Modal } from 'ant-design-vue'
+const data = reactive([
+  {
+    type: '温度',
+    status: '正常',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '温度',
+    status: '正常',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '温度',
+    status: '告警',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '温度',
+    status: '正常',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '温度',
+    status: '正常',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '温度',
+    status: '正常',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '电压',
+    status: '连接失败',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+  {
+    type: '电压',
+    status: '正常',
+    name: '1机柜1号UPS',
+    port: '121313',
+    baud: '9300',
+    check: '奇',
+    data: 8,
+    stop: 1,
+  },
+])
 const open = ref(false)
 const row = ref({})
 function onShow(item) {
@@ -105,9 +114,9 @@ function onShow(item) {
   item.show = !item.show
 }
 function onHide() {
-  data.forEach(item => {
+  data.forEach((item) => {
     item.show = false
-  });
+  })
 }
 
 function onEdit(item) {
@@ -125,8 +134,8 @@ function onDel(index) {
     onOk() {
       data.splice(index, 1)
     },
-    onCancel() { },
-  });
+    onCancel() {},
+  })
 }
 </script>
 

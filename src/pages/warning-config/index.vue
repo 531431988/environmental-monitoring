@@ -21,7 +21,7 @@
       </ConfigCard>
       <ConfigCard title="RS485通信设置" class="my-32">
         <div class="flex items-center justify-center">
-          <a-row :gutter="32">
+          <a-row :gutter="48">
             <a-col>
               <span class="mr-24">保持供电</span><a-switch />
             </a-col>
@@ -39,7 +39,7 @@
       </ConfigCard>
       <ConfigCard title="报警阈值设置">
         <div class="flex items-center justify-center">
-          <a-row :gutter="32">
+          <a-row :gutter="48">
             <a-col>
               <span class="mr-24">保持供电</span><a-switch />
             </a-col>
@@ -70,6 +70,7 @@
  <route lang="json">{
   "name": "warning-config",
   "meta": {
+    "requiresAuth": true
   }
 }</route>
 <script setup>
