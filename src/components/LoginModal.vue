@@ -30,6 +30,8 @@ const form = reactive({
 })
 const formRef = ref()
 const onFinish = (values) => {
+  sessionStorage.setItem(USER_INFO, 'ups-tosk')
+  router.push('/device-manage')
   formRef.value.resetFields();
   emits('update:open', false)
 }
