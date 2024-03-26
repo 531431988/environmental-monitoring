@@ -1,8 +1,7 @@
 <template>
   <div class="flex items-center justify-between px-24px relative header">
     <slot></slot>
-    <svg class="absolute left-0 right-0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-      viewBox="0 0 1920.49 91">
+    <svg class="absolute left-0 right-0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920.49 91">
       <defs>
         <linearGradient id="a" x1="0.047" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
           <stop offset="0" stop-color="#124a50" />
@@ -24,10 +23,8 @@
         <path d="M-1,60H21.5l30-60H29Z" transform="translate(11555.13 -499.879) rotate(180)" fill="#12494f" />
         <path d="M1,52.052H23.5L46,5.3H23.5Z" transform="translate(11519.634 -494.58) rotate(180)" fill="#0f5455" />
         <path d="M3,46.5H25.5L43,9H20.5Z" transform="translate(11486.63 -490.879) rotate(180)" fill="#126766" />
-        <path d="M261,0H756l42.145,85.031,408.842.306L1206.719,91l-412.067-.038L753,6H261Z"
-          transform="translate(9904.51 -579)" fill="#12494f" />
-        <path d="M1206.987,0h-495L669.842,85.031,231,85.337,231.269,91l442.067-.038L714.987,6h492Z"
-          transform="translate(10878.51 -579)" fill="#12494f" />
+        <path d="M261,0H756l42.145,85.031,408.842.306L1206.719,91l-412.067-.038L753,6H261Z" transform="translate(9904.51 -579)" fill="#12494f" />
+        <path d="M1206.987,0h-495L669.842,85.031,231,85.337,231.269,91l442.067-.038L714.987,6h492Z" transform="translate(10878.51 -579)" fill="#12494f" />
       </g>
     </svg>
 
@@ -40,7 +37,7 @@
           </div>
           <span class="text-size-32 ">{{ time }}</span>
         </template>
-        <ul class="nav list-none flex">
+        <ul class="nav list-none flex" v-else>
           <li v-for="(item, index) in navList" :class="{item: true, active: $route.path === item.to}" :key="index" @click="$router.push(item.to)">{{ item.text }}</li>
         </ul>
       </div>
@@ -50,20 +47,19 @@
           <div>软件版本 V1.01</div>
         </div>
         <div class="flex items-center">
-          <div v-if="!isHome" class="w-60 h-60 rounded-100 btn flex justify-center items-center"
-            @click="$router.push('/')">
+          <div v-if="!isHome" class="w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onLogot">
             <div class="i-ant-design:home-outlined text-size-32 text-success"></div>
           </div>
           <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onSet">
             <div class="i-ant-design:setting-outlined text-size-32 text-success"></div>
           </div>
-          <div class="w-64 h-64 rounded-100 btn flex justify-center items-center" @click="onLogout">
+          <div class="w-64 h-64 rounded-100 btn flex justify-center items-center" @click="onPower">
             <div class="i-mingcute:power-fill text-size-32 text-error"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="absolute title text-size-42px" @click="$router.push('/')">
+    <div class="absolute title text-size-42px" @click="onLogot">
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
@@ -88,6 +84,7 @@ let timer = window.setInterval(() => {
   time.value = dayjs().format('hh:mm:ss')
 }, 1000)
 const title = ref('UPS蓄电池在线监测系统')
+const router = useRouter()
 const route = useRoute()
 
 const isHome = computed(() => {
@@ -105,8 +102,12 @@ const navList = ref([{
 function onSet () {
   open.value = true
 }
+function onLogot () {
+  sessionStorage.removeItem(USER_INFO)
+  router.push('/')
+}
 
-function onLogout () {
+function onPower () {
   Modal.confirm({
     centered: true,
     title: '确认退出',
@@ -115,7 +116,7 @@ function onLogout () {
     cancelText: '取消',
     getContainer: useModalContainer,
     async onOk () {
-      localStorage.removeItem(USER_INFO)
+      sessionStorage.removeItem(USER_INFO)
       await exit(1);
     },
     onCancel () { },
@@ -157,25 +158,26 @@ onUnmounted(() => {
 
 <style lang="less" scoped>
 .header {
-  border-top: 5px solid #022B2D;
+  border-top: 5px solid #022b2d;
   height: 90px;
   color: #c7eafd;
 
   .btn {
     background: linear-gradient(to bottom, #013b4090, #23af9854);
   }
-.nav {
-  .item{
-    font-size: 24px;
-    border-bottom: 5px solid transparent;
-    padding: 16px; cursor: pointer;
-    margin-right: 24px;
-    &.active{
-      color: #4BECD3;
-      border-color: #4BECD3;
+  .nav {
+    .item {
+      font-size: 24px;
+      border-bottom: 5px solid transparent;
+      padding: 16px;
+      cursor: pointer;
+      margin-right: 24px;
+      &.active {
+        color: #4becd3;
+        border-color: #4becd3;
+      }
     }
   }
-}
   .title {
     left: 50%;
     transform: translateX(-50%);
@@ -184,7 +186,7 @@ onUnmounted(() => {
     top: 9px;
 
     span {
-      background-image: linear-gradient(to bottom, #fff, #4BECD3);
+      background-image: linear-gradient(to bottom, #fff, #4becd3);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: light 1.5s linear infinite;
@@ -225,16 +227,15 @@ onUnmounted(() => {
 }
 
 @keyframes light {
-
   0%,
   75% {
-    color: #B0D9D9;
+    color: #b0d9d9;
     text-shadow: none;
   }
 
   0% {
     color: #fff;
-    text-shadow: 0 0 30px rgba(255, 255, 255, .5);
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
   }
 }
 </style>

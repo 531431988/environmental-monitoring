@@ -67,6 +67,11 @@
     layout: admin
   </route>
  -->
+ <route lang="json">{
+  "name": "warning-config",
+  "meta": {
+  }
+}</route>
 <script setup>
 import ConfigCard from './components/ConfigCard.vue';
 </script>

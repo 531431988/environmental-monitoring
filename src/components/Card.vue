@@ -124,7 +124,7 @@ defineProps({
         bottom: -6px;
         width: 50%;
         height: 3px;
-        background: #ffffff95;
+        background: #bfffff;
       }
     }
   }
