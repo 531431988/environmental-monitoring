@@ -50,9 +50,16 @@
           <div v-if="!isHome" class="w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onLogot">
             <div class="i-ant-design:home-outlined text-size-32 text-success"></div>
           </div>
-          <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onSet">
-            <div class="i-ant-design:setting-outlined text-size-32 text-success"></div>
-          </div>
+          <template v-if="isHome">
+            <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="openLogin = true">
+              <div class="i-ant-design:setting-outlined text-size-32 text-success"></div>
+            </div>
+          </template>
+          <template v-else>
+            <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
+              <div class="i-ant-design:setting-outlined text-size-32 text-success"></div>
+            </div>
+          </template>
           <div class="w-64 h-64 rounded-100 btn flex justify-center items-center" @click="onPower">
             <div class="i-mingcute:power-fill text-size-32 text-error"></div>
           </div>
@@ -63,7 +70,8 @@
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
-  <LoginModal v-model:open="open" />
+  <LoginModal v-model:open="openLogin" />
+  <EditPwdModal v-model:open="openEditPwd" />
 </template>
 
 <script setup>
@@ -90,7 +98,8 @@ const route = useRoute()
 const isHome = computed(() => {
   return route.path === '/'
 })
-const open = ref(false)
+const openLogin = ref(false)
+const openEditPwd = ref(false)
 
 const navList = ref([{
   to: '/device-manage',
@@ -99,9 +108,7 @@ const navList = ref([{
   to: '/warning-config',
   text: '报警配置'
 }])
-function onSet () {
-  open.value = true
-}
+
 function onLogot () {
   sessionStorage.removeItem(USER_INFO)
   router.push('/')
@@ -121,6 +128,10 @@ function onPower () {
     },
     onCancel () { },
   });
+}
+
+function onEditPwd () {
+
 }
 onMounted(() => {
   /* anime({
