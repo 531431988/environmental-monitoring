@@ -24,6 +24,8 @@ declare module 'vue-router/auto-routes' {
     '/device-manage/components/Edit': RouteRecordInfo<'/device-manage/components/Edit', '/device-manage/components/Edit', Record<never, never>, Record<never, never>>,
     'device-manage-edit': RouteRecordInfo<'device-manage-edit', '/device-manage/edit', Record<never, never>, Record<never, never>>,
     '/home/Chart': RouteRecordInfo<'/home/Chart', '/home/Chart', Record<never, never>, Record<never, never>>,
+    '/home/detail': RouteRecordInfo<'/home/detail', '/home/detail', Record<never, never>, Record<never, never>>,
+    '/home/Info': RouteRecordInfo<'/home/Info', '/home/Info', Record<never, never>, Record<never, never>>,
     '/home/Warn': RouteRecordInfo<'/home/Warn', '/home/Warn', Record<never, never>, Record<never, never>>,
     'warning-config': RouteRecordInfo<'warning-config', '/warning-config', Record<never, never>, Record<never, never>>,
     '/warning-config/components/ConfigCard': RouteRecordInfo<'/warning-config/components/ConfigCard', '/warning-config/components/ConfigCard', Record<never, never>, Record<never, never>>,

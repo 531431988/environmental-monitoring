@@ -1,7 +1,7 @@
 <template>
   <div style="background: rgba(255, 255, 255, 0.1);">
     <p class="web-font-dd text-center my-0 pt-16 text-size-20" style="color: #bfffff;">{{ title }}</p>
-    <v-chart class="chart" :option="option" :autoresize="true" />
+    <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />
   </div>
 </template>
 
@@ -18,7 +18,11 @@ import VChart from "vue-echarts";
 const props = defineProps({
   data: Array,
   title: String,
-  color: String
+  color: String,
+  height: {
+    type: Number,
+    default: 240
+  }
 })
 use([
   CanvasRenderer,
@@ -28,9 +32,9 @@ use([
 ]);
 const option = reactive({
   grid: {
-    top: '10%',
+    /* top: '10%',
     left: '20%',
-    right: '10%',
+    right: '10%', */
     bottom: '20%',
   },
   xAxis: {

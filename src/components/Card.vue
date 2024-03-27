@@ -117,7 +117,7 @@ defineProps({
     .title {
       position: relative;
       color: #bfffff;
-      &::before {
+      /* &::before {
         content: '';
         position: absolute;
         left: 0;
@@ -125,7 +125,7 @@ defineProps({
         width: 50%;
         height: 3px;
         background: #bfffff;
-      }
+      } */
     }
   }
 }

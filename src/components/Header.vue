@@ -96,7 +96,7 @@ const router = useRouter()
 const route = useRoute()
 
 const isHome = computed(() => {
-  return route.path === '/'
+  return ['/', '/home/detail'].includes(route.path)
 })
 const openLogin = ref(false)
 const openEditPwd = ref(false)
