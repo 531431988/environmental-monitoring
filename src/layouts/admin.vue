@@ -2,8 +2,7 @@
   <a-layout class="!bg-transparent h-full relative z-50">
     <a-layout-header class="!px-16 flex items-center" style="background: rgba(255,255,255,.05);">
       <ul class="nav flex-1">
-        <li v-for="item in navs" :key="item.key" class="text-size-30" :class="{ active: item.key === active }"
-          @click="onclick(item)">
+        <li v-for="item in navs" :key="item.key" class="text-size-30" :class="{ active: item.key === active }" @click="onclick(item)">
           {{ item.title }}
         </li>
       </ul>
@@ -24,9 +23,10 @@
   </a-layout>
   <Bg />
 </template>
-<script setup lang="ts">
+<script setup>
 import { exit } from '@tauri-apps/api/process';
 import { Modal } from 'ant-design-vue';
+import { useModalContainer } from '@/hooks/common'
 const active = ref('1')
 const navs = reactive([{
   key: '1',
@@ -40,24 +40,25 @@ const navs = reactive([{
 }
 ])
 const router = useRouter()
-function onclick(item: any) {
+function onclick (item: any) {
   active.value = item.key
   router.push(item.url)
 }
-function onHome() {
+function onHome () {
   router.push('/')
 }
-function onLogout() {
+function onLogout () {
   Modal.confirm({
     centered: true,
     title: '确认退出',
     content: '确认要退出系统吗？您可以再次运行本程序来启用监控',
     okText: '确定',
     cancelText: '取消',
-    async onOk() {
+    getContainer: useModalContainer,
+    async onOk () {
       await exit(1);
     },
-    onCancel() { },
+    onCancel () { },
   });
 }
 </script>
@@ -69,23 +70,23 @@ function onLogout() {
 
   li {
     margin-right: 24px;
-    color: #DCDCDC;
+    color: #dcdcdc;
     cursor: pointer;
   }
 
   .active {
     position: relative;
-    color: #23AF98;
+    color: #23af98;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: 0;
       height: 4px;
       width: 50%;
-      background: #23AF98;
+      background: #23af98;
       border-radius: 100px;
     }
   }

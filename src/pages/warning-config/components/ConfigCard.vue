@@ -19,5 +19,11 @@ defineProps({
   background: rgba(4, 59, 70, 0.3);
   backdrop-filter: blur(6.5px);
   border-radius: 16px;
+  color: #bfffff;
+  :deep(.ant-form-item) {
+    .ant-form-item-label > label {
+      color: #fff !important;
+    }
+  }
 }
 </style>

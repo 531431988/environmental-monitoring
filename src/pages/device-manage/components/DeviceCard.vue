@@ -40,14 +40,14 @@
 <script lang="ts" setup>
 const props = defineProps<{
   data: {
-    name: string,
-    type: string,
-    prot: number,
-    baud: string,
-    check: string,
-    data: string,
-    stop: string,
-    status: string,
+    name: string
+    type: string
+    prot: number
+    baud: string
+    check: string
+    data: string
+    stop: string
+    status: string
     show: boolean
   }
 }>()
@@ -57,27 +57,34 @@ const className = computed(() => {
     c: props.data.type === '温度',
     v: props.data.type === '电压',
     warn: props.data.status === '告警',
-    error: props.data.status === '连接失败'
+    error: props.data.status === '连接失败',
   }
-
 })
 </script>
 
 <style lang="less" scoped>
 .device-card {
   position: relative;
-  color: #DCDCDC;
-  border-radius: 8px;
+  color: #dcdcdc;
+  border-radius: 16px;
   overflow: hidden;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, .2), rgba(128, 128, 128, .2));
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.2),
+    rgba(128, 128, 128, 0.2)
+  );
 
   &.warn {
-    background: rgba(244, 69, 70, .1);
+    background: rgba(244, 69, 70, 0.1);
     animation: warnBg 1s linear infinite;
   }
 
   &.error {
-    background: linear-gradient(to right, rgba(246, 184, 68, .5), rgba(226, 179, 51, .5));
+    background: linear-gradient(
+      to right,
+      rgba(246, 184, 68, 0.5),
+      rgba(226, 179, 51, 0.5)
+    );
   }
 
   :deep(.ant-badge-status-text) {
@@ -87,7 +94,7 @@ const className = computed(() => {
 
   &::after,
   &::before {
-    content: "";
+    content: '';
     position: absolute;
   }
 
@@ -100,34 +107,33 @@ const className = computed(() => {
   }
 
   &.c::after {
-    content: "°C";
+    content: '°C';
   }
 
   &.v::after {
-    content: "V";
+    content: 'V';
   }
 
   &::before {
     width: 100px;
     height: 100px;
-    background: rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     top: -50px;
     left: -50px;
   }
 
   .line {
-
     &::after,
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: 0;
       transform: rotate(45deg) scaleY(2);
     }
 
     &::before {
-      background: rgba(255, 255, 255, .05);
+      background: rgba(255, 255, 255, 0.05);
       width: 100px;
       right: 92px;
       height: 300px;
@@ -136,7 +142,7 @@ const className = computed(() => {
     &::after {
       width: 50px;
       right: -58px;
-      background: rgba(255, 255, 255, .1);
+      background: rgba(255, 255, 255, 0.1);
       height: 300px;
     }
   }
@@ -153,15 +159,15 @@ const className = computed(() => {
 
 @keyframes warnBg {
   0% {
-    background: rgba(244, 69, 70, .1);
+    background: rgba(244, 69, 70, 0.1);
   }
 
   50% {
-    background: rgba(244, 69, 70, .5);
+    background: rgba(244, 69, 70, 0.5);
   }
 
   100% {
-    background: rgba(244, 69, 70, .2);
+    background: rgba(244, 69, 70, 0.2);
   }
 }
 </style>

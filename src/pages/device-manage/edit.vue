@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col h-full edit">
     <div class="w-90% m-auto py-24">
       <a-form ref="formRef" :model="form" autocomplete="off" @finish="onFinish">
         <ConfigCard title="设备基本信息">
@@ -144,7 +144,7 @@
           </div>
         </ConfigCard>
         <div class="mt-48 flex justify-center">
-          <a-button type="primary" ghost class="w-200 rounded-100 text-size-24 mx-24">取消</a-button>
+          <a-button type="primary" ghost class="w-200 rounded-100 text-size-24 mx-24" @click="$router.go(-1)">取消</a-button>
           <a-button type="primary" class="w-200 rounded-100 text-size-24">确定</a-button>
         </div>
       </a-form>
@@ -152,11 +152,14 @@
   </div>
   <Keyboard v-model:open="show" @ok="onOk" />
 </template>
- <route lang="json">{
+<route lang="json">{
+  "name": "device-manage-edit",
   "meta": {
+    "requiresAuth": true
   }
 }</route>
 <script setup>
+import { useModalContainer } from '@/hooks/common'
 import ConfigCard from '../warning-config/components/ConfigCard.vue';
 defineProps({
   open: Boolean,
