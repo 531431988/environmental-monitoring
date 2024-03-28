@@ -47,7 +47,7 @@ ul {
     user-select: none;
     height: 100vh;
   }
-  .ant-modal-body {
+  .ant-modal {
     font-family: 'ddjbt';
   }
   .ant-modal-confirm-content {

@@ -12,8 +12,8 @@
         <a-input-password v-model:value="form.password" class="h-64 rounded-100 px-24" placeholder="请两次输入新密码" />
       </a-form-item>
       <div class="flex mt-64 mb-24 justify-center m-auto">
-        <a-button type="primary" ghost class="w-200 h-64 rounded-100 text-size-24 mx-24" @click="form.password = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="w-200 h-64 rounded-100 text-size-24" html-type="submit">确定</a-button>
+        <a-button type="primary" ghost class="w-200 h-64 rounded-100 text-size-24 mx-24 web-font-dd" @click="form.password = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="w-200 h-64 rounded-100 text-size-24 web-font-dd" html-type="submit">确定</a-button>
       </div>
     </a-form>
   </a-modal>
