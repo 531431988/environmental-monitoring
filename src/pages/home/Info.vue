@@ -21,15 +21,36 @@
         </a-form>
       </a-col>
       <a-col class="flex flex-col">
-        <a-button type="primary">解除报警</a-button>
-        <a-button type="primary" class="my-32">继电器合</a-button>
-        <a-button type="primary" danger>继电器断</a-button>
+        <a-button type="primary" @click="onClick(1)">解除报警</a-button>
+        <a-button type="primary" @click="onClick(2)" class="my-32">继电器合</a-button>
+        <a-button type="primary" @click="onClick(3)" danger>继电器断</a-button>
       </a-col>
     </a-row>
   </div>
 </template>
 
 <script setup>
+import { Modal } from 'ant-design-vue';
+import { useModalContainer } from '@/hooks/common'
+function onClick (type) {
+  const content = {
+    1: '您确定要解除报警吗？',
+    2: '您确定要继电器合吗？',
+    3: '您确定要继电器断吗？'
+  }
+  Modal.confirm({
+    centered: true,
+    title: '操作确认',
+    content: content[type],
+    okText: '确定',
+    cancelText: '取消',
+    width: '500',
+    getContainer: useModalContainer,
+    async onOk () {
+    },
+    onCancel () { },
+  });
+}
 </script>
 
 <style lang="less" scoped>

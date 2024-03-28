@@ -121,6 +121,7 @@ function onPower () {
     content: '确认要退出系统吗？您可以再次运行本程序来启用监控',
     okText: '确定',
     cancelText: '取消',
+    width: '30%',
     getContainer: useModalContainer,
     async onOk () {
       sessionStorage.removeItem(USER_INFO)

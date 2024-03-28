@@ -47,5 +47,20 @@ ul {
     user-select: none;
     height: 100vh;
   }
+  .ant-modal-body {
+    font-family: 'ddjbt';
+  }
+  .ant-modal-confirm-content {
+    padding: 24px 24px 24px 0;
+    font-size: 32px;
+  }
+  .ant-modal-confirm-btns {
+    button {
+      border-radius: 100px;
+      width: 140px;
+      margin-left: 16px;
+      font-family: 'ddjbt';
+    }
+  }
 }
 </style>
