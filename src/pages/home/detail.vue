@@ -22,7 +22,7 @@
         </Card>
       </a-col>
       <a-col :span="10">
-        <Warn style="height: calc(100% - 24px)" />
+        <Warn mode="2" :limitScrollNum="9" style="height: calc(100% - 24px)" />
       </a-col>
     </a-row>
   </div>

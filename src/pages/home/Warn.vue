@@ -1,24 +1,24 @@
 <template>
-  <Card title="历史报警" class="h-full">
-    <div class="flex justify-between table-th">
-      <span class="w-200">设备</span>
-      <span class="w-100">类型</span>
-      <span class="w-100">等级</span>
-      <span class="w-100">报警值</span>
-      <span class="w-200">时间</span>
+  <Card title="历史报警" class="h-full  web-font-dd">
+    <div class="flex justify-between table-thead">
+      <span class="table-th w-200">设备</span>
+      <span class="table-th w-90" v-if="mode == 1">类型</span>
+      <span class="table-th w-100">等级</span>
+      <span class="table-th w-120">报警值</span>
+      <span class="table-th w-180">时间</span>
     </div>
     <div class="flex-1">
-      <vue3-seamless-scroll :list="tableData" class="scroll" :limitScrollNum="21">
-        <div class="flex justify-between table-td" v-for="(item, index) in tableData" :key="index">
-          <span class="w-200">{{ item.device }} </span>
-          <span class="w-100">{{ item.type }}</span>
-          <span class="w-100">
+      <vue3-seamless-scroll :list="data" class="scroll" :limitScrollNum="limitScrollNum">
+        <div class="flex justify-between" v-for="(item, index) in data" :key="index">
+          <span class="table-td w-200 text-ellipsis whitespace-nowrap overflow-hidden">{{ item.device }} </span>
+          <span class="table-td w-90" v-if="mode == 1">{{ item.type }}</span>
+          <span class="table-td w-100 ">
             <a-badge status="error" v-if="item.level === 1" text="一级" />
             <a-badge status="warning" v-if="item.level === 2" text="二级" />
             <a-badge color="blue" v-if="item.level === 3" text="三级" />
           </span>
-          <span class="w-100">{{ item.value }}</span>
-          <span class="w-200">{{ item.date }}</span>
+          <span class="table-td w-120">{{ item.value }}</span>
+          <span class="table-td w-180">{{ item.date }}</span>
         </div>
       </vue3-seamless-scroll>
     </div>
@@ -26,87 +26,100 @@
 </template>
 <script setup>
 import { Vue3SeamlessScroll } from "vue3-seamless-scroll";
-const tableData = reactive([{
-  key: '1',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 1,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '2',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 2,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '3',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '4',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '5',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '5',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '5',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '5',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '5',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}, {
-  key: '5',
-  device: '1机柜2号UPS',
-  port: 90,
-  type: '温度',
-  level: 3,
-  value: 80,
-  date: '2024-03-13'
-}])
+defineProps({
+  mode: {
+    type: [String, Number],
+    default: 1
+  },
+  limitScrollNum: {
+    type: Number,
+    default: 21
+  },
+  data: {
+    type: Array,
+    default: () => ([{
+      key: '1',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 1,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '2',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 2,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '3',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '4',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '5',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '5',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '5',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '5',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '5',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }, {
+      key: '5',
+      device: '1机柜2号UPS',
+      port: 90,
+      type: '温度',
+      level: 3,
+      value: 80,
+      date: '2024-03-13'
+    }])
+  }
+})
 </script>
 
 
@@ -119,15 +132,19 @@ const tableData = reactive([{
   }
 }
 
-.table-th {
+.table-thead {
   background: #013b40;
 }
 
 .table-th,
 .table-td {
-  font-size: 18px;
+  &,
+  :deep(.ant-badge-status-text) {
+    font-size: 20px !important;
+    line-height: 32px;
+  }
   color: #b0d9d9;
-  padding: 6px 12px;
+  padding: 10px 12px;
 }
 
 .card-table {

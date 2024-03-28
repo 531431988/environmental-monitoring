@@ -40,7 +40,7 @@ const navs = reactive([{
 }
 ])
 const router = useRouter()
-function onclick (item: any) {
+function onclick (item) {
   active.value = item.key
   router.push(item.url)
 }

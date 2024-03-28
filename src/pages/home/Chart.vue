@@ -21,7 +21,7 @@ const props = defineProps({
   color: String,
   height: {
     type: Number,
-    default: 240
+    default: 235
   }
 })
 use([
@@ -114,6 +114,5 @@ onMounted(() => {
 <style scoped>
 .chart {
   overflow: hidden;
-  height: 240px;
 }
 </style>
