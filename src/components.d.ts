@@ -27,7 +27,6 @@ declare module 'vue' {
     ASwitch: typeof import('ant-design-vue/es')['Switch']
     Bg: typeof import('./components/Bg.vue')['default']
     Card: typeof import('./components/Card.vue')['default']
-    copy: typeof import('./components/LoginModal copy.vue')['default']
     Datav: typeof import('./components/datav/index.vue')['default']
     EditPwdModal: typeof import('./components/EditPwdModal.vue')['default']
     Greet: typeof import('./components/Greet.vue')['default']
