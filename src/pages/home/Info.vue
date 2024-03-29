@@ -62,11 +62,12 @@ function onClick (type) {
     margin-bottom: 0;
     .ant-form-item-label > label {
       height: 32px;
-      color: #fff !important;
+      color: rgba(255, 255, 255, 0.8) !important;
       font-size: 18px;
     }
     .ant-form-item-control-input {
       min-height: 35px;
+      font-size: 18px;
     }
   }
 }

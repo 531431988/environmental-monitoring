@@ -534,6 +534,7 @@ onMounted(() => {
 #canvas {
   width: 100%;
   height: 100%;
+  background: #102832;
   --gradient-color-1: #021113;
   --gradient-color-2: #102832;
   --gradient-color-3: #115f5a;

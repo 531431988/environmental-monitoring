@@ -1,5 +1,5 @@
 <template>
-  <div style="background: rgba(255, 255, 255, 0.1);">
+  <div style="background: rgba(255, 255, 255, 0.1);" class="px-24">
     <p class="web-font-dd text-center my-0 pt-16 text-size-20" style="color: #bfffff;">{{ title }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />
   </div>
@@ -32,10 +32,11 @@ use([
 ]);
 const option = reactive({
   grid: {
-    /* top: '10%',
-    left: '20%',
-    right: '10%', */
-    bottom: '20%',
+    top: 32,
+    left: 0,
+    right: 0,
+    bottom: 24,
+    containLabel: true
   },
   xAxis: {
     type: 'category',
