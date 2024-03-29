@@ -145,7 +145,7 @@
         </ConfigCard>
         <div class="mt-48 flex justify-center">
           <a-button type="primary" ghost class="w-200 rounded-100 text-size-24 mx-24" @click="$router.go(-1)">取消</a-button>
-          <a-button type="primary" class="w-200 rounded-100 text-size-24">确定</a-button>
+          <a-button type="primary" class="w-200 rounded-100 text-size-24" html-type="submit">确定</a-button>
         </div>
       </a-form>
     </div>

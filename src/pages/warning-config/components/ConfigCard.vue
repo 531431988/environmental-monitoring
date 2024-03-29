@@ -1,6 +1,6 @@
 <template>
   <div class="config-card p-32">
-    <div class="text-center web-font-dd text-size-32 mb-32">{{ title }}</div>
+    <div class="text-center text-size-32 mb-32">{{ title }}</div>
     <slot></slot>
   </div>
 </template>

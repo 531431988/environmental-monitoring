@@ -37,9 +37,12 @@
           </div>
           <span class="text-size-32 ">{{ time }}</span>
         </template>
-        <ul class="nav list-none flex" v-else>
-          <li v-for="(item, index) in navList" :class="{item: true, active: $route.path === item.to}" :key="index" @click="$router.push(item.to)">{{ item.text }}</li>
-        </ul>
+        <template v-else>
+          <ul class="nav list-none flex" v-if="$route.path !=='/device-manage/edit'">
+            <li v-for="(item, index) in navList" :class="{item: true, active: $route.path === item.to}" :key="index" @click="$router.push(item.to)">{{ item.text }}</li>
+          </ul>
+
+        </template>
       </div>
       <div class="flex items-center justify-between w-480px">
         <div class="pl-45">
@@ -57,7 +60,7 @@
           </template>
           <template v-else>
             <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
-              <div class="i-ant-design:setting-outlined text-size-32 text-success"></div>
+              <div class="i-ph:key-bold text-size-32 text-success"></div>
             </div>
           </template>
           <div class="w-64 h-64 rounded-100 btn flex justify-center items-center" @click="onPower">

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full">
+  <div class="flex flex-col h-full config">
     <div class="w-80% m-auto py-24">
       <ConfigCard title="设备基本信息">
         <a-row :gutter="48" class="flex items-center justify-center">
@@ -53,8 +53,7 @@
         </a-row>
       </ConfigCard>
       <div class="mt-48 flex justify-center">
-        <a-button type="primary" ghost class="w-200 rounded-100 text-size-24 mx-24">取消</a-button>
-        <a-button type="primary" class="w-200 rounded-100 text-size-24">确定</a-button>
+        <a-button type="primary" class="w-200 rounded-100 text-size-24">保存</a-button>
       </div>
     </div>
     <Keyboard v-model:open="show" @ok="onOk" />
@@ -81,4 +80,7 @@ function onOk (val) {
 </script>
 
 <style lang="less" scoped>
+.config {
+  font-family: 'ddjbt' !important;
+}
 </style>

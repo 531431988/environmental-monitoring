@@ -11,6 +11,9 @@ dependencies:
   '@iconify-json/mingcute':
     specifier: ^1.1.17
     version: 1.1.17
+  '@iconify-json/ph':
+    specifier: ^1.1.11
+    version: 1.1.11
   '@iconify-json/streamline':
     specifier: ^1.1.8
     version: 1.1.8
@@ -895,6 +898,12 @@ packages:
 
   /@iconify-json/mingcute@1.1.17:
     resolution: {integrity: sha512-WTKnn5OicUo18dE3rkJs00sUjOIAui8Ut9yZSXamRfjzmLxuX9FKqYQAbFXaV6lw0T4QwBQ8/y4ftaWl/1Entg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: false
+
+  /@iconify-json/ph@1.1.11:
+    resolution: {integrity: sha512-izLvLZrU7WM03zNwNWNrAySv3i45hM3D3K6USjCGBSQMUG0HB8zxwrMf4O0leDrganmuQBH7Z0DWTgyH1ET/fg==}
     dependencies:
       '@iconify/types': 2.0.0
     dev: false

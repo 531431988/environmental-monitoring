@@ -8,7 +8,8 @@
       colorBorderSecondary: 'transparent',
       controlHeight: 64,
     fontSize: 24,
-    switchHeight: 64
+    switchHeight: 64,
+    fontFamily: 'ddjbt'
     }
   }">
     <Datav id="datav" mode="fit" class="flex flex-col">

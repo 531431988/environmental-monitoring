@@ -4,29 +4,29 @@
       <div class="flex items-center">
         <template v-if="data.status === '正常'">
           <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
-          <span class="web-font-dd text-size-20 text-success">{{ data.status }}</span>
+          <span class=" text-size-20 text-success">{{ data.status }}</span>
         </template>
         <template v-if="data.status === '告警'">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
-          <span class="web-font-dd text-size-20 text-error">{{ data.status }}</span>
+          <span class=" text-size-20 text-error">{{ data.status }}</span>
         </template>
         <template v-if="data.status === '连接失败'">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
-          <span class="web-font-dd text-size-20 text-warning">{{ data.status }}</span>
+          <span class=" text-size-20 text-warning">{{ data.status }}</span>
         </template>
       </div>
-      <span class="web-font-dd text-size-20 text-white">{{ data.type }}</span>
+      <span class=" text-size-20 text-white">{{ data.type }}</span>
     </div>
-    <h1 class="web-font-dd text-size-32 text-white">{{ data.name }}</h1>
-    <a-row>
-      <a-col :span="8">串口号：{{ data.prot }}</a-col>
-      <a-col :span="8" :offset="8">波特率：{{ data.baud }}</a-col>
-    </a-row>
-    <a-row class="mt-8">
-      <a-col :span="8">校验：{{ data.check }}</a-col>
-      <a-col :span="8">数据位：{{ data.data }}</a-col>
-      <a-col :span="8">停止位：{{ data.stop }}</a-col>
-    </a-row>
+    <h1 class=" text-size-32 text-white">{{ data.name }}</h1>
+    <div class="flex items-center justify-between text-size-20">
+      <div>串口号：{{ data.port }}</div>
+      <div>波特率：{{ data.baud }}</div>
+    </div>
+    <div class="flex items-center justify-between text-size-20 mt-8">
+      <div>校验：{{ data.check }}</div>
+      <div>数据位：{{ data.data }}</div>
+      <div>停止位：{{ data.stop }}</div>
+    </div>
     <div class="line"></div>
     <transition>
       <div class="operate flex justify-center items-center" v-if="data.show">

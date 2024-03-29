@@ -1,5 +1,5 @@
 <template>
-  <Card title="历史报警" class="h-full  web-font-dd">
+  <Card title="历史报警" class="h-full ">
     <div class="flex justify-between table-thead">
       <span class="table-th w-200">设备</span>
       <span class="table-th w-90" v-if="mode == 1">类型</span>
