@@ -1,5 +1,5 @@
 <template>
-  <Card title="历史报警" class="h-full ">
+  <Card title="历史报警" class="h-full pb-24">
     <div class="flex justify-between table-thead">
       <span class="table-th w-200">设备</span>
       <span class="table-th w-90" v-if="mode == 1">类型</span>
@@ -9,7 +9,7 @@
     </div>
     <div class="flex-1">
       <vue3-seamless-scroll :list="data" class="scroll" :limitScrollNum="limitScrollNum">
-        <div class="flex justify-between" v-for="(item, index) in data" :key="index">
+        <div class="flex justify-between" :class="{'bg-[rgba(255,255,255,0.1)]': index % 2 > 0}" v-for="(item, index) in data" :key="index">
           <span class="table-td w-200 text-ellipsis whitespace-nowrap overflow-hidden">{{ item.device }} </span>
           <span class="table-td w-90" v-if="mode == 1">{{ item.type }}</span>
           <span class="table-td w-100 ">
@@ -126,7 +126,6 @@ defineProps({
 <style lang="less" scoped>
 .scroll {
   overflow: hidden;
-
   :deep(.ant-badge-status-text) {
     color: #b0d9d9;
   }

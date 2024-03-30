@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col h-full config">
-    <div class="w-80% m-auto py-24">
-      <ConfigCard title="设备基本信息">
+  <div class="flex flex-col h-full items-center config">
+    <div class="w-80% py-24">
+      <ConfigCard title="一级报警处置方案" class="my-32">
         <a-row :gutter="48" class="flex items-center justify-center">
           <a-col>
             <span class="mr-24">保持供电</span><a-switch />
@@ -18,24 +18,7 @@
           </a-col>
         </a-row>
       </ConfigCard>
-      <ConfigCard title="RS485通信设置" class="my-32">
-        <a-row :gutter="48" class="flex items-center justify-center">
-          <a-col>
-            <span class="mr-24">保持供电</span><a-switch />
-          </a-col>
-          <a-col>
-            <span class="mr-24">报警指示灯</span><a-switch />
-          </a-col>
-          <a-col class="flex items-center">
-            <span class="mr-24">短信推送</span><a-switch />
-            <a-input placeholder="请输入手机号" class="w-180 ml-16" readonly value="13554291081" @click="show = true" />
-          </a-col>
-          <a-col>
-            <span class="mr-24">微信推送</span><a-switch />
-          </a-col>
-        </a-row>
-      </ConfigCard>
-      <ConfigCard title="报警阈值设置">
+      <ConfigCard title="二级报警处置方案">
         <a-row :gutter="48" class="flex items-center justify-center">
           <a-col>
             <span class="mr-24">保持供电</span><a-switch />
