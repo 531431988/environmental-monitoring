@@ -23,7 +23,7 @@ export const edit = data => http({
 
 // 删除设备信息
 export const del = code => http({
-  url: `/monitor/${code}`,
+  url: `/monitor/device/${code}`,
   method: "DELETE",
 });
 

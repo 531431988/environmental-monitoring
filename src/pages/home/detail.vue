@@ -22,7 +22,7 @@
         </Card>
       </a-col>
       <a-col :span="10">
-        <Warn mode="2" :limitScrollNum="9" style="height: calc(100vh - 368px - 24px)" />
+        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" style="height: calc(100vh - 368px - 24px)" />
       </a-col>
     </a-row>
   </div>
@@ -42,9 +42,26 @@ const chartData = ref({
     { value: 75, name: '10:30' },
   ],
 })
+const alarmLog = ref([])
 onMounted(async() => {
   try {
+    const { data } = await api.dailyQuery(0)
+  } catch (error) {
+
+  }
+  try {
     const { data } = await api.weeklyQuery(0)
+  } catch (error) {
+
+  }
+  try {
+    const { data } = await api.monthlyQuery(0)
+  } catch (error) {
+
+  }
+  try {
+    const { data } = await api.alarmLog()
+    alarmLog.value = data
   } catch (error) {
 
   }

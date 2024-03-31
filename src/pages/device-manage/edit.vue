@@ -148,7 +148,6 @@
 <script setup>
 import ConfigCard from '../warning-config/components/ConfigCard.vue';
 import * as api from '@/api/device-manage'
-const open = ref(false)
 const formRef = ref();
 const show = ref(false)
 const key = ref('')
