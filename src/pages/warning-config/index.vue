@@ -47,7 +47,7 @@
     layout: admin
   </route>
  -->
- <route lang="json">{
+<route lang="json">{
   "name": "warning-config",
   "meta": {
     "requiresAuth": true
@@ -55,7 +55,20 @@
 }</route>
 <script setup>
 import ConfigCard from './components/ConfigCard.vue';
+import * as api from '@/api/warning-config'
 const show = ref(false)
+const levelOne = ref({})
+const levelTwo = ref({})
+onMounted(async () => {
+  try {
+    const { data } = await api.detail()
+    levelOne.value = data.first_alarm
+    levelTwo.value = data.second_alarm
+  } catch (error) {
+
+  }
+})
+
 function onOk (val) {
   console.log(val, key.value);
   // form[key.value] = val

@@ -28,6 +28,5 @@ declare module 'vue-router/auto-routes' {
     '/home/Warn': RouteRecordInfo<'/home/Warn', '/home/Warn', Record<never, never>, Record<never, never>>,
     'warning-config': RouteRecordInfo<'warning-config', '/warning-config', Record<never, never>, Record<never, never>>,
     '/warning-config/components/ConfigCard': RouteRecordInfo<'/warning-config/components/ConfigCard', '/warning-config/components/ConfigCard', Record<never, never>, Record<never, never>>,
-    '/warning-config/Set': RouteRecordInfo<'/warning-config/Set', '/warning-config/Set', Record<never, never>, Record<never, never>>,
   }
 }
