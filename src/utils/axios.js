@@ -43,7 +43,7 @@ http.interceptors.response.use(function (response) {
   const { loading = true } = response.config;
   if (loading) cancelLoading();
   const { code, data, msg } = response.data;
-  if (code === 200) return response;
+  if (code === 200) return response.data;
   else if (code == 401) {
     sessionStorage.clear()
   } else {

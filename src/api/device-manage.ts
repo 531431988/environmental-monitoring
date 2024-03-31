@@ -1,7 +1,7 @@
 import http from '@/utils/axios';
 
 // 查询设备信息
-export const deviceSearch = params => http({
+export const deviceList = params => http({
   url: '/monitor/device',
   method: "get",
   params

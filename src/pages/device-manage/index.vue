@@ -2,7 +2,7 @@
   <div class="h-full flex flex-col p-48" @click="onHide">
     <div class="list flex-1">
       <a-row :gutter="[16, 16]">
-        <a-col :span="6" v-for="(item, index) in data" :key="index">
+        <a-col :span="6" v-for="(item, index) in deviceList" :key="index">
           <div @click.stop="onShow(item)">
             <DeviceCard :data="item" @edit="onEdit(item)" @del="onDel(index)" />
           </div>
@@ -24,96 +24,24 @@
 import DeviceCard from './components/DeviceCard.vue'
 import { Modal } from 'ant-design-vue'
 import { useModalContainer } from '@/hooks/common'
-const data = reactive([
-  {
-    type: '温度',
-    status: '正常',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '温度',
-    status: '正常',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '温度',
-    status: '告警',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '温度',
-    status: '正常',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '温度',
-    status: '正常',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '温度',
-    status: '正常',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '电压',
-    status: '连接失败',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-  {
-    type: '电压',
-    status: '正常',
-    name: '1机柜1号UPS',
-    port: '121313',
-    baud: '9300',
-    check: '奇',
-    data: 8,
-    stop: 1,
-  },
-])
+import * as api from '@/api/device-manage'
+const deviceList = ref([])
 const router = useRouter()
+async function loadData () {
+  try {
+    const { data } = await api.deviceList()
+    deviceList.value = data
+  } catch (error) {
 
+  }
+}
+loadData()
 function onShow (item) {
   onHide()
   item.show = !item.show
 }
 function onHide () {
-  data.forEach((item) => {
+  deviceList.value.forEach((item) => {
     item.show = false
   })
 }

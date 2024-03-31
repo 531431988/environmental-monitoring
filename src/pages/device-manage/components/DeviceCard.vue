@@ -2,30 +2,30 @@
   <div class="device-card p-24" :class="className">
     <div class="flex justify-between">
       <div class="flex items-center">
-        <template v-if="data.status === '正常'">
+        <template v-if="data.currentStat == 1">
           <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
-          <span class=" text-size-20 text-success">{{ data.status }}</span>
+          <span class=" text-size-20 text-success">正常</span>
         </template>
-        <template v-if="data.status === '告警'">
+        <template v-if="data.currentStat == 2">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
-          <span class=" text-size-20 text-error">{{ data.status }}</span>
+          <span class=" text-size-20 text-error">告警</span>
         </template>
-        <template v-if="data.status === '连接失败'">
+        <template v-if="[1,null].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
-          <span class=" text-size-20 text-warning">{{ data.status }}</span>
+          <span class=" text-size-20 text-warning">连接失败</span>
         </template>
       </div>
-      <span class=" text-size-20 text-white">{{ data.type }}</span>
+      <span class="text-size-20 text-white">{{ data.type == 2 ? '电压': '温度' }}</span>
     </div>
     <h1 class=" text-size-32 text-white">{{ data.name }}</h1>
     <div class="flex items-center justify-between text-size-20">
-      <div>串口号：{{ data.port }}</div>
-      <div>波特率：{{ data.baud }}</div>
+      <div>串口号：{{ data.slot }}</div>
+      <div>波特率：{{ data.baudRate }}</div>
     </div>
     <div class="flex items-center justify-between text-size-20 mt-8">
-      <div>校验：{{ data.check }}</div>
-      <div>数据位：{{ data.data }}</div>
-      <div>停止位：{{ data.stop }}</div>
+      <div>校验：<span v-if="data.parity==0">无</span><span v-if="data.parity==1">奇</span><span v-if="data.parity==2">偶</span></div>
+      <div>数据位：{{ data.databits }}</div>
+      <div>停止位：{{ data.stopbits }}</div>
     </div>
     <div class="line"></div>
     <transition>
@@ -37,27 +37,18 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const props = defineProps<{
-  data: {
-    name: string
-    type: string
-    prot: number
-    baud: string
-    check: string
-    data: string
-    stop: string
-    status: string
-    show: boolean
-  }
-}>()
+<script setup>
+const props = defineProps({
+  data: Object
+})
 defineEmits(['edit', 'del'])
 const className = computed(() => {
+  // 0连接失败 1正常 2告警
   return {
-    c: props.data.type === '温度',
-    v: props.data.type === '电压',
-    warn: props.data.status === '告警',
-    error: props.data.status === '连接失败',
+    c: props.data.type == 1,
+    v: props.data.type == 2,
+    warn: props.data.currentStat == 2,
+    error: [1,null].includes(props.data.currentStat),
   }
 })
 </script>
