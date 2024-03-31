@@ -19,6 +19,7 @@
 <script setup>
 import { USER_INFO } from '@/enume/cache'
 import { useModalContainer } from '@/hooks/common'
+import * as api from '@/api/user'
 defineProps({
   open: Boolean,
 })
@@ -29,11 +30,18 @@ const form = reactive({
   password: ''
 })
 const formRef = ref()
-const onFinish = (values) => {
-  sessionStorage.setItem(USER_INFO, 'ups-tosk')
-  router.push('/device-manage')
-  formRef.value.resetFields();
-  emits('update:open', false)
+const onFinish = async values => {
+  try {
+    const { data } = await api.login({
+      password: form.password
+    })
+    sessionStorage.setItem(USER_INFO, 'ups-tosk')
+    router.push('/device-manage')
+    formRef.value.resetFields();
+    emits('update:open', false)
+  } catch (error) {
+
+  }
 }
 </script>
 
