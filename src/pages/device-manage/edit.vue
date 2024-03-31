@@ -171,10 +171,12 @@ const router = useRouter()
 const route = useRoute()
 
 watch(() => router.currentRoute.value, async (val) => {
-  try {
-    const { data } = await api.detail(val.query.code)
-    form.value = data
-  } catch (error) {
+  if (val?.query?.code) {
+    try {
+      const { data } = await api.detail(val.query.code)
+      form.value = data
+    } catch (error) {
+    }
   }
 }, { immediate: true, deep: true })
 
