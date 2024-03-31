@@ -32,6 +32,7 @@
 import Warn from './Warn.vue'
 import Chart from './Chart.vue'
 import Info from './Info.vue'
+import * as api from '@/api/home'
 const chartData = ref({
   title: '1机柜1号UPS',
   data: [
@@ -40,6 +41,13 @@ const chartData = ref({
     { value: 94, name: '10:25' },
     { value: 75, name: '10:30' },
   ],
+})
+onMounted(async() => {
+  try {
+    const { data } = await api.weeklyQuery(0)
+  } catch (error) {
+
+  }
 })
 </script>
 
