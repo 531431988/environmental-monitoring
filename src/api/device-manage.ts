@@ -1,29 +1,41 @@
 import http from '@/utils/axios';
 
 // 查询设备信息
-export const deviceList = params => http({
+export const list = params => http({
   url: '/monitor/device',
-  method: "get",
+  method: "GET",
   params
 });
 
 // 保存设备信息
-export const deviceSave = data => http({
+export const add = data => http({
   url: '/monitor/device',
-  method: "post",
+  method: "POST",
   data
 });
 
 // 更新设备信息
-export const deviceUpdate = data => http.put({
+export const edit = data => http({
   url: '/monitor/device',
-  method: "put",
+  method: "PUT",
   data
 });
 
 // 删除设备信息
-export const deviceDel = code => http.put({
+export const del = code => http({
   url: `/monitor/${code}`,
-  method: "delete",
+  method: "DELETE",
 });
 
+
+// 查询设备信息
+export const detail = code => http({
+  url: `/monitor/device/${code}`,
+  method: "GET"
+});
+
+// 获取站点
+export const getCodes = () => http({
+  url: `/monitor/device/getCodes`,
+  method: "GET"
+});

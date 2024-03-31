@@ -1,12 +1,5 @@
 import http from '@/utils/axios';
 
-// 查询设备信息
-export const deviceInfo = id => http({
-  url: `/monitor/device/${id}`,
-  method: "get"
-});
-
-
 // 打开断路器
 export const switchOn = params => http({
   url: '/monitor/admin/switchOn',

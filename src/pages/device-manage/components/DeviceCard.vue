@@ -23,7 +23,7 @@
       <div>波特率：{{ data.baudRate }}</div>
     </div>
     <div class="flex items-center justify-between text-size-20 mt-8">
-      <div>校验：<span v-if="data.parity==0">无</span><span v-if="data.parity==1">奇</span><span v-if="data.parity==2">偶</span></div>
+      <div>校验：{{data.parity}}</div>
       <div>数据位：{{ data.databits }}</div>
       <div>停止位：{{ data.stopbits }}</div>
     </div>

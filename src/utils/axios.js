@@ -1,7 +1,6 @@
 import axios from "axios";
 import { message } from 'ant-design-vue';
 import Loading from '@/components/Loading'
-const [messageApi] = message.useMessage();
 let requestNum = 0;
 
 const addLoading = () => {
@@ -47,8 +46,7 @@ http.interceptors.response.use(function (response) {
   else if (code == 401) {
     sessionStorage.clear()
   } else {
-    message.destroy()
-    messageApi.error(msg);
+    message.error(msg);
     return Promise.reject(response);
   }
 }, function (error) {
@@ -61,7 +59,7 @@ http.interceptors.response.use(function (response) {
     }
   }
   message.destroy()
-  messageApi.error(error?.response?.data?.message || "服务端异常");
+  message.error(error?.response?.data?.message || "服务端异常");
   return Promise.reject(error);
 });
 

@@ -4,7 +4,7 @@
       <a-row :gutter="[16, 16]">
         <a-col :span="6" v-for="(item, index) in deviceList" :key="index">
           <div @click.stop="onShow(item)">
-            <DeviceCard :data="item" @edit="onEdit(item)" @del="onDel(index)" />
+            <DeviceCard :data="item" @edit="onEdit(item)" @del="onDel(item)" />
           </div>
         </a-col>
       </a-row>
@@ -29,7 +29,7 @@ const deviceList = ref([])
 const router = useRouter()
 async function loadData () {
   try {
-    const { data } = await api.deviceList()
+    const { data } = await api.list()
     deviceList.value = data
   } catch (error) {
 
@@ -47,10 +47,15 @@ function onHide () {
 }
 
 function onEdit (item) {
-  router.push('/device-manage/edit')
+  router.push({
+    path: '/device-manage/edit',
+    query: {
+      code: item.code
+    }
+  })
 }
 
-function onDel (index) {
+function onDel (item) {
   Modal.confirm({
     centered: true,
     title: '提示',
@@ -58,8 +63,15 @@ function onDel (index) {
     okText: '确定',
     cancelText: '取消',
     getContainer: useModalContainer,
-    onOk () {
-      data.splice(index, 1)
+    async onOk () {
+      try {
+        const { data, code } = await api.del(item.code)
+        if (code === 200) {
+          message.success('操作成功');
+        }
+      } catch (error) {
+        console.log(error);
+      }
     },
     onCancel () { },
   })
