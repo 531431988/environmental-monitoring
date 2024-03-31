@@ -35,7 +35,7 @@ const onFinish = async values => {
     const { data } = await api.login({
       password: form.password
     })
-    sessionStorage.setItem(USER_INFO, 'ups-tosk')
+    sessionStorage.setItem(USER_INFO,  `ups-${new Date().valueOf()}`)
     router.push('/device-manage')
     formRef.value.resetFields();
     emits('update:open', false)
