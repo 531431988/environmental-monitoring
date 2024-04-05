@@ -4,7 +4,7 @@
       <a-col :span="8">
         <Card title="实时温度监控" class="h-full">
           <a-row :gutter="[12, 12]">
-            <a-col :span="12" v-for="(item,index) in data" :key="index">
+            <a-col :span="12" v-for="(item,index) in chartData" :key="index">
               <Chart :title="item.title" :data="item.data" @click="$router.push('/home/detail')" class=" px-16" />
             </a-col>
           </a-row>
@@ -13,14 +13,14 @@
       <a-col :span="8">
         <Card title="实时电压监控" class="h-full">
           <a-row :gutter="[12, 12]">
-            <a-col :span="12" v-for="(item,index) in data" :key="index">
+            <a-col :span="12" v-for="(item,index) in chartData" :key="index">
               <Chart :title="item.title" :data="item.data" color="#02FFEE" @click="$router.push('/home/detail')" class=" px-16" />
             </a-col>
           </a-row>
         </Card>
       </a-col>
       <a-col :span="8">
-        <Warn />
+        <Warn :data="warnData" />
       </a-col>
     </a-row>
   </div>
@@ -28,8 +28,10 @@
 <script setup>
 import Chart from './home/Chart.vue'
 import Warn from './home/Warn.vue'
-const data = reactive([
-  {
+import { useWebSocket } from '@vueuse/core'
+import * as api from '@/api/home'
+const chartData = reactive([
+  /* {
     title: '1机柜1号UPS',
     data: [
       { value: 60, name: '10:15' },
@@ -73,8 +75,31 @@ const data = reactive([
       { value: 94, name: '10:25' },
       { value: 75, name: '10:30' },
     ],
-  },
+  }, */
 ])
+const warnData = ref([])
+onMounted(async () => {
+  try {
+    const { data } = await api.alarmLog()
+    warnData.value = data.data
+  } catch (error) {
+
+  }
+})
+
+const { status, data, send, open, close } = useWebSocket(`ws:${import.meta.env.VITE_GLOB_API_URL}/monitor/ws/1`, {
+  autoReconnect: true,
+  heartbeat: true,
+  onMessage: (ws, event) => {
+    console.log(event.data)
+  }
+})
+
+
+onUnmounted(() => {
+  close()
+})
+
 </script>
 
 <route lang="yaml">
