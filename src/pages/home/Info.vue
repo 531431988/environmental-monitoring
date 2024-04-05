@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { Modal } from 'ant-design-vue';
+import { Modal, message } from 'ant-design-vue';
 import { useModalContainer } from '@/hooks/common'
 import { detail } from '@/api/device-manage'
 import * as api from '@/api/home'
@@ -67,7 +67,8 @@ function onClick (type) {
     getContainer: useModalContainer,
     async onOk () {
       try {
-        const {data} = await url[type].api()
+        const { data, code } = await url[type].api()
+        if(code === 200) message.success('操作成功')
       } catch (error) {
 
       }
