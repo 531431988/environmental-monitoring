@@ -16,12 +16,16 @@ import {
 import VChart from "vue-echarts";
 
 const props = defineProps({
-  data: Array,
+  data: [Object, Array],
   title: String,
   color: String,
   height: {
     type: Number,
     default: 235
+  },
+  mode: {
+    type: String,
+    default: '1'   // 1 实时  2 历史
   }
 })
 use([
@@ -93,10 +97,18 @@ const option = reactive({
     }
   ]
 });
-
-onMounted(() => {
-  option.xAxis.data = props.data.map(item => item.name) || []
-  option.series[0].data = props.data || []
+watch(() => props.data, (newVal) => {
+  if (props.mode === 1) {
+    if (option.series[0].data.length > 3) {
+      option.xAxis.data.shift()
+      option.series[0].data.shift()
+    }
+    option.xAxis.data.push(props.data?.name)
+    option.series[0].data.push(props.data || { value: 1, name: '111' })
+  } else {
+    option.xAxis.data = props.data.map(item => item.name) || []
+    option.series[0].data = props.data || []
+  }
   option.series[0].lineStyle.color = props.color || '#23AF84'
   option.series[0].areaStyle = {
     color: new graphic.LinearGradient(0, 0, 0, 1, [{
@@ -110,6 +122,7 @@ onMounted(() => {
     ], false),
   }
 })
+
 </script>
 
 <style scoped>
