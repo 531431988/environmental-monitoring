@@ -23,8 +23,8 @@
               <a-col>
                 <a-form-item label="设备类型" name="type" :rules="[{ required: true, message: '请选择' }]">
                   <a-radio-group v-model:value="form.type" button-style="solid">
-                    <a-radio-button value="温度" class="w-100 text-center">温度</a-radio-button>
-                    <a-radio-button value="电压" class="w-100 text-center">电压</a-radio-button>
+                    <a-radio-button value="1" class="w-100 text-center">温度</a-radio-button>
+                    <a-radio-button value="2" class="w-100 text-center">电压</a-radio-button>
                   </a-radio-group>
                 </a-form-item>
               </a-col>
@@ -58,9 +58,9 @@
               <a-col>
                 <a-form-item label="校验" name="parity" :rules="[{ required: true, message: '请选择' }]">
                   <a-radio-group v-model:value="form.parity" button-style="solid">
-                    <a-radio-button value="无" class="w-80 text-center">无</a-radio-button>
-                    <a-radio-button value="奇" class="w-80 text-center">奇</a-radio-button>
-                    <a-radio-button value="偶" class="w-80 text-center">偶</a-radio-button>
+                    <a-radio-button value="0" class="w-80 text-center">无</a-radio-button>
+                    <a-radio-button value="1" class="w-80 text-center">奇</a-radio-button>
+                    <a-radio-button value="2" class="w-80 text-center">偶</a-radio-button>
                   </a-radio-group>
                 </a-form-item>
               </a-col>
@@ -100,30 +100,30 @@
                 </a-form-item>
               </a-col>
                 <a-col>
-                  <a-form-item label="一级报警" name="oneWarn1" :rules="[{ required: true, message: '请选择' }]">
+                  <a-form-item label="一级报警" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
                     <div class="flex items-center">
-                      <a-input readonly v-model:value="form.oneWarn1" placeholder="请输入" @click="onClick('oneWarn1')" class="w-200" />
+                      <a-input readonly v-model:value="form.firstAlarmMin" placeholder="请输入" @click="onClick('firstAlarmMin')" class="w-200" />
                     </div>
                   </a-form-item>
                 </a-col>
                 <a-col>
-                  <a-form-item label="" name="oneWarn2" :rules="[{ required: true, message: '请选择' }]">
+                  <a-form-item label="" name="firstAlarmMax" :rules="[{ required: true, message: '请选择' }]">
                     <div class="flex items-center">
-                      <a-input readonly v-model:value="form.oneWarn2" placeholder="请输入" @click="onClick('oneWarn2')" class="w-200" />
+                      <a-input readonly v-model:value="form.firstAlarmMax" placeholder="请输入" @click="onClick('firstAlarmMax')" class="w-200" />
                     </div>
                   </a-form-item>
                 </a-col>
                 <a-col>
-                  <a-form-item label="二级报警" name="twoWarn1" :rules="[{ required: true, message: '请选择' }]">
+                  <a-form-item label="二级报警" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
                     <div class="flex items-center">
-                      <a-input readonly v-model:value="form.twoWarn1" placeholder="请输入" @click="onClick('twoWarn1')" class="w-200" />
+                      <a-input readonly v-model:value="form.secondAlarmMin" placeholder="请输入" @click="onClick('secondAlarmMin')" class="w-200" />
                     </div>
                   </a-form-item>
                 </a-col>
                 <a-col>
-                  <a-form-item label="" name="twoWarn2" :rules="[{ required: true, message: '请选择' }]">
+                  <a-form-item label="" name="secondAlarmMax" :rules="[{ required: true, message: '请选择' }]">
                     <div class="flex items-center">
-                      <a-input readonly v-model:value="form.twoWarn2" placeholder="请输入" @click="onClick('twoWarn2')" class="w-200" />
+                      <a-input readonly v-model:value="form.secondAlarmMax" placeholder="请输入" @click="onClick('secondAlarmMax')" class="w-200" />
                     </div>
                   </a-form-item>
                 </a-col>
@@ -147,6 +147,7 @@
 }</route>
 <script setup>
 import ConfigCard from '../warning-config/components/ConfigCard.vue';
+import {message} from 'ant-design-vue';
 import * as api from '@/api/device-manage'
 const formRef = ref();
 const show = ref(false)
@@ -156,10 +157,10 @@ const form = ref({
   shelf: '',
   slot: '',
   range: undefined,
-  oneWarn1: '',
-  oneWarn2: '',
-  twoWarn1: '',
-  twoWarn2: '',
+  firstAlarmMin: '',
+  firstAlarmMax: '',
+  secondAlarmMin: '',
+  secondAlarmMax: '',
   com: undefined,
   baudRate: '9600',
   port: '',
@@ -188,11 +189,15 @@ function onClick (name) {
 const onFinish = async (values) => {
   const isEdit = route.query?.code !== undefined
   try {
-    const {id, ...params} = from.value
-    const { data } = isEdit ? await api.edit({
+    const {id, ...params} = form.value
+    const { data, code } = isEdit ? await api.edit({
       id,
       ...params
     }) : await api.add(params)
+    if (code === 200) {
+      message.success('添加成功')
+      router.go(-1)
+    }
   } catch (error) {
     console.log(error)
   }
