@@ -61,7 +61,7 @@ onMounted(async() => {
   }
   try {
     const { data } = await api.alarmLog()
-    alarmLog.value = data
+    alarmLog.value = data.data
   } catch (error) {
 
   }
