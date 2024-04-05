@@ -2,7 +2,7 @@
   <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" centered :getContainer="useModalContainer">
     <div class="p-24">
       <div class="m-auto text-center">
-        <a-input v-model:value="number" readonly class="mb-24 w-400 m-auto h-64" placeholder="请输入" style="font-size: 32px;" />
+        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24 w-400 m-auto h-64" placeholder="请输入" style="font-size: 32px;" />
       </div>
       <div class="flex flex-wrap justify-between">
         <div v-for="item in list" :key="item" class="m-12">
@@ -41,13 +41,19 @@ defineOptions({
   open: false
 }) */
 const props = defineProps({
-  open: Boolean
+  open: Boolean,
+  maxLength: {
+    type: Number,
+    default: 5
+  }
 })
 const emits = defineEmits(['update:open', 'ok'])
 const number = ref('')
 const list = ref(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'])
 function onClick (val) {
-  number.value += val
+  if (number.value.length < props.maxLength) {
+    number.value += val
+  }
 }
 function onDel () {
   number.value = number.value.slice(0, -1)
