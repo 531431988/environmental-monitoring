@@ -4,42 +4,44 @@
       <ConfigCard title="一级报警处置方案" class="my-32">
         <a-row :gutter="48" class="flex items-center justify-center">
           <a-col>
-            <span class="mr-24">保持供电</span><a-switch />
+            <span class="mr-24">保持供电</span><a-switch v-model:checked="levelOne.electricOn"/>
           </a-col>
           <a-col>
-            <span class="mr-24">报警指示灯</span><a-switch />
+            <span class="mr-24">报警指示灯</span><a-switch v-model:checked="levelOne.lightOn" />
           </a-col>
           <a-col class="flex items-center">
-            <span class="mr-24">短信推送</span><a-switch />
-            <a-input placeholder="请输入手机号" class="w-180 ml-16" readonly value="13554291081" @click="show = true" />
+            <span class="mr-24">短信推送</span><a-switch v-model:checked="levelOne.pushSms" />
+            <a-input v-if="levelOne.pushSms" placeholder="请输入手机号" class="w-180 ml-16" readonly :maxlength="11" v-model:value="levelOne.receivers"
+               @click="onClick('levelOne')" />
           </a-col>
           <a-col>
-            <span class="mr-24">微信推送</span><a-switch />
+            <span class="mr-24">微信推送</span><a-switch v-model:checked="levelOne.pushWechat" />
           </a-col>
         </a-row>
       </ConfigCard>
       <ConfigCard title="二级报警处置方案">
         <a-row :gutter="48" class="flex items-center justify-center">
           <a-col>
-            <span class="mr-24">保持供电</span><a-switch />
+            <span class="mr-24">保持供电</span><a-switch v-model:checked="levelTwo.electricOn" />
           </a-col>
           <a-col>
-            <span class="mr-24">报警指示灯</span><a-switch />
+            <span class="mr-24">报警指示灯</span><a-switch v-model:checked="levelTwo.lightOn" />
           </a-col>
           <a-col class="flex items-center">
-            <span class="mr-24">短信推送</span><a-switch />
-            <a-input placeholder="请输入手机号" class="w-180 ml-16" readonly value="13554291081" @click="show = true" />
+            <span class="mr-24">短信推送</span><a-switch v-model:checked="levelTwo.pushSms" />
+            <a-input v-if="levelTwo.pushSms" placeholder="请输入手机号" class="w-180 ml-16" readonly :maxlength="11" v-model:value="levelTwo.receivers"
+            @click="onClick('levelTwo')" />
           </a-col>
           <a-col>
-            <span class="mr-24">微信推送</span><a-switch />
+            <span class="mr-24">微信推送</span><a-switch v-model:checked="levelTwo.pushWechat" />
           </a-col>
         </a-row>
       </ConfigCard>
       <div class="mt-48 flex justify-center">
-        <a-button type="primary" class="w-200 rounded-100 text-size-24">保存</a-button>
+        <a-button type="primary" class="w-200 rounded-100 text-size-24" @click="onSave">保存</a-button>
       </div>
     </div>
-    <Keyboard v-model:open="show" @ok="onOk" />
+    <Keyboard v-model:open="show" :maxLength="11" @ok="onOk" />
   </div>
 </template>
 <!-- <route lang="yaml">
@@ -56,22 +58,44 @@
 <script setup>
 import ConfigCard from './components/ConfigCard.vue';
 import * as api from '@/api/warning-config'
+import {message} from 'ant-design-vue';
 const show = ref(false)
 const levelOne = ref({})
 const levelTwo = ref({})
-onMounted(async () => {
+const key = ref('')
+async function loadConfig () {
   try {
-    const { data } = await api.detail()
-    levelOne.value = data.first_alarm
-    levelTwo.value = data.second_alarm
+    const { data = [] } = await api.detail()
+    levelOne.value = data[0]
+    levelTwo.value = data[1]
+  } catch (error) {
+  }
+}
+onMounted( () => {
+  loadConfig()
+})
+
+function onClick (name) {
+  key.value = name
+  show.value = true
+}
+
+function onOk (val) {
+  if(key.value === 'levelOne')levelOne.value.receivers = val
+  if(key.value === 'levelTwo')levelTwo.value.receivers = val
+}
+
+async function onSave () {
+  try {
+    const { data, code } = await api.edit([levelOne.value, levelTwo.value])
+    console.log(data,code)
+    if (code === 200) {
+      message.success('保存成功')
+      loadConfig()
+    }
   } catch (error) {
 
   }
-})
-
-function onOk (val) {
-  console.log(val, key.value);
-  // form[key.value] = val
 }
 </script>
 
