@@ -90,7 +90,7 @@ function onClick (type) {
       font-size: 18px;
     }
     .ant-form-item-control-input {
-      min-height: 35px;
+      min-height: 32px;
       font-size: 18px;
     }
   }
