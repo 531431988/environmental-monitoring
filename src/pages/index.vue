@@ -6,7 +6,7 @@
           <a-row :gutter="[12, 12]">
             <a-col :span="12" v-for="(item, index) in temperature" :key="index">
               <Chart :title="item.title" :data="item.data"
-                @click="$router.push(`/home/detail?code=${item.code}&type=${item.type}`)" class=" px-16" />
+                @click="$router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name}`)" class=" px-16" />
             </a-col>
           </a-row>
         </Card>
@@ -16,7 +16,7 @@
           <a-row :gutter="[12, 12]">
             <a-col :span="12" v-for="(item, index) in voltage" :key="index">
               <Chart :title="item.title" :data="item.data" color="#02FFEE"
-                @click="$router.push(`/home/detail?code=${item.code}&type=${item.type}`)" class=" px-16" />
+                @click="$router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name}`)" class=" px-16" />
             </a-col>
           </a-row>
         </Card>
