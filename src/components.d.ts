@@ -32,7 +32,6 @@ declare module 'vue' {
     Greet: typeof import('./components/Greet.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     Keyboard: typeof import('./components/Keyboard.vue')['default']
-    Loading: typeof import('./components/Loading.vue')['default']
     LoginModal: typeof import('./components/LoginModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
