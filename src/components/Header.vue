@@ -50,7 +50,7 @@
           <div>软件版本 V1.0.0</div>
         </div>
         <div class="flex items-center">
-          <div v-if="!isHome" class="w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onLogot">
+          <div v-if="route.path !== '/'" class="w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onLogot">
             <div class="i-ant-design:home-outlined text-size-32 text-success"></div>
           </div>
           <template v-if="isHome">
