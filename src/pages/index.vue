@@ -16,7 +16,7 @@
           <a-row :gutter="[12, 12]">
             <a-col :span="12" v-for="(item, index) in voltage" :key="index">
               <Chart :title="item.title" :data="item.data" color="#02FFEE"
-                @click="$router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name}`)" class=" px-16" />
+                @click="onLookDetail(item)" class=" px-16" />
             </a-col>
           </a-row>
         </Card>
@@ -51,7 +51,7 @@ function formatChartData (data) {
 useRequest(api.dashboard, {
   pollingInterval: 10000,
   pollingWhenHidden: true,
-  onSuccess: ({data}) => {
+  onSuccess: ({data = []}) => {
     temperature.value = formatChartData(data.filter(item => item.type === 1))
     voltage.value = formatChartData(data.filter(item => item.type === 2))
   },
