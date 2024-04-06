@@ -19,6 +19,7 @@
   </a-config-provider>
 </template>
 <script setup lang="ts">
+window.addEventListener("contextmenu", (e) => e.preventDefault(), false);
 </script>
 <style lang="less">
 body,
