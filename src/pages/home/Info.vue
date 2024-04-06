@@ -92,7 +92,7 @@ function onClick (type) {
 
     .ant-form-item-label>label {
       height: 32px;
-      color: rgba(255, 255, 255, 0.8) !important;
+      color: rgba(255, 255, 255, 0.6) !important;
       font-size: 18px;
     }
 
