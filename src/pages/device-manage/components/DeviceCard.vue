@@ -2,17 +2,18 @@
   <div class="device-card p-24" :class="className">
     <div class="flex justify-between">
       <div class="flex items-center">
-        <template v-if="data.currentStat == 1">
+        <template v-if="data.currentStat === 'NORMAL'">
           <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
           <span class=" text-size-20 text-success">正常</span>
         </template>
-        <template v-if="data.currentStat == 2">
+        <template v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
-          <span class=" text-size-20 text-error">告警</span>
+          <span class=" text-size-20 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
+          <span class=" text-size-20 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
         </template>
-        <template v-if="[0,null].includes(data.currentStat)">
+        <template v-if="['OFFLINE',null].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
-          <span class=" text-size-20 text-warning">连接失败</span>
+          <span class=" text-size-20 text-warning">离线</span>
         </template>
       </div>
       <span class="text-size-20 text-white">{{ data.type == 2 ? '电压': '温度' }}</span>
@@ -45,10 +46,10 @@ defineEmits(['edit', 'del'])
 const className = computed(() => {
   // 0连接失败 1正常 2告警
   return {
-    c: props.data.type == 1,
-    v: props.data.type == 2,
-    warn: props.data.currentStat == 2,
-    error: [1,null].includes(props.data.currentStat),
+    c: props.data.type === 1,
+    v: props.data.type === 2,
+    warn: ['FIRST_LEVEL', 'SECOND_LEVEL'].includes(props.data.currentStat),
+    error: ['OFFLINE',null].includes(props.data.currentStat),
   }
 })
 </script>
