@@ -14,7 +14,7 @@ const style = {
     justifyContent: 'center',
     alignItems: 'center',
     background: 'rgba(0, 0, 0, .5)',
-    zIndex: 99999
+    zIndex: 999
 }
 
 function getInstance () {
