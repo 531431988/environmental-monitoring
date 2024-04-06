@@ -22,7 +22,7 @@
         </Card>
       </a-col>
       <a-col :span="8">
-        <Warn :data="warnData" />
+        <Warn :data="warnData" :limitScrollNum="15"/>
       </a-col>
     </a-row>
   </div>

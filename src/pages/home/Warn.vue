@@ -1,26 +1,26 @@
 <template>
-  <Card title="历史报警" class="h-full pb-24">
-    <div class="flex w-full table-thead">
-      <span class="table-th" :class="mode == 1 ? 'w-120' : 'flex-1'">设备</span>
+  <Card title="历史报警" class="h-full">
+    <div class="flex w-full table-thead text-center">
+      <span class="table-th" :class="mode == 1 ? 'w-160' : 'flex-1'">设备</span>
       <span class="table-th w-90" v-if="mode == 1">类型</span>
-      <span class="table-th" :class="mode == 1 ? 'w-110' : 'flex-1'">等级(值)</span>
-      <!--  <span class="table-th w-100">报警值</span> -->
-      <span class="table-th" :class="mode == 1 ? 'w-230' : 'flex-1'">时间</span>
+      <span class="table-th" :class="mode == 1 ? 'w-90' : 'flex-1'">等级</span>
+       <span class="table-th w-90">报警值</span>
+      <span class="table-th" :class="mode == 1 ? 'w-210' : 'flex-1'">时间</span>
     </div>
     <div class="flex-1">
       <vue3-seamless-scroll :list="data" class="scroll" :limitScrollNum="limitScrollNum">
-        <div class="flex w-full" :class="{ 'bg-[rgba(255,255,255,0.1)]': index % 2 > 0 }" v-for="(item, index) in data"
+        <div class="flex w-full  text-center" :class="{ 'bg-[rgba(255,255,255,0.1)]': index % 2 > 0 }" v-for="(item, index) in data"
           :key="index">
           <span class="table-td w-120 text-ellipsis whitespace-nowrap overflow-hidden"
-            :class="mode == 1 ? 'w-120' : 'flex-1'">{{ item.deviceName }} </span>
+            :class="mode == 1 ? 'w-160' : 'flex-1'">{{item.name }}机柜{{item.shelf }}层{{ item.slot }}号 </span>
           <span class="table-td w-90" v-if="mode == 1">{{ item.typeName }}</span>
-          <span class="table-td" :class="mode == 1 ? 'w-110' : 'flex-1'">
-            <a-badge status="error" v-if="item.level === 1" :text="`一级${item.message}`" />
-            <a-badge status="warning" v-if="item.level === 2" :text="`二级${item.message}`" />
-            <a-badge color="blue" v-if="item.level === 3" :text="`三级${item.message}`" />
+          <span class="table-td" :class="mode == 1 ? 'w-90' : 'flex-1'">
+            <a-badge status="error" v-if="item.level === 1" :text="`一级`" />
+            <a-badge status="warning" v-if="item.level === 2" :text="`二级`" />
+            <a-badge color="blue" v-if="item.level === 3" :text="`三级`" />
           </span>
-          <!--  <span class="table-td w-100">{{ item.message }}</span> -->
-          <span class="table-td" :class="mode == 1 ? 'w-230' : 'flex-1'">{{ item.createdDate }}</span>
+           <span class="table-td w-90">{{ item.message }}</span>
+          <span class="table-td" :class="mode == 1 ? 'w-210' : 'flex-1'">{{ item.createdDate }}</span>
         </div>
       </vue3-seamless-scroll>
     </div>
@@ -58,17 +58,19 @@ defineProps({
   background: #013b40;
 }
 
-.table-th,
+.table-th{
+  font-size: 18px !important;
+  line-height: 32px;
+}
 .table-td {
-
   &,
   :deep(.ant-badge-status-text) {
-    font-size: 20px !important;
+    font-size: 16px !important;
     line-height: 32px;
   }
 
   color: #b0d9d9;
-  padding: 10px 12px;
+  padding:12px 8px;
 }
 
 .card-table {

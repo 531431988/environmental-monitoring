@@ -1,5 +1,5 @@
 <template>
-  <div class="card p-24">
+  <div class="card p-16">
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
