@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="!bg-transparent relative z-50" style="height: calc(100vh - 135px)">
+  <a-layout class="!bg-transparent relative z-50 flex-1">
     <RouterView />
   </a-layout>
   <Bg />

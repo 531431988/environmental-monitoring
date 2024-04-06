@@ -1,28 +1,28 @@
 <template>
-  <div class="flex flex-col p-24" style="height: calc(100vh - 160px)">
+  <div class="flex flex-col p-24 h-full">
     <a-row :gutter="[24, 24]" class="h-full">
       <a-col :span="8">
-        <Card title="数据采集-今日" class="h-368">
-          <Chart  mode="2" :title="title" :data="dailyQuery" color="#23AF98" />
+        <Card title="数据采集-今日" class="h-370">
+          <Chart  mode="2" :title="title" :data="dailyQuery" color="#23AF98" :height="245" />
         </Card>
       </a-col>
       <a-col :span="8">
-        <Card title="数据采集-7日" class="h-368">
-          <Chart  mode="2" :title="title" :data="weeklyQuery" />
+        <Card title="数据采集-7日" class="h-370">
+          <Chart  mode="2" :title="title" :data="weeklyQuery" :height="245" />
         </Card>
       </a-col>
       <a-col :span="8">
-        <Card title="设备信息" class="h-368">
+        <Card title="设备信息" class="h-370">
           <Info />
         </Card>
       </a-col>
       <a-col :span="14">
-        <Card title="数据采集-30日" style="height: calc(100vh - 368px - 160px)">
-          <Chart mode="2"  :title="title" :data="monthlyQuery" color="#00C4F6" :height="416" />
+        <Card title="数据采集-30日" style="height: calc(100vh - 370px - 168px)">
+          <Chart mode="2"  :title="title" :data="monthlyQuery" color="#00C4F6" :height="424" />
         </Card>
       </a-col>
       <a-col :span="10">
-        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" style="height: calc(100vh - 368px - 160px)" />
+        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" style="height: calc(100vh - 370px - 168px)" />
       </a-col>
     </a-row>
   </div>
