@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col p-24 h-full">
+  <div class="flex flex-col p-24" style="height: calc(100vh - 160px)">
     <a-row :gutter="[24, 24]" class="h-full">
       <a-col :span="8">
         <Card title="数据采集-今日" class="h-368">
@@ -17,12 +17,12 @@
         </Card>
       </a-col>
       <a-col :span="14">
-        <Card title="数据采集-30日" style="height: calc(100vh - 368px - 24px)">
+        <Card title="数据采集-30日" style="height: calc(100vh - 368px - 160px)">
           <Chart mode="2"  :title="title" :data="monthlyQuery" color="#00C4F6" :height="416" />
         </Card>
       </a-col>
       <a-col :span="10">
-        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" style="height: calc(100vh - 368px - 24px)" />
+        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" style="height: calc(100vh - 368px - 160px)" />
       </a-col>
     </a-row>
   </div>
