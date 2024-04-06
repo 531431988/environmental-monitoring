@@ -19,7 +19,7 @@
     </div>
     <h1 class=" text-size-32 text-white">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
     <div class="flex items-center justify-between text-size-20">
-      <div>串口号：{{ data.slot }}</div>
+      <div>地址/站号：{{ data.code }}</div>
       <div>波特率：{{ data.baudRate }}</div>
     </div>
     <div class="flex items-center justify-between text-size-20 mt-8">
