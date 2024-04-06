@@ -18,7 +18,7 @@ export const add = data => http({
 // 更新设备信息
 export const edit = data => http({
   url: '/monitor/device',
-  method: "POST",
+  method: "PUT",
   data
 });
 

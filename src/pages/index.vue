@@ -63,7 +63,9 @@ function onLookDetail (item) {
 
 onMounted(async () => {
   try {
-    const { data } = await api.alarmLog()
+    const { data } = await api.alarmLog({
+      pageSize: 30
+    })
     warnData.value = data.data
   } catch (error) {
 

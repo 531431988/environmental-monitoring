@@ -14,7 +14,6 @@ const cancelLoading = () => {
   requestNum--;
   if (requestNum === 0) Loading.hide();
 };
-
 function jsonToQueryParams(json) {
   const params = new URLSearchParams();
   for (let key in json) {
@@ -27,8 +26,10 @@ function jsonToQueryParams(json) {
 export default (opts = {}) => {
   return new Promise((resolve, reject) => {
     const { url, method, params, data, headers, loading = true } = opts
+    console.log(params,data,123, import.meta.env.MODE)
     if (loading) addLoading();
-    fetch(import.meta.env.VITE_GLOB_API_URL + url, {
+    let path = method === 'GET' ? `?${jsonToQueryParams(params)}` : ''
+    fetch(`${import.meta.env.VITE_GLOB_API_URL}${url}${path}`, {
       method: method || 'GET',
       headers: {
         'content-type': 'application/json',
@@ -36,7 +37,7 @@ export default (opts = {}) => {
       },
       responseType: ResponseType.JSON,
       timeout: 60000,
-      query: method === 'GET' ? jsonToQueryParams(params) : undefined,
+      // query: method === 'GET' ? params : undefined,
       body: method !== 'GET' ? (data ? Body.json(data) : undefined) : undefined,
     })
       .then(({ data }) => {

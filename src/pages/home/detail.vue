@@ -73,7 +73,8 @@ onMounted(async() => {
   }
   try {
     const { data } = await api.alarmLog({
-      device: route.query?.id || undefined
+      device: route.query?.code || undefined,
+      pageSize: 30
     })
     alarmLog.value = data.data
   } catch (error) {

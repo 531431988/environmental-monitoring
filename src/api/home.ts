@@ -35,15 +35,16 @@ export const monthlyQuery = id => http({
 });
 
 // 查询报警记录
-export const alarmLog = params => http({
+export const alarmLog = (params = {}) => http({
   url: '/monitor/alarmLog',
   method: "GET",
-  params: {
-    pageSize: 30,
-    ...params
-  }
+  params
 });
 
+/* export const alarmLog = (params = {}) => http({
+  url: `/monitor/alarmLog?${jsonToQueryParams(params)}`,
+  method: "GET"
+}); */
 // 首页看板
 export const dashboard = () => http({
   url: '/monitor/device/dashboard',
