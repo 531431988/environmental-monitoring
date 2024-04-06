@@ -47,7 +47,7 @@
       <div class="flex items-center justify-between w-480px">
         <div class="pl-45">
           <div class="mb-6">系统型号 LINUX</div>
-          <div>软件版本 V1.01</div>
+          <div>软件版本 V1.0.0</div>
         </div>
         <div class="flex items-center">
           <div v-if="!isHome" class="w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onLogot">
