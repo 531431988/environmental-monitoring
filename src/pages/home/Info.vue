@@ -53,11 +53,11 @@ function onClick (type) {
       api: api.switchOn
     },
     2: {
-      title: '您确定要继电器合吗？',
+      title: '继电器合闸将恢复电路，确定合闸吗？',
       api: api.switchOff
     },
     3: {
-      title: '您确定要继电器断吗？',
+      title: '继电器断开将切断电路，确定断开吗？',
       api: api.switchOn
     }
   }
