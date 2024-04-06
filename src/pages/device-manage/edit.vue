@@ -195,7 +195,7 @@ const onFinish = async (values) => {
       ...params
     }) : await api.add(params)
     if (code === 200) {
-      message.success('添加成功')
+      message.success('操作成功')
       router.go(-1)
     }
   } catch (error) {
