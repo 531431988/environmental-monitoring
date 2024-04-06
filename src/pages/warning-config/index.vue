@@ -87,8 +87,7 @@ function onOk (val) {
 
 async function onSave () {
   try {
-    const { data, code } = await api.edit([levelOne.value, levelTwo.value])
-    console.log(data,code)
+    const { data, code } = await api.edit([toRaw(levelOne.value), toRaw(levelTwo.value)])
     if (code === 200) {
       message.success('保存成功')
       loadConfig()
