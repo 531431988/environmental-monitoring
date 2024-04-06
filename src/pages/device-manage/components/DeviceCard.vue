@@ -10,7 +10,7 @@
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
           <span class=" text-size-20 text-error">告警</span>
         </template>
-        <template v-if="[1,null].includes(data.currentStat)">
+        <template v-if="[0,null].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
           <span class=" text-size-20 text-warning">连接失败</span>
         </template>
