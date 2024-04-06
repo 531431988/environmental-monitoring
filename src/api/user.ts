@@ -1,4 +1,6 @@
-import http from '@/utils/axios';
+import http from '@/utils'
+
+
 // 登录
 export const login = data => http({
   url: '/monitor/admin/login',

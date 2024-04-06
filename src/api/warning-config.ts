@@ -1,9 +1,10 @@
-import http from '@/utils/axios';
+import http from '@/utils'
+
 // 查询告警配置
-export const detail = data => http({
+export const detail = params => http({
   url: '/monitor/admin/alarmConfig',
   method: 'GET',
-  data
+  params
 });
 
 // 修改告警配置

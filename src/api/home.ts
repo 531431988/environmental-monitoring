@@ -1,4 +1,4 @@
-import http from '@/utils/axios';
+import http from '@/utils'
 
 // 打开断路器
 export const switchOn = params => http({

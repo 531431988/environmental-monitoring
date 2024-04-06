@@ -1,4 +1,5 @@
-import http from '@/utils/axios';
+import http from '@/utils'
+
 
 // 查询设备信息
 export const list = params => http({
