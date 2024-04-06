@@ -49,6 +49,7 @@ function formatChartData (data) {
 
 useRequest(api.dashboard, {
   pollingInterval: 10000,
+  pollingWhenHidden: true,
   onSuccess: ({data}) => {
     temperature.value = formatChartData(data.filter(item => item.type === 1))
     voltage.value = formatChartData(data.filter(item => item.type === 2))
