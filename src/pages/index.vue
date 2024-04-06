@@ -6,7 +6,7 @@
           <a-row :gutter="[12, 12]">
             <a-col :span="12" v-for="(item, index) in temperature" :key="index">
               <Chart :title="item.title" :data="item.data"
-                @click="$router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name}`)" class=" px-16" />
+                @click="onLookDetail(item)" class=" px-16" />
             </a-col>
           </a-row>
         </Card>
@@ -36,10 +36,11 @@ import dayjs from 'dayjs';
 const temperature = ref([])
 const voltage = ref([])
 const warnData = ref([])
+const router = useRouter()
 function formatChartData (data) {
   return data.map(item => ({
     ...item,
-    title: item.name,
+    title: `${item.name }机柜${item.shelf }层${ item.slot }号`,
     data: {
       name: dayjs(item.date).format('HH:mm:ss'),
       value: item.data
@@ -55,6 +56,11 @@ useRequest(api.dashboard, {
     voltage.value = formatChartData(data.filter(item => item.type === 2))
   },
 });
+
+function onLookDetail (item) {
+  router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name }机柜${item.shelf }层${ item.slot }号`)
+}
+
 onMounted(async () => {
   try {
     const { data } = await api.alarmLog()
