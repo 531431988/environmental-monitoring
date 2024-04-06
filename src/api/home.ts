@@ -1,20 +1,23 @@
 import http from '@/utils'
 
 // 打开断路器
-export const switchOn = params => http({
+export const switchOn = () => http({
   url: '/monitor/admin/switchOn',
   method: "GET",
-  params
 });
 
 
 // 关闭断路器
-export const switchOff = params => http({
+export const switchOff = () => http({
   url: '/monitor/admin/switchOff',
   method: "GET",
-  params
 });
 
+// 解除报警
+export const closeAlarm = code => http({
+  url: `/monitor/device/closeAlarm/${code}`,
+  method: "GET",
+});
 
 // 查询24小时上报信息
 export const dailyQuery = id => http({
@@ -41,10 +44,7 @@ export const alarmLog = (params = {}) => http({
   params
 });
 
-/* export const alarmLog = (params = {}) => http({
-  url: `/monitor/alarmLog?${jsonToQueryParams(params)}`,
-  method: "GET"
-}); */
+
 // 首页看板
 export const dashboard = () => http({
   url: '/monitor/device/dashboard',

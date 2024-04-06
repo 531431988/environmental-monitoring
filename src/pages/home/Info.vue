@@ -50,7 +50,7 @@ function onClick (type) {
   const url = {
     1: {
       title: '您确定要解除报警吗？',
-      api: api.switchOn
+      api: () => api.closeAlarm(form.value.code)
     },
     2: {
       title: '继电器合闸将恢复电路，确定合闸吗？',
