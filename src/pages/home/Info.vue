@@ -15,7 +15,7 @@
               <a-form-item label="波特率">{{ form.baudRate }}</a-form-item>
             </a-col>
           </a-row>
-          <a-form-item :label="`正常${form.type==1?'温度': '电压'}区间值（${unit}）`">25-35</a-form-item>
+          <a-form-item label="工作区间">{{ form.range }}</a-form-item>
           <a-form-item :label="`一级报警阈值（${unit}）`">{{form.firstAlarmMin}}-{{ form.firstAlarmMax }}</a-form-item>
           <a-form-item :label="`二级报警阈值（${unit}）`">{{form.secondAlarmMin}}-{{ form.secondAlarmMax }}</a-form-item>
         </a-form>

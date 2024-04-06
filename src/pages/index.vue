@@ -1,31 +1,29 @@
 <template>
-  <div class="h-full flex flex-col p-24">
-    <a-row :gutter="24" class="h-full">
-      <a-col :span="8">
-        <Card title="实时温度监控" class="h-full">
-          <a-row :gutter="[12, 12]">
-            <a-col :span="12" v-for="(item, index) in temperature" :key="index">
-              <Chart :title="item.title" :data="item.data"
-                @click="onLookDetail(item)" class=" px-16" />
-            </a-col>
-          </a-row>
-        </Card>
-      </a-col>
-      <a-col :span="8">
-        <Card title="实时电压监控" class="h-full">
-          <a-row :gutter="[12, 12]">
-            <a-col :span="12" v-for="(item, index) in voltage" :key="index">
-              <Chart :title="item.title" :data="item.data" color="#02FFEE"
-                @click="onLookDetail(item)" class=" px-16" />
-            </a-col>
-          </a-row>
-        </Card>
-      </a-col>
-      <a-col :span="8">
-        <Warn :data="warnData" :limitScrollNum="15"/>
-      </a-col>
-    </a-row>
-  </div>
+  <a-row :gutter="24" class="h-full p-24">
+    <a-col :span="8" class="h-full">
+      <Card title="实时温度监控" class="h-full">
+        <a-row :gutter="[12, 12]">
+          <a-col :span="12" v-for="(item, index) in temperature" :key="index">
+            <Chart :title="item.title" :data="item.data"
+              @click="onLookDetail(item)" class=" px-16" />
+          </a-col>
+        </a-row>
+      </Card>
+    </a-col>
+    <a-col :span="8" class="h-full">
+      <Card title="实时电压监控" class="h-full">
+        <a-row :gutter="[12, 12]">
+          <a-col :span="12" v-for="(item, index) in voltage" :key="index">
+            <Chart :title="item.title" :data="item.data" color="#02FFEE"
+              @click="onLookDetail(item)" class=" px-16" />
+          </a-col>
+        </a-row>
+      </Card>
+    </a-col>
+    <a-col :span="8" class="h-full">
+      <Warn :data="warnData" :limitScrollNum="15"  class="h-full"/>
+    </a-col>
+  </a-row>
 </template>
 <script setup>
 import Chart from './home/Chart.vue'
