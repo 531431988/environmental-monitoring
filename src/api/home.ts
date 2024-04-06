@@ -43,3 +43,9 @@ export const alarmLog = params => http({
     ...params
   }
 });
+
+// 首页看板
+export const dashboard = () => http({
+  url: '/monitor/device/dashboard',
+  method: "GET"
+});

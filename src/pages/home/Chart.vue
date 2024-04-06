@@ -38,7 +38,7 @@ const option = reactive({
   grid: {
     top: 32,
     left: 0,
-    right: 0,
+    right: 16,
     bottom: 24,
     containLabel: true
   },
@@ -77,7 +77,7 @@ const option = reactive({
     {
       name: "1号",
       type: "line",
-      symbol: 'none',
+      symbol: 'circle',
       smooth: true,
       data: [],
       lineStyle: {
@@ -98,8 +98,8 @@ const option = reactive({
   ]
 });
 watch(() => props.data, (newVal) => {
-  if (props.mode === 1) {
-    if (option.series[0].data.length > 3) {
+  if (props.mode == 1) {
+    if (option.series[0].data.length > 2) {
       option.xAxis.data.shift()
       option.series[0].data.shift()
     }
@@ -109,6 +109,7 @@ watch(() => props.data, (newVal) => {
     option.xAxis.data = props.data.map(item => item.name) || []
     option.series[0].data = props.data || []
   }
+  option.color = [props.color || '#23AF84'],
   option.series[0].lineStyle.color = props.color || '#23AF84'
   option.series[0].areaStyle = {
     color: new graphic.LinearGradient(0, 0, 0, 1, [{
@@ -121,6 +122,9 @@ watch(() => props.data, (newVal) => {
     }
     ], false),
   }
+}, {
+  deep: true,
+  immediate: true
 })
 
 </script>
