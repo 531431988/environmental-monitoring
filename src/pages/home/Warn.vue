@@ -48,7 +48,7 @@ defineProps({
 <style lang="less" scoped>
 .scroll {
   overflow: hidden;
-
+  color: #b0d9d9;
   :deep(.ant-badge-status-text) {
     color: #b0d9d9;
   }
@@ -59,8 +59,9 @@ defineProps({
 }
 
 .table-th{
-  font-size: 18px !important;
+  font-size: 20px !important;
   line-height: 32px;
+  padding:12px 8px;
 }
 .table-td {
   &,
@@ -69,7 +70,6 @@ defineProps({
     line-height: 32px;
   }
 
-  color: #b0d9d9;
   padding:12px 8px;
 }
 
