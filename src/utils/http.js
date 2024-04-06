@@ -29,9 +29,7 @@ export default (opts = {}) => {
       responseType: ResponseType.JSON,
       timeout: 60000,
       query: method === 'GET' ? params : undefined,
-      body: method !== 'GET' ? (data ? Body.json({
-        ...data,
-      }) : undefined) : undefined,
+      body: method !== 'GET' ? (data ? Body.json(data) : undefined) : undefined,
     })
       .then(({ data }) => {
         cancelLoading();
