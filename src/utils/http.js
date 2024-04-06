@@ -15,6 +15,14 @@ const cancelLoading = () => {
   if (requestNum === 0) Loading.hide();
 };
 
+function jsonToQueryParams(json) {
+  const params = new URLSearchParams();
+  for (let key in json) {
+    params.append(key, json[key]);
+  }
+  return params.toString();
+}
+
 // https://tauri.app/zh-cn/v1/api/js/http#fetch
 export default (opts = {}) => {
   return new Promise((resolve, reject) => {
@@ -28,7 +36,7 @@ export default (opts = {}) => {
       },
       responseType: ResponseType.JSON,
       timeout: 60000,
-      query: method === 'GET' ? params : undefined,
+      query: method === 'GET' ? jsonToQueryParams(params) : undefined,
       body: method !== 'GET' ? (data ? Body.json(data) : undefined) : undefined,
     })
       .then(({ data }) => {
