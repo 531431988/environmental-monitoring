@@ -10,6 +10,6 @@ export const detail = params => http({
 // 修改告警配置
 export const edit = data => http({
   url: '/monitor/admin/alarmConfig',
-  method: 'PUT',
+  method: 'POST',
   data
 });
