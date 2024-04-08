@@ -1,30 +1,30 @@
 <template>
-  <div class="device-card p-24" :class="className">
+  <div class="device-card p-16" :class="className">
     <div class="flex justify-between">
       <div class="flex items-center">
         <template v-if="data.currentStat === 'NORMAL'">
           <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
-          <span class=" text-size-20 text-success">正常</span>
+          <span class=" text-size-14 text-success">正常</span>
         </template>
         <template v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
-          <span class=" text-size-20 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
-          <span class=" text-size-20 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
+          <span class=" text-size-14 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
+          <span class=" text-size-14 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
         </template>
-        <template v-if="['OFFLINE',null].includes(data.currentStat)">
+        <template v-if="['OFFLINE', null].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
-          <span class=" text-size-20 text-warning">离线</span>
+          <span class=" text-size-14 text-warning">离线</span>
         </template>
       </div>
-      <span class="text-size-20 text-white">{{ data.type == 2 ? '电压': '温度' }}</span>
+      <span class="text-size-14 text-white">{{ data.type == 2 ? '电压' : '温度' }}</span>
     </div>
-    <h1 class=" text-size-32 text-white">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
-    <div class="flex items-center justify-between text-size-20">
+    <h1 class=" text-size-18 text-white">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
+    <div class="flex items-center justify-between text-size-14">
       <div>地址/站号：{{ data.code }}</div>
       <div>波特率：{{ data.baudRate }}</div>
     </div>
-    <div class="flex items-center justify-between text-size-20 mt-8">
-      <div>校验：{{data.parity}}</div>
+    <div class="flex items-center justify-between text-size-14 mt-8">
+      <div>校验：{{ data.parity }}</div>
       <div>数据位：{{ data.databits }}</div>
       <div>停止位：{{ data.stopbits }}</div>
     </div>
@@ -49,7 +49,7 @@ const className = computed(() => {
     c: props.data.type === 1,
     v: props.data.type === 2,
     warn: ['FIRST_LEVEL', 'SECOND_LEVEL'].includes(props.data.currentStat),
-    error: ['OFFLINE',null].includes(props.data.currentStat),
+    error: ['OFFLINE', null].includes(props.data.currentStat),
   }
 })
 </script>
@@ -60,11 +60,9 @@ const className = computed(() => {
   color: #dcdcdc;
   border-radius: 16px;
   overflow: hidden;
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.2),
-    rgba(128, 128, 128, 0.2)
-  );
+  background-image: linear-gradient(to right,
+      rgba(255, 255, 255, 0.2),
+      rgba(128, 128, 128, 0.2));
 
   &.warn {
     background: rgba(244, 69, 70, 0.1);
@@ -72,15 +70,13 @@ const className = computed(() => {
   }
 
   &.error {
-    background: linear-gradient(
-      to right,
-      rgba(246, 184, 68, 0.5),
-      rgba(226, 179, 51, 0.5)
-    );
+    background: linear-gradient(to right,
+        rgba(246, 184, 68, 0.5),
+        rgba(226, 179, 51, 0.5));
   }
 
   :deep(.ant-badge-status-text) {
-    font-size: 20px;
+    font-size: 14px;
     color: #fff;
   }
 
@@ -94,7 +90,7 @@ const className = computed(() => {
     font-family: ddjbt;
     top: 50px;
     right: 40px;
-    font-size: 48px;
+    font-size: 42px;
     opacity: 0.2;
   }
 
@@ -116,6 +112,7 @@ const className = computed(() => {
   }
 
   .line {
+
     &::after,
     &::before {
       content: '';
@@ -126,7 +123,7 @@ const className = computed(() => {
 
     &::before {
       background: rgba(255, 255, 255, 0.05);
-      width: 100px;
+      width: 50px;
       right: 92px;
       height: 300px;
     }

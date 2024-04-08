@@ -1,16 +1,15 @@
 <template>
-  <a-row :gutter="24" class="h-full p-24">
-    <a-col :span="8" class="h-full">
-      <Card title="实时温度监控" class="h-full">
+  <a-row :gutter="16" class="h-full px-16 pt-10 pb-16">
+    <a-col :span="16" class="h-full">
+      <Card title="实时监控" class="h-full">
         <a-row :gutter="[12, 12]">
-          <a-col :span="12" v-for="(item, index) in temperature" :key="index">
-            <Chart :title="item.title" :data="item.data"
-              @click="onLookDetail(item)" class=" px-16" />
+          <a-col :span="8" v-for="(item, index) in temperature" :key="index">
+            <Chart :title="item.title" :data="item.data" @click="onLookDetail(item)" class=" px-16" />
           </a-col>
         </a-row>
       </Card>
     </a-col>
-    <a-col :span="8" class="h-full">
+    <!-- <a-col :span="8" class="h-full">
       <Card title="实时电压监控" class="h-full">
         <a-row :gutter="[12, 12]">
           <a-col :span="12" v-for="(item, index) in voltage" :key="index">
@@ -19,9 +18,9 @@
           </a-col>
         </a-row>
       </Card>
-    </a-col>
+    </a-col> -->
     <a-col :span="8" class="h-full">
-      <Warn :data="warnData" :limitScrollNum="15"  class="h-full"/>
+      <Warn :data="warnData" :limitScrollNum="15" class="h-full" />
     </a-col>
   </a-row>
 </template>
@@ -31,14 +30,21 @@ import Warn from './home/Warn.vue'
 import { useRequest } from 'vue-request';
 import * as api from '@/api/home'
 import dayjs from 'dayjs';
-const temperature = ref([])
-const voltage = ref([])
+const chartData = ref([{
+  title: '标题',
+  data: {
+    name: '名称',
+    value: parseInt(Math.random() * 100)
+  }
+}])
+// const temperature = ref([])
+// const voltage = ref([])
 const warnData = ref([])
 const router = useRouter()
 function formatChartData (data) {
   return data.map(item => ({
     ...item,
-    title: `${item.name }机柜${item.shelf }层${ item.slot }号`,
+    title: `${item.name}机柜${item.shelf}层${item.slot}号`,
     data: {
       name: dayjs(item.date).format('HH:mm:ss'),
       value: item.data
@@ -49,14 +55,15 @@ function formatChartData (data) {
 useRequest(api.dashboard, {
   pollingInterval: 10000,
   pollingWhenHidden: true,
-  onSuccess: ({data = []}) => {
-    temperature.value = formatChartData(data.filter(item => item.type === 1))
-    voltage.value = formatChartData(data.filter(item => item.type === 2))
+  onSuccess: ({ data = [] }) => {
+    chartData.value = formatChartData(data)
+    // temperature.value = formatChartData(data.filter(item => item.type === 1))
+    // voltage.value = formatChartData(data.filter(item => item.type === 2))
   },
 });
 
 function onLookDetail (item) {
-  router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name }机柜${item.shelf }层${ item.slot }号`)
+  router.push(`/home/detail?code=${item.code}&type=${item.type}&name=${item.name}机柜${item.shelf}层${item.slot}号`)
 }
 
 onMounted(async () => {

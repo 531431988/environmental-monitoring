@@ -25,7 +25,7 @@ import DeviceCard from './components/DeviceCard.vue'
 import { Modal } from 'ant-design-vue'
 import { useModalContainer } from '@/hooks/common'
 import * as api from '@/api/device-manage'
-import {message} from "ant-design-vue";
+import { message } from "ant-design-vue";
 const deviceList = ref([])
 const router = useRouter()
 async function loadData () {

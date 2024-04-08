@@ -6,13 +6,13 @@
       colorLink: '#23af98',
       colorError: '#f44546',
       colorBorderSecondary: 'transparent',
-      controlHeight: 64,
-    fontSize: 24,
-    switchHeight: 64,
-    fontFamily: 'ddjbt'
+      controlHeight: 48,
+      fontSize: 18,
+      switchHeight: 48,
+      fontFamily: 'ddjbt'
     }
   }">
-    <Datav id="datav" mode="fit" class="flex flex-col">
+    <Datav :width="1280" :height="800" id="datav" mode="fit" class="flex flex-col">
       <Header />
       <RouterView />
     </Datav>
@@ -49,13 +49,16 @@ ul {
     user-select: none;
     height: 100vh;
   }
+
   .ant-modal {
     font-family: 'ddjbt';
   }
+
   .ant-modal-confirm-content {
     padding: 24px 24px 24px 0;
     font-size: 32px;
   }
+
   .ant-modal-confirm-btns {
     button {
       border-radius: 100px;

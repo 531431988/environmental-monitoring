@@ -1,16 +1,19 @@
 <template>
-  <a-modal :getContainer="useModalContainer" :open="open" centered :maskClosable="false" :closable="false" :footer="null">
-    <div class="absolute -top-60 left-50% -translate-x-50% w-100 h-100 rounded-100 bg-white flex justify-center items-center shadow-lg shadow-gray-300">
+  <a-modal :getContainer="useModalContainer" :open="open" centered :maskClosable="false" :closable="false"
+    :footer="null">
+    <div
+      class="absolute -top-60 left-50% -translate-x-50% w-100 h-100 rounded-100 bg-white flex justify-center items-center shadow-lg shadow-gray-300">
       <div class="i-ant-design:user-outlined text-size-48 text-gray-500"></div>
     </div>
-    <div class="web-font-dd text-size-42 text-center mt-48 mb-32" style="color:#23AF98">UPS监测控制系统</div>
+    <div class="web-font-dd text-size-32 text-center mt-48 mb-32" style="color:#23AF98">UPS蓄电池在线监测系统</div>
     <a-form ref="formRef" :model="form" autocomplete="off" class="px-24" @finish="onFinish">
       <a-form-item name="password" :rules="[{ required: true, message: '请输入管理密码' }]">
-        <a-input-password v-model:value="form.password" class="h-64 rounded-100 px-24" placeholder="请输入管理密码" />
+        <a-input-password v-model:value="form.password" class="rounded-100 px-24" placeholder="请输入管理密码" />
       </a-form-item>
-      <div class="flex mt-64 mb-24 justify-center m-auto">
-        <a-button type="primary" ghost class="w-200 h-64 rounded-100 text-size-24 mx-24" @click="form.password = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="w-200 h-64 rounded-100 text-size-24" html-type="submit">登录</a-button>
+      <div class="flex my-32 justify-center m-auto">
+        <a-button type="primary" ghost class="w-200 rounded-100"
+          @click="form.password = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="w-200 rounded-100 mx-24" html-type="submit">登录</a-button>
       </div>
     </a-form>
   </a-modal>
@@ -35,7 +38,7 @@ const onFinish = async values => {
     const { data } = await api.login({
       password: form.password
     })
-    sessionStorage.setItem(USER_INFO,  `ups-${new Date().valueOf()}`)
+    sessionStorage.setItem(USER_INFO, `ups-${new Date().valueOf()}`)
     router.push('/device-manage')
     formRef.value.resetFields();
     emits('update:open', false)
@@ -45,5 +48,4 @@ const onFinish = async values => {
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>

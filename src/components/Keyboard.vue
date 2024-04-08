@@ -1,8 +1,10 @@
 <template>
-  <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" centered :getContainer="useModalContainer">
+  <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" centered
+    :getContainer="useModalContainer">
     <div class="p-24">
       <div class="m-auto text-center">
-        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24 w-400 m-auto h-64" placeholder="请输入" style="font-size: 32px;" />
+        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24 w-400 m-auto h-40"
+          placeholder="请输入" style="font-size: 32px;" />
       </div>
       <div class="flex flex-wrap justify-between">
         <div v-for="item in list" :key="item" class="m-12">
@@ -22,8 +24,8 @@
     </div>
     <template #footer>
       <div class="text-center">
-        <a-button class="mx-8 h-64 w-120" @click="number = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="h-64 w-120" @click="onOk">确定</a-button>
+        <a-button class="mx-8 h-40 w-120" @click="number = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="h-40 w-120" @click="onOk">确定</a-button>
       </div>
     </template>
 

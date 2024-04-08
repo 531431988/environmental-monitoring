@@ -4,7 +4,7 @@
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-    <div class="web-font-dd hd mb-16 text-size-24">
+    <div class="web-font-dd hd mb-16 text-size-16">
       <span class="title">{{ title }}</span>
     </div>
     <slot></slot>
@@ -33,6 +33,7 @@ defineProps({
     &:nth-child(2),
     &:nth-child(3),
     &:nth-child(4) {
+
       &::before,
       &::after {
         position: absolute;
@@ -42,6 +43,7 @@ defineProps({
     }
 
     &:nth-child(1) {
+
       &::after,
       &::before {
         left: 0;
@@ -60,6 +62,7 @@ defineProps({
     }
 
     &:nth-child(2) {
+
       &::after,
       &::before {
         right: 0;
@@ -78,6 +81,7 @@ defineProps({
     }
 
     &:nth-child(3) {
+
       &::after,
       &::before {
         bottom: 0;
@@ -96,6 +100,7 @@ defineProps({
     }
 
     &:nth-child(4) {
+
       &::after,
       &::before {
         bottom: 0;
@@ -113,6 +118,7 @@ defineProps({
       }
     }
   }
+
   .hd {
     .title {
       position: relative;

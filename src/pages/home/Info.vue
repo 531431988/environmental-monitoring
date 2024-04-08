@@ -1,9 +1,10 @@
 <template>
   <div class="form">
-    <a-row>
+    <a-row class="items-center">
       <a-col class="flex-1">
         <a-form>
-          <a-form-item label="设备名称">{{ form.name }}机柜{{ form.shelf }}层{{ form.slot }}号{{ form.type == 1 ? '温度': '电压' }}</a-form-item>
+          <a-form-item label="设备名称">{{ form.name }}机柜{{ form.shelf }}层{{ form.slot }}号{{ form.type == 1 ? '温度' : '电压'
+            }}</a-form-item>
           <a-form-item :label="`最近报警阈值（${unit}）`">{{ form.lastAlarmData || '-' }}</a-form-item>
           <a-form-item label="最近报警时间">{{ form.lastAlarmDate || '-' }}</a-form-item>
           <a-form-item :label="`当前温度（${unit}）`">{{ form.currentData || '-' }}</a-form-item>
@@ -16,8 +17,8 @@
             </a-col>
           </a-row>
           <a-form-item label="工作区间">{{ form.range }}</a-form-item>
-          <a-form-item :label="`一级报警阈值（${unit}）`">{{form.firstAlarmMin}}-{{ form.firstAlarmMax }}</a-form-item>
-          <a-form-item :label="`二级报警阈值（${unit}）`">{{form.secondAlarmMin}}-{{ form.secondAlarmMax }}</a-form-item>
+          <a-form-item :label="`一级报警阈值（${unit}）`">{{ form.firstAlarmMin }}-{{ form.firstAlarmMax }}</a-form-item>
+          <a-form-item :label="`二级报警阈值（${unit}）`">{{ form.secondAlarmMin }}-{{ form.secondAlarmMax }}</a-form-item>
         </a-form>
       </a-col>
       <a-col class="flex flex-col">
@@ -37,7 +38,7 @@ import * as api from '@/api/home'
 const form = ref({})
 const route = useRoute()
 const unit = computed(() => {
-  return form.value.type == 1 ? '℃': 'V'
+  return form.value.type == 1 ? '℃' : 'V'
 })
 onMounted(async () => {
   try {
@@ -87,18 +88,18 @@ function onClick (type) {
   :deep(.ant-form-item) {
     line-height: 1;
     color: #fff !important;
-    font-size: 18px;
+    font-size: 14px;
     margin-bottom: 0;
 
     .ant-form-item-label>label {
       height: 32px;
       color: rgba(255, 255, 255, 0.6) !important;
-      font-size: 18px;
+      font-size: 14px;
     }
 
     .ant-form-item-control-input {
       min-height: 32px;
-      font-size: 18px;
+      font-size: 14px;
     }
   }
 }

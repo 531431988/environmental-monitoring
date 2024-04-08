@@ -1,36 +1,40 @@
 <template>
   <div class="flex flex-col h-full edit">
-    <div class="w-90% m-auto py-24">
+    <div class="w-90% m-x-auto mt-24 py-16">
       <a-form ref="formRef" :model="form" autocomplete="off" @finish="onFinish">
         <ConfigCard title="设备基本信息">
           <div class="flex items-center justify-center">
-            <a-row :gutter="48">
+            <a-row :gutter="16">
               <a-col>
                 <a-form-item label="设备名称" name="name" :rules="[{ required: true, message: '请输入' }]">
-                  <a-input readonly v-model:value="form.name" placeholder="请输入" suffix="柜" @click="onClick('name')" class="w-200" />
+                  <a-input readonly v-model:value="form.name" placeholder="请输入" suffix="柜" @click="onClick('name')"
+                    class="w-140" />
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item name="shelf" :rules="[{ required: true, message: '请输入' }]">
-                  <a-input readonly v-model:value="form.shelf" placeholder="请输入" suffix="层" @click="onClick('shelf')" class="w-200" />
+                  <a-input readonly v-model:value="form.shelf" placeholder="请输入" suffix="层" @click="onClick('shelf')"
+                    class="w-140" />
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item name="slot" :rules="[{ required: true, message: '请输入' }]">
-                  <a-input readonly v-model:value="form.slot" placeholder="请输入" suffix="号" @click="onClick('slot')" class="w-200" />
+                  <a-input readonly v-model:value="form.slot" placeholder="请输入" suffix="号" @click="onClick('slot')"
+                    class="w-140" />
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item label="设备类型" name="type" :rules="[{ required: true, message: '请选择' }]">
                   <a-radio-group v-model:value="form.type" button-style="solid">
-                    <a-radio-button value="1" class="w-100 text-center">温度</a-radio-button>
-                    <a-radio-button value="2" class="w-100 text-center">电压</a-radio-button>
+                    <a-radio-button :value="1" class="w-80 text-center">温度</a-radio-button>
+                    <a-radio-button :value="2" class="w-80 text-center">电压</a-radio-button>
                   </a-radio-group>
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item label="地址/站号" name="code" :rules="[{ required: true, message: '请选择' }]">
-                  <a-input readonly v-model:value="form.code" placeholder="请输入"@click="onClick('code')" class="w-200" />
+                  <a-input readonly v-model:value="form.code" placeholder="请输入" @click="onClick('code')"
+                    class="w-140" />
                   <!-- <a-select v-model:value="form.code" placeholder="请选择" class="!w-200">
                   </a-select> -->
                 </a-form-item>
@@ -38,12 +42,12 @@
             </a-row>
           </div>
         </ConfigCard>
-        <ConfigCard title="RS485通信设置" class="my-32">
+        <ConfigCard title="RS485通信设置" class="my-24">
           <div class="flex items-center justify-center">
-            <a-row :gutter="48">
+            <a-row :gutter="16">
               <a-col>
                 <a-form-item label="波特率" name="baudRate" :rules="[{ required: true, message: '请选择' }]">
-                  <a-select v-model:value="form.baudRate" placeholder="请选择" class="!w-200">
+                  <a-select v-model:value="form.baudRate" placeholder="请选择" class="!w-140">
                     <a-select-option value="4800">4800</a-select-option>
                     <a-select-option value="9600">9600</a-select-option>
                     <a-select-option value="14400">14400</a-select-option>
@@ -80,18 +84,15 @@
                   </a-radio-group>
                 </a-form-item>
               </a-col>
-              <a-col>
-                <a-button type="primary" class="w-200 text-size-24">连接测试</a-button>
-              </a-col>
             </a-row>
           </div>
         </ConfigCard>
         <ConfigCard title="报警阈值设置">
           <div class="flex items-center justify-center">
-            <a-row :gutter="32">
+            <a-row :gutter="16">
               <a-col>
                 <a-form-item label="工作区间" name="range" :rules="[{ required: true, message: '请选择' }]">
-                  <a-select v-model:value="form.range" placeholder="请选择" class="!w-200">
+                  <a-select v-model:value="form.range" placeholder="请选择" class="!w-140">
                     <a-select-option value="大于">大于</a-select-option>
                     <a-select-option value="小于">小于</a-select-option>
                     <a-select-option value="等于">等于</a-select-option>
@@ -99,40 +100,45 @@
                   </a-select>
                 </a-form-item>
               </a-col>
-                <a-col>
-                  <a-form-item label="一级报警" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
-                    <div class="flex items-center">
-                      <a-input readonly v-model:value="form.firstAlarmMin" placeholder="请输入" @click="onClick('firstAlarmMin')" class="w-200" />
-                    </div>
-                  </a-form-item>
-                </a-col>
-                <a-col>
-                  <a-form-item label="" name="firstAlarmMax" :rules="[{ required: true, message: '请选择' }]">
-                    <div class="flex items-center">
-                      <a-input readonly v-model:value="form.firstAlarmMax" placeholder="请输入" @click="onClick('firstAlarmMax')" class="w-200" />
-                    </div>
-                  </a-form-item>
-                </a-col>
-                <a-col>
-                  <a-form-item label="二级报警" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
-                    <div class="flex items-center">
-                      <a-input readonly v-model:value="form.secondAlarmMin" placeholder="请输入" @click="onClick('secondAlarmMin')" class="w-200" />
-                    </div>
-                  </a-form-item>
-                </a-col>
-                <a-col>
-                  <a-form-item label="" name="secondAlarmMax" :rules="[{ required: true, message: '请选择' }]">
-                    <div class="flex items-center">
-                      <a-input readonly v-model:value="form.secondAlarmMax" placeholder="请输入" @click="onClick('secondAlarmMax')" class="w-200" />
-                    </div>
-                  </a-form-item>
-                </a-col>
+              <a-col>
+                <a-form-item label="一级报警" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
+                  <div class="flex items-center">
+                    <a-input readonly v-model:value="form.firstAlarmMin" placeholder="请输入"
+                      @click="onClick('firstAlarmMin')" class="w-140" />
+                  </div>
+                </a-form-item>
+              </a-col>
+              <a-col>
+                <a-form-item label="" name="firstAlarmMax" :rules="[{ required: true, message: '请选择' }]">
+                  <div class="flex items-center">
+                    <a-input readonly v-model:value="form.firstAlarmMax" placeholder="请输入"
+                      @click="onClick('firstAlarmMax')" class="w-140" />
+                  </div>
+                </a-form-item>
+              </a-col>
+              <a-col>
+                <a-form-item label="二级报警" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
+                  <div class="flex items-center">
+                    <a-input readonly v-model:value="form.secondAlarmMin" placeholder="请输入"
+                      @click="onClick('secondAlarmMin')" class="w-140" />
+                  </div>
+                </a-form-item>
+              </a-col>
+              <a-col>
+                <a-form-item label="" name="secondAlarmMax" :rules="[{ required: true, message: '请选择' }]">
+                  <div class="flex items-center">
+                    <a-input readonly v-model:value="form.secondAlarmMax" placeholder="请输入"
+                      @click="onClick('secondAlarmMax')" class="w-140" />
+                  </div>
+                </a-form-item>
+              </a-col>
             </a-row>
           </div>
         </ConfigCard>
-        <div class="mt-48 flex justify-center">
-          <a-button type="primary" ghost class="w-200 rounded-100 text-size-24 mx-24" @click="$router.go(-1)">取消</a-button>
-          <a-button type="primary" class="w-200 rounded-100 text-size-24" html-type="submit">确定</a-button>
+        <div class="flex justify-center mt-32">
+          <a-button type="primary" class="w-160 rounded-100">连接测试</a-button>
+          <a-button type="primary" ghost class="w-160 rounded-100 mx-24" @click="$router.go(-1)">取消</a-button>
+          <a-button type="primary" class="w-160 rounded-100" html-type="submit">保存</a-button>
         </div>
       </a-form>
     </div>
@@ -147,7 +153,7 @@
 }</route>
 <script setup>
 import ConfigCard from '../warning-config/components/ConfigCard.vue';
-import {message} from 'ant-design-vue';
+import { message } from 'ant-design-vue';
 import * as api from '@/api/device-manage'
 const formRef = ref();
 const show = ref(false)
@@ -156,17 +162,17 @@ const form = ref({
   name: '',
   shelf: '',
   slot: '',
+  type: 1,
+  code: '',
+  baudRate: '9600',
+  parity: '0',
+  databits: '8',
+  stopbits: '1',
   range: undefined,
   firstAlarmMin: '',
   firstAlarmMax: '',
   secondAlarmMin: '',
   secondAlarmMax: '',
-  com: undefined,
-  baudRate: '9600',
-  port: '',
-  parity: '无',
-  databits: '8',
-  stopbits: '1',
 });
 const router = useRouter()
 const route = useRoute()
@@ -189,7 +195,7 @@ function onClick (name) {
 const onFinish = async (values) => {
   const isEdit = route.query?.code !== undefined
   try {
-    const {id, ...params} = form.value
+    const { id, ...params } = form.value
     const { data, code } = isEdit ? await api.edit({
       id,
       ...params
@@ -212,7 +218,7 @@ async function onOk (val) {
 </script>
 
 <style lang="less" scoped>
-:deep(.ant-radio-button-wrapper){
-    border: none !important;
-  }
+:deep(.ant-radio-button-wrapper) {
+  border: none !important;
+}
 </style>

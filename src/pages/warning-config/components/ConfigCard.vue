@@ -1,6 +1,6 @@
 <template>
-  <div class="config-card p-32">
-    <div class="text-center text-size-32 mb-32">{{ title }}</div>
+  <div class="config-card px-24 pt-24 pb-8">
+    <div class="text-center text-size-18 mb-16">{{ title }}</div>
     <slot></slot>
   </div>
 </template>
@@ -20,8 +20,9 @@ defineProps({
   backdrop-filter: blur(6.5px);
   border-radius: 16px;
   color: #bfffff;
+
   :deep(.ant-form-item) {
-    .ant-form-item-label > label {
+    .ant-form-item-label>label {
       color: #fff !important;
     }
   }

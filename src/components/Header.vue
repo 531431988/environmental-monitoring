@@ -1,7 +1,8 @@
 <template>
   <div class="flex items-center justify-between px-24px relative header">
     <slot></slot>
-    <svg class="absolute left-0 right-0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920.49 91">
+    <svg class="absolute left-0 right-0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 0 1920.49 91">
       <defs>
         <linearGradient id="a" x1="0.047" y1="0.5" x2="1" y2="0.5" gradientUnits="objectBoundingBox">
           <stop offset="0" stop-color="#124a50" />
@@ -23,53 +24,57 @@
         <path d="M-1,60H21.5l30-60H29Z" transform="translate(11555.13 -499.879) rotate(180)" fill="#12494f" />
         <path d="M1,52.052H23.5L46,5.3H23.5Z" transform="translate(11519.634 -494.58) rotate(180)" fill="#0f5455" />
         <path d="M3,46.5H25.5L43,9H20.5Z" transform="translate(11486.63 -490.879) rotate(180)" fill="#126766" />
-        <path d="M261,0H756l42.145,85.031,408.842.306L1206.719,91l-412.067-.038L753,6H261Z" transform="translate(9904.51 -579)" fill="#12494f" />
-        <path d="M1206.987,0h-495L669.842,85.031,231,85.337,231.269,91l442.067-.038L714.987,6h492Z" transform="translate(10878.51 -579)" fill="#12494f" />
+        <path d="M261,0H756l42.145,85.031,408.842.306L1206.719,91l-412.067-.038L753,6H261Z"
+          transform="translate(9904.51 -579)" fill="#12494f" />
+        <path d="M1206.987,0h-495L669.842,85.031,231,85.337,231.269,91l442.067-.038L714.987,6h492Z"
+          transform="translate(10878.51 -579)" fill="#12494f" />
       </g>
     </svg>
 
-    <div class="flex items-center absolute left-24 right-24 top-16">
+    <div class="flex items-center absolute left-24 right-24 top-20">
       <div class="flex-1 flex items-center">
         <template v-if="isHome">
-          <div class="text-size-20 text-success pr-24">
-            <div class="mb-6">{{ week }}</div>
+          <div class="text-size-16 text-success pr-24">
+            <div>{{ week }}</div>
             <div>{{ date }}</div>
           </div>
-          <span class="text-size-32 ">{{ time }}</span>
+          <span class="text-size-24 ">{{ time }}</span>
         </template>
         <template v-else>
-          <ul class="nav list-none flex" v-if="$route.path !=='/device-manage/edit'">
-            <li v-for="(item, index) in navList" :class="{item: true, active: $route.path === item.to}" :key="index" @click="$router.push(item.to)">{{ item.text }}</li>
+          <ul class="nav list-none flex" v-if="$route.path !== '/device-manage/edit'">
+            <li v-for="(item, index) in navList" :class="{ item: true, active: $route.path === item.to }" :key="index"
+              @click="$router.push(item.to)">{{ item.text }}</li>
           </ul>
 
         </template>
       </div>
-      <div class="flex items-center justify-between w-480px">
-        <div class="pl-45">
-          <div class="mb-6">系统型号 LINUX</div>
+      <div class="flex items-center justify-between text-size-12 w-300px">
+        <div>
+          <div>系统型号 LINUX</div>
           <div>软件版本 V1.0.0</div>
         </div>
         <div class="flex items-center">
-          <div v-if="route.path !== '/'" class="w-60 h-60 rounded-100 btn flex justify-center items-center" @click="onLogot">
-            <div class="i-ant-design:home-outlined text-size-32 text-success"></div>
+          <div v-if="route.path !== '/'" class="w-40 h-40 rounded-100 btn flex justify-center items-center"
+            @click="onLogot">
+            <div class="i-ant-design:home-outlined text-size-24 text-success"></div>
           </div>
           <template v-if="isHome">
-            <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="openLogin = true">
-              <div class="i-ant-design:setting-outlined text-size-32 text-success"></div>
+            <div class="mx-32 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openLogin = true">
+              <div class="i-ant-design:setting-outlined text-size-24 text-success"></div>
             </div>
           </template>
           <template v-else>
-            <div class="mx-32 w-60 h-60 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
-              <div class="i-ph:key-bold text-size-32 text-success"></div>
+            <div class="mx-32 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
+              <div class="i-ph:key-bold text-size-24 text-success"></div>
             </div>
           </template>
-          <div class="w-64 h-64 rounded-100 btn flex justify-center items-center" @click="onPower">
-            <div class="i-mingcute:power-fill text-size-32 text-error"></div>
+          <div class="w-40 h-40 rounded-100 btn flex justify-center items-center" @click="onPower">
+            <div class="i-mingcute:power-fill text-size-24 text-error"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="absolute title text-size-42px" @click="onLogot">
+    <div class="absolute title text-size-36px" @click="onLogot">
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
@@ -90,9 +95,9 @@ dayjs.locale(zh)
 
 const date = ref(dayjs().format('YYYY年MM日DD'))
 const week = ref(dayjs().format('dddd'))
-const time = ref(dayjs().format('hh:mm:ss'))
+const time = ref(dayjs().format('HH:mm:ss'))
 let timer = window.setInterval(() => {
-  time.value = dayjs().format('hh:mm:ss')
+  time.value = dayjs().format('HH:mm:ss')
 }, 1000)
 const title = ref('UPS蓄电池在线监测系统')
 const router = useRouter()
@@ -174,31 +179,33 @@ onUnmounted(() => {
 <style lang="less" scoped>
 .header {
   border-top: 5px solid #022b2d;
-  height: 90px;
+  height: 70px;
   color: #c7eafd;
 
   .btn {
     background: linear-gradient(to bottom, #013b4090, #23af9854);
   }
+
   .nav {
     .item {
-      font-size: 24px;
+      font-size: 20px;
       border-bottom: 5px solid transparent;
-      padding: 16px;
+      padding: 8px 0 3px;
       cursor: pointer;
-      margin-right: 24px;
+      margin-right: 18px;
+
       &.active {
         color: #4becd3;
         border-color: #4becd3;
       }
     }
   }
+
   .title {
     left: 50%;
     transform: translateX(-50%);
-    font-size: 48px;
     font-weight: 700;
-    top: 9px;
+    top: 10px;
 
     span {
       background-image: linear-gradient(to bottom, #fff, #4becd3);
@@ -242,6 +249,7 @@ onUnmounted(() => {
 }
 
 @keyframes light {
+
   0%,
   75% {
     color: #b0d9d9;

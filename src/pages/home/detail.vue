@@ -1,28 +1,28 @@
 <template>
-  <div class="flex flex-col p-24 h-full">
-    <a-row :gutter="[24, 24]" class="h-full">
-      <a-col :span="8">
-        <Card title="数据采集-今日" class="h-370">
-          <Chart  mode="2" :title="title" :data="dailyQuery" color="#23AF98" :height="245" />
+  <div class="flex flex-col px-16 pt-10 pb-16 h-full">
+    <a-row :gutter="16" class="h-full">
+      <a-col :span="8" class="h-1/2">
+        <Card title="数据采集-今日">
+          <Chart mode="2" :title="title" :data="dailyQuery" color="#23AF98" :height="248" />
         </Card>
       </a-col>
-      <a-col :span="8">
-        <Card title="数据采集-7日" class="h-370">
-          <Chart  mode="2" :title="title" :data="weeklyQuery" :height="245" />
+      <a-col :span="8" class="h-1/2">
+        <Card title="数据采集-7日">
+          <Chart mode="2" :title="title" :data="weeklyQuery" :height="248" />
         </Card>
       </a-col>
-      <a-col :span="8">
-        <Card title="设备信息" class="h-370">
+      <a-col :span="8" class="h-1/2">
+        <Card title="设备信息" class="h-332">
           <Info />
         </Card>
       </a-col>
-      <a-col :span="14">
-        <Card title="数据采集-30日" style="height: calc(100vh - 370px - 168px)">
-          <Chart mode="2"  :title="title" :data="monthlyQuery" color="#00C4F6" :height="424" />
+      <a-col :span="14" class="h-1/2">
+        <Card title="数据采集-30日">
+          <Chart mode="2" :title="title" :data="monthlyQuery" color="#00C4F6" :height="264" />
         </Card>
       </a-col>
-      <a-col :span="10">
-        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" style="height: calc(100vh - 370px - 168px)" />
+      <a-col :span="10" class="h-1/2">
+        <Warn mode="2" :limitScrollNum="9" :data="alarmLog" />
       </a-col>
     </a-row>
   </div>
@@ -43,11 +43,11 @@ const title = computed(() => {
   return route.query?.name
 })
 
-onMounted(async() => {
+onMounted(async () => {
   try {
     const { data } = await api.dailyQuery(1)
     dailyQuery.value = data.map(item => ({
-      name: dayjs(item.createTime).format('hh:mm'),
+      name: dayjs(item.createTime).format('HH:mm'),
       value: item.data
     }))
   } catch (error) {
@@ -83,5 +83,4 @@ onMounted(async() => {
 })
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
