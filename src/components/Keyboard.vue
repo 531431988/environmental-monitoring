@@ -1,31 +1,30 @@
 <template>
   <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" centered
     :getContainer="useModalContainer">
-    <div class="p-24">
-      <div class="m-auto text-center">
-        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24 w-400 m-auto h-40"
-          placeholder="请输入" style="font-size: 32px;" />
+    <div class="p-24 keyboard">
+      <div class="m-auto text-center readonly">
+        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24 w-400 m-auto" placeholder="请输入" />
       </div>
       <div class="flex flex-wrap justify-between">
-        <div v-for="item in list" :key="item" class="m-12">
+        <div v-for="item in list" :key="item" class="m-8">
           <a-button type="primary" class="h-80 w-80" @click="onClick(item)">{{ item }}</a-button>
         </div>
-        <div class="m-12">
+        <div class="m-8">
           <a-button type="primary" class="w-80 h-80" @click="onDel">
-            <span class="i-ant-design:swap-left-outlined text-size-20"></span>
+            <span class="i-ant-design:swap-left-outlined text-size-28"></span>
           </a-button>
         </div>
-        <div class="m-12">
+        <div class="m-8">
           <a-button type="primary" danger class="w-80 h-80" @click="number = ''">
-            <span class="i-ant-design:delete-outlined text-size-20"></span>
+            <span class="i-ant-design:delete-outlined text-size-24"></span>
           </a-button>
         </div>
       </div>
     </div>
     <template #footer>
       <div class="text-center">
-        <a-button class="mx-8 h-40 w-120" @click="number = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="h-40 w-120" @click="onOk">确定</a-button>
+        <a-button class="mx-8 w-120" @click="number = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="w-120" @click="onOk">确定</a-button>
       </div>
     </template>
 
@@ -67,4 +66,21 @@ function onOk () {
 }
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.keyboard {
+  :deep(.readonly) {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
+  }
+}
+</style>

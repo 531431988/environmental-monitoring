@@ -6,9 +6,9 @@
       colorLink: '#23af98',
       colorError: '#f44546',
       colorBorderSecondary: 'transparent',
-      controlHeight: 48,
+      controlHeight: 54,
       fontSize: 18,
-      switchHeight: 48,
+      switchHeight: 54,
       fontFamily: 'ddjbt'
     }
   }">
