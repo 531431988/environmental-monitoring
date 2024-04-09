@@ -5,7 +5,7 @@
       class="absolute -top-60 left-50% -translate-x-50% w-100 h-100 rounded-100 bg-white flex justify-center items-center shadow-lg shadow-gray-300">
       <div class="i-ant-design:user-outlined text-size-48 text-gray-500"></div>
     </div>
-    <div class="web-font-dd text-size-32 text-center mt-48 mb-32" style="color:#23AF98">UPS蓄电池在线监测系统</div>
+    <div class="web-font-dd text-size-32 text-center mt-48 mb-32" style="color:#23AF98">{{ title }}</div>
     <a-form ref="formRef" :model="form" autocomplete="off" class="px-24" @finish="onFinish">
       <a-form-item name="password" :rules="[{ required: true, message: '请输入管理密码' }]">
         <a-input-password v-model:value="form.password" class="rounded-100 px-24" placeholder="请输入管理密码" />
@@ -23,10 +23,14 @@
 import { USER_INFO } from '@/enume/cache'
 import { useModalContainer } from '@/hooks/common'
 import * as api from '@/api/user'
-defineProps({
+const props = defineProps({
   open: Boolean,
+  title: {
+    type: String,
+    default: 'UPS蓄电池在线监测系统'
+  }
 })
-const emits = defineEmits(['update:open'])
+const emits = defineEmits(['update:open', 'exit'])
 
 const router = useRouter()
 const form = reactive({
@@ -34,16 +38,19 @@ const form = reactive({
 })
 const formRef = ref()
 const onFinish = async values => {
-  try {
-    const { data } = await api.login({
-      password: form.password
-    })
-    sessionStorage.setItem(USER_INFO, `ups-${new Date().valueOf()}`)
-    router.push('/device-manage')
-    formRef.value.resetFields();
-    emits('update:open', false)
-  } catch (error) {
-
+  if (props.title == '退出登录') {
+    emits('exit')
+  } else {
+    try {
+      const { data } = await api.login({
+        password: form.password
+      })
+      sessionStorage.setItem(USER_INFO, `ups-${new Date().valueOf()}`)
+      router.push('/device-manage')
+      formRef.value.resetFields();
+      emits('update:open', false)
+    } catch (error) {
+    }
   }
 }
 </script>

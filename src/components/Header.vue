@@ -55,7 +55,7 @@
         </div>
         <div class="flex items-center">
           <div v-if="route.path !== '/'" class="w-40 h-40 rounded-100 btn flex justify-center items-center"
-            @click="onLogot">
+            @click="onGoHome">
             <div class="i-ant-design:home-outlined text-size-24 text-success"></div>
           </div>
           <template v-if="isHome">
@@ -68,17 +68,17 @@
               <div class="i-ph:key-bold text-size-24 text-success"></div>
             </div>
           </template>
-          <div class="w-40 h-40 rounded-100 btn flex justify-center items-center" @click="onPower">
+          <div class="w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openLogin = true">
             <div class="i-mingcute:power-fill text-size-24 text-error"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="absolute title text-size-36px" @click="onLogot">
+    <div class="absolute title text-size-36px" @click="onGoHome">
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
-  <LoginModal v-model:open="openLogin" />
+  <LoginModal v-model:open="openLogin" title="退出登录" @exit="onPower" />
   <EditPwdModal v-model:open="openEditPwd" />
 </template>
 
@@ -117,7 +117,7 @@ const navList = ref([{
   text: '报警配置'
 }])
 
-function onLogot () {
+function onGoHome () {
   sessionStorage.removeItem(USER_INFO)
   router.push('/')
 }
@@ -139,9 +139,7 @@ function onPower () {
   });
 }
 
-function onEditPwd () {
 
-}
 onMounted(() => {
   /* anime({
     targets: '.dot-left-top',
