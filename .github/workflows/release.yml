@@ -6,7 +6,7 @@ on:
   push:
     # 匹配特定标签 (refs/tags)
     tags:
-      - "v*" # 推送事件匹配 v*, 例如 v1.0，v20.15.10 等来触发工作流
+      - 'v*' # 推送事件匹配 v*, 例如 v1.0，v20.15.10 等来触发工作流
 
 # 需要运行的作业组合
 jobs:
@@ -29,13 +29,13 @@ jobs:
       # 根据查询到的版本号创建 release
       - name: Create Release
         id: create_release
-        uses: actions/create-release@1
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: "${{ steps.get_version.outputs.VERSION }}"
-          release_name: "app ${{ steps.get_version.outputs.VERSION }}"
-          body: "See the assets to download this version and install."
+          tag_name: '${{ steps.get_version.outputs.VERSION }}'
+          release_name: 'app ${{ steps.get_version.outputs.VERSION }}'
+          body: 'See the assets to download this version and install.'
 
   # 编译 Tauri
   build-tauri:
@@ -49,7 +49,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # 安装 Node.js
+     # 安装 Node.js
       - name: Setup node
         uses: actions/setup-node@v1
         with:
@@ -97,7 +97,7 @@ jobs:
 
       # 安装依赖执行构建，以及推送 github release
       - name: Install app dependencies and build it
-        # 这里的pubhome要修改为你package.json里面配置的编译命令
+      # 这里的pubhome要修改为你package.json里面配置的编译命令
         run: yarn && yarn tauri:test
       - uses: tauri-apps/tauri-action@v0.3
         env:
