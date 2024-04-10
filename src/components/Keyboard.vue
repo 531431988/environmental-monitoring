@@ -3,8 +3,8 @@
     :getContainer="useModalContainer">
     <div class="p-24 keyboard">
       <div class="m-auto text-center readonly">
-        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24  h-54 text-size-18 w-400 m-auto"
-          placeholder="请输入" />
+        <a-input type="text" v-model:value="number" :maxlength="maxLength" readonly
+          class="mb-24  h-54 text-size-18 w-400 m-auto" placeholder="请输入" />
       </div>
       <div class="flex flex-wrap justify-between">
         <div v-for="item in list" :key="item" class="m-8">

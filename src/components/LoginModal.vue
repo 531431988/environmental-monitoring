@@ -8,7 +8,7 @@
     <div class="web-font-dd text-size-24 text-center mt-48 mb-32" style="color:#23AF98">{{ title }}</div>
     <a-form ref="formRef" :model="form" autocomplete="off" class="px-24" @finish="onFinish">
       <a-form-item name="password" :rules="[{ required: true, message: '请输入管理密码' }]">
-        <a-input-password v-model:value="form.password" class="rounded-100 px-24 h-54 text-size-18"
+        <a-input type="text" v-model:value="form.password" class="rounded-100 px-24 h-54 text-size-18"
           placeholder="请输入管理密码" />
       </a-form-item>
       <div class="flex my-32 justify-center m-auto">

@@ -10,8 +10,8 @@
         </a-col>
         <a-col class="flex items-center">
           <span class="mr-24">短信推送</span><a-switch v-model:checked="levelOne.pushSms" />
-          <a-input v-if="levelOne.pushSms" placeholder="请输入手机号" class="w-150 h-54 text-size-18 ml-16" readonly
-            :maxlength="11" v-model:value="levelOne.receivers" @click="onClick('levelOne')" />
+          <a-input type="text" v-if="levelOne.pushSms" placeholder="请输入手机号" class="w-150 h-54 text-size-18 ml-16"
+            readonly :maxlength="11" v-model:value="levelOne.receivers" @click="onClick('levelOne')" />
         </a-col>
         <a-col>
           <span class="mr-24">微信推送</span><a-switch v-model:checked="levelOne.pushWechat" />
@@ -28,8 +28,8 @@
         </a-col>
         <a-col class="flex items-center">
           <span class="mr-24">短信推送</span><a-switch v-model:checked="levelTwo.pushSms" />
-          <a-input v-if="levelTwo.pushSms" placeholder="请输入手机号" class="w-150 h-54 text-size-18 ml-16" readonly
-            :maxlength="11" v-model:value="levelTwo.receivers" @click="onClick('levelTwo')" />
+          <a-input type="text" v-if="levelTwo.pushSms" placeholder="请输入手机号" class="w-150 h-54 text-size-18 ml-16"
+            readonly :maxlength="11" v-model:value="levelTwo.receivers" @click="onClick('levelTwo')" />
         </a-col>
         <a-col>
           <span class="mr-24">微信推送</span><a-switch v-model:checked="levelTwo.pushWechat" />
