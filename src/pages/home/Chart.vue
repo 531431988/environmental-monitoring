@@ -1,6 +1,6 @@
 <template>
   <div style="background: rgba(255, 255, 255, 0.1);">
-    <p class="web-font-dd text-center my-0 pt-12 text-size-16" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
+    <p class="web-font-dd text-center my-0 pt-12 text-size-14" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
       '温度' :
       '电压'}` }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />
@@ -23,7 +23,7 @@ const props = defineProps({
   color: String,
   height: {
     type: Number,
-    default: 150
+    default: 112
   },
   mode: {
     type: String,
@@ -42,10 +42,10 @@ use([
 ]);
 const option = reactive({
   grid: {
-    top: 32,
-    left: '6%',
-    right: '6%',
-    bottom: 16,
+    top: 24,
+    left: '5%',
+    right: '5%',
+    bottom: 8,
     containLabel: true
   },
   xAxis: {

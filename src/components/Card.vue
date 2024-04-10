@@ -1,10 +1,10 @@
 <template>
-  <div class="card p-16">
+  <div class="card p-12">
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-    <div class="web-font-dd hd mb-16 text-size-16">
+    <div class="web-font-dd hd mb-8 text-size-14">
       <span class="title">{{ title }}</span>
     </div>
     <slot></slot>

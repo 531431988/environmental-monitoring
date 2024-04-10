@@ -1,15 +1,15 @@
 <template>
-  <a-row :gutter="16" class="h-full px-16 pt-10 pb-16">
-    <a-col :span="16" class="h-full">
+  <a-row :gutter="[16, 16]" class="h-full px-12 pt-6 pb-12">
+    <a-col :span="24" class="h-70%">
       <Card title="实时监控" class="h-full">
-        <a-row :gutter="[12, 12]">
-          <a-col :span="8" v-for="(item, index) in chartData" :key="index">
+        <a-row :gutter="[8, 8]">
+          <a-col :span="6" v-for="(item, index) in chartData" :key="index">
             <Chart :type="item.type" :title="item.title" :data="item.data" @click="onLookDetail(item)" class=" px-16" />
           </a-col>
         </a-row>
       </Card>
     </a-col>
-    <a-col :span="8" class="h-full">
+    <a-col :span="24" style="height: calc(30% - 16px)">
       <Warn :data="warnData" :limitScrollNum="15" class="h-full" />
     </a-col>
   </a-row>
