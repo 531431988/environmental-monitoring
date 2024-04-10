@@ -108,12 +108,12 @@ const option = reactive({
 });
 watch(() => props.data, (newVal) => {
   if (props.mode == 1) {
-    if (option.series[0].data.length > 3) {
+    if (option.series[0].data.length > 2) {
       option.xAxis.data.shift()
       option.series[0].data.shift()
     }
     option.xAxis.data.push(props.data?.name)
-    option.series[0].data.push(props.data || { value: 1, name: '111' })
+    option.series[0].data.push(props.data)
   } else {
     option.xAxis.data = props.data.map(item => item.name) || []
     option.series[0].data = props.data || []
