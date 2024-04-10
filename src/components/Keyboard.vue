@@ -1,35 +1,34 @@
 <template>
-  <a-modal placement="bottom" :open="open" :maskClosable="false" :closable="false" centered
-    :getContainer="useModalContainer">
-    <div class="p-24 keyboard">
-      <div class="m-auto text-center readonly">
-        <a-input type="text" v-model:value="number" :maxlength="maxLength" readonly
-          class="mb-24 text-size-32 w-400 m-auto" placeholder="请输入" />
+  <a-drawer placement="bottom" :open="open" :closable="false" height="300" width="40%" :getContainer="useModalContainer"
+    @close="$emit('update:open', false); number = ''" :style="{ background: 'rgba(4, 59, 70, 0.9)' }">
+    <div class="keyboard w-50% m-x-auto">
+      <div class="flex items-center mb-16">
+        <!-- <div class="m-auto text-center readonly-input">
+          <a-input type="text" v-model:value="number" :maxlength="maxLength" readonly class="text-size-32"
+            placeholder="请输入" />
+        </div> -->
       </div>
       <div class="flex flex-wrap justify-between">
         <div v-for="item in list" :key="item" class="m-8">
-          <a-button type="primary" class="h-80 w-80 text-size-20" @click="onClick(item)">{{ item }}</a-button>
+          <a-button class="h-80 w-80 text-size-28 " @click="onClick(item)">{{ item }}</a-button>
         </div>
-        <div class="m-8">
-          <a-button type="primary" class="w-80 h-80" @click="onDel">
-            <span class="i-ant-design:swap-left-outlined text-size-28"></span>
-          </a-button>
-        </div>
-        <div class="m-8">
-          <a-button type="primary" danger class="w-80 h-80" @click="number = ''">
-            <span class="i-ant-design:delete-outlined text-size-24"></span>
-          </a-button>
-        </div>
+        <a-button type="primary" class="m-8 w-80 h-80" @click="onDel">
+          <span class="i-ant-design:swap-left-outlined text-size-28"></span>
+        </a-button>
+        <a-button type="primary" danger class="m-8 w-80 h-80" @click="number = ''; $emit('ok', '')">
+          <span class="i-ant-design:delete-outlined text-size-24"></span>
+        </a-button>
+
       </div>
     </div>
-    <template #footer>
+    <!-- <template #footer>
       <div class="text-center">
-        <a-button class="mx-8 w-200 text-size-24" @click="number = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="w-200 text-size-24" @click="onOk">确定</a-button>
+        <a-button class="w-200 text-size-24 rounded-100" @click="number = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="w-200 text-size-24 rounded-100 ml-24" @click="onOk">确定</a-button>
       </div>
-    </template>
+    </template> -->
 
-  </a-modal>
+  </a-drawer>
 </template>
 
 <script setup>
@@ -56,32 +55,17 @@ function onClick (val) {
   if (number.value.length < props.maxLength) {
     number.value += val
   }
+  emits('ok', number.value)
 }
 function onDel () {
   number.value = number.value.slice(0, -1)
+  emits('ok', number.value)
 }
-function onOk () {
+/* function onOk () {
   emits('update:open', false)
   emits('ok', number.value)
   number.value = ''
-}
+} */
 </script>
 
-<style lang="less" scoped>
-.keyboard {
-  :deep(.readonly) {
-    position: relative;
-
-    &::after {
-      position: absolute;
-      content: '';
-      left: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%
-    }
-  }
-}
-</style>
+<style lang="less" scoped></style>
