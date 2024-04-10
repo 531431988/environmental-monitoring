@@ -1,6 +1,7 @@
 <template>
-  <a-drawer placement="bottom" :open="open" :closable="false" height="300" width="40%" :getContainer="useModalContainer"
-    @close="$emit('update:open', false); number = ''" :style="{ background: 'rgba(4, 59, 70, 0.9)' }">
+  <a-drawer placement="bottom" :open="open" :maskClosable="false" height="300" width="40%" rootClassName="keyboard"
+    :getContainer="useModalContainer" @close="$emit('update:open', false); number = ''"
+    :style="{ background: 'rgba(4, 59, 70, 0.9)' }">
     <div class="keyboard w-50% m-x-auto">
       <div class="flex items-center mb-16">
         <!-- <div class="m-auto text-center readonly-input">
@@ -68,4 +69,13 @@ function onDel () {
 } */
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less">
+.keyboard {
+  .ant-drawer-close {
+    position: absolute;
+    right: 0;
+    top: 16px;
+    color: #999;
+  }
+}
+</style>
