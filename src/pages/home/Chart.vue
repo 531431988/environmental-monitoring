@@ -30,7 +30,7 @@ const props = defineProps({
     default: '1'   // 1 实时  2 历史
   },
   type: {
-    type: Number,
+    type: [Number, String],
     default: 1
   }
 })
