@@ -4,7 +4,7 @@
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-    <div class="web-font-dd hd mb-8 text-size-14">
+    <div class="web-font-dd hd mb-8 text-size-12">
       <span class="title">{{ title }}</span>
     </div>
     <slot></slot>

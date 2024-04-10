@@ -6,9 +6,8 @@
       colorLink: '#23af98',
       colorError: '#f44546',
       colorBorderSecondary: 'transparent',
-      controlHeight: 54,
-      fontSize: 18,
-      switchHeight: 54,
+      controlHeight: 32,
+      // fontSize: 18,
       fontFamily: 'ddjbt'
     }
   }">
@@ -55,14 +54,12 @@ ul {
   }
 
   .ant-modal-confirm-content {
-    padding: 24px 24px 24px 0;
-    font-size: 32px;
+    font-size: 14px;
   }
 
   .ant-modal-confirm-btns {
     button {
       border-radius: 100px;
-      width: 140px;
       margin-left: 16px;
       font-family: 'ddjbt';
     }

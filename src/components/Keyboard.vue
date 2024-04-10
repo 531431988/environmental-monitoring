@@ -3,11 +3,12 @@
     :getContainer="useModalContainer">
     <div class="p-24 keyboard">
       <div class="m-auto text-center readonly">
-        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24 w-400 m-auto" placeholder="请输入" />
+        <a-input v-model:value="number" :maxlength="maxLength" readonly class="mb-24  h-54 text-size-18 w-400 m-auto"
+          placeholder="请输入" />
       </div>
       <div class="flex flex-wrap justify-between">
         <div v-for="item in list" :key="item" class="m-8">
-          <a-button type="primary" class="h-80 w-80" @click="onClick(item)">{{ item }}</a-button>
+          <a-button type="primary" class="h-80 w-80 text-size-20" @click="onClick(item)">{{ item }}</a-button>
         </div>
         <div class="m-8">
           <a-button type="primary" class="w-80 h-80" @click="onDel">
@@ -23,8 +24,8 @@
     </div>
     <template #footer>
       <div class="text-center">
-        <a-button class="mx-8 w-120" @click="number = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="w-120" @click="onOk">确定</a-button>
+        <a-button class="mx-8 w-120 h-54 text-size-18" @click="number = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="w-120 h-54 text-size-18" @click="onOk">确定</a-button>
       </div>
     </template>
 
