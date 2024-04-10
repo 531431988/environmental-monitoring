@@ -59,7 +59,7 @@
             <div class="i-ant-design:home-outlined text-size-24 text-success"></div>
           </div>
           <template v-if="isHome">
-            <div class="mx-32 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openLogin = true">
+            <div class="mx-32 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="onLogin">
               <div class="i-ant-design:setting-outlined text-size-24 text-success"></div>
             </div>
           </template>
@@ -68,7 +68,8 @@
               <div class="i-ph:key-bold text-size-24 text-success"></div>
             </div>
           </template>
-          <div class="w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openLogin = true">
+          <div class="w-40 h-40 rounded-100 btn flex justify-center items-center"
+            @click="loginTitle = '退出登录'; openLogin = true">
             <div class="i-mingcute:power-fill text-size-24 text-error"></div>
           </div>
         </div>
@@ -78,7 +79,7 @@
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
-  <LoginModal v-model:open="openLogin" title="退出登录" @exit="onPower" />
+  <LoginModal v-model:open="openLogin" :title="loginTitle" @exit="onPower" />
   <EditPwdModal v-model:open="openEditPwd" />
 </template>
 
@@ -87,10 +88,7 @@ import dayjs from 'dayjs'
 import zh from 'dayjs/locale/zh-cn'
 import anime from 'animejs'
 import { onMounted, onUnmounted, ref } from 'vue'
-import { exit } from '@tauri-apps/api/process';
-import { Modal } from 'ant-design-vue';
 import { USER_INFO } from '@/enume/cache'
-import { useModalContainer } from '@/hooks/common'
 dayjs.locale(zh)
 
 const date = ref(dayjs().format('YYYY年MM日DD'))
@@ -100,6 +98,7 @@ let timer = window.setInterval(() => {
   time.value = dayjs().format('HH:mm:ss')
 }, 1000)
 const title = ref('UPS蓄电池在线监测系统')
+const loginTitle = ref('退出登录')
 const router = useRouter()
 const route = useRoute()
 
@@ -121,22 +120,9 @@ function onGoHome () {
   sessionStorage.removeItem(USER_INFO)
   router.push('/')
 }
-
-function onPower () {
-  Modal.confirm({
-    centered: true,
-    title: '确认退出',
-    content: '确认要退出系统吗？您可以再次运行本程序来启用监控',
-    okText: '确定',
-    cancelText: '取消',
-    width: '30%',
-    getContainer: useModalContainer,
-    async onOk () {
-      sessionStorage.removeItem(USER_INFO)
-      await exit(1);
-    },
-    onCancel () { },
-  });
+function onLogin () {
+  loginTitle.value = 'UPS蓄电池在线监测系统'
+  openLogin.value = true
 }
 
 

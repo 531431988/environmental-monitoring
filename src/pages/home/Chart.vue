@@ -1,6 +1,8 @@
 <template>
-  <div style="background: rgba(255, 255, 255, 0.1);" class="px-24">
-    <p class="web-font-dd text-center my-0 pt-16 text-size-20" style="color: #bfffff;">{{ title }}</p>
+  <div style="background: rgba(255, 255, 255, 0.1);">
+    <p class="web-font-dd text-center my-0 pt-12 text-size-16" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
+      '温度' :
+      '电压'}` }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />
   </div>
 </template>
@@ -21,11 +23,15 @@ const props = defineProps({
   color: String,
   height: {
     type: Number,
-    default: 235
+    default: 150
   },
   mode: {
     type: String,
     default: '1'   // 1 实时  2 历史
+  },
+  type: {
+    type: Number,
+    default: 1
   }
 })
 use([
@@ -37,21 +43,21 @@ use([
 const option = reactive({
   grid: {
     top: 32,
-    left: 0,
-    right: 16,
-    bottom: 24,
+    left: '6%',
+    right: '6%',
+    bottom: 16,
     containLabel: true
   },
   xAxis: {
     type: 'category',
-    boundaryGap: false,
+    boundaryGap: ['10%', '10%'],
     splitLine: {
       show: false,
     },
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 15
+        fontSize: 12
       },
     },
     data: [],
@@ -69,7 +75,7 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 15
+        fontSize: 12
       },
     },
   },
@@ -80,6 +86,9 @@ const option = reactive({
       symbol: 'circle',
       smooth: true,
       data: [],
+      label: {
+        show: true
+      },
       lineStyle: {
         color: "#23AF84", // 线条颜色
       },
@@ -99,7 +108,7 @@ const option = reactive({
 });
 watch(() => props.data, (newVal) => {
   if (props.mode == 1) {
-    if (option.series[0].data.length > 2) {
+    if (option.series[0].data.length > 3) {
       option.xAxis.data.shift()
       option.series[0].data.shift()
     }
@@ -110,7 +119,7 @@ watch(() => props.data, (newVal) => {
     option.series[0].data = props.data || []
   }
   option.color = [props.color || '#23AF84'],
-  option.series[0].lineStyle.color = props.color || '#23AF84'
+    option.series[0].lineStyle.color = props.color || '#23AF84'
   option.series[0].areaStyle = {
     color: new graphic.LinearGradient(0, 0, 0, 1, [{
       offset: 0,

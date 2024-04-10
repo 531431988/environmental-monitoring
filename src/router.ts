@@ -16,7 +16,7 @@ const router = createRouter({
   },
 })
 // 设置全局前置守卫
-/* router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   const token = sessionStorage.getItem(USER_INFO)
   if (to.matched.some(record => record.meta.requiresAuth) && !token) {
     // 如果用户未认证，则重定向到登录页面
@@ -25,5 +25,5 @@ const router = createRouter({
     // 否则，继续导航
     next();
   }
-}); */
+});
 export default router

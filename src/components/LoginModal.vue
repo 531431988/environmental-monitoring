@@ -22,6 +22,8 @@
 <script setup>
 import { USER_INFO } from '@/enume/cache'
 import { useModalContainer } from '@/hooks/common'
+import { exit } from '@tauri-apps/api/process';
+import { Modal } from 'ant-design-vue';
 import * as api from '@/api/user'
 const props = defineProps({
   open: Boolean,
@@ -38,19 +40,34 @@ const form = reactive({
 })
 const formRef = ref()
 const onFinish = async values => {
-  if (props.title == '退出登录') {
-    emits('exit')
-  } else {
-    try {
-      const { data } = await api.login({
-        password: form.password
-      })
+
+  try {
+    const { data } = await api.login({
+      password: form.password
+    })
+    if (props.title == '退出登录') {
+      Modal.confirm({
+        centered: true,
+        title: '确认退出',
+        content: '确认要退出系统吗？您可以再次运行本程序来启用监控',
+        okText: '确定',
+        cancelText: '取消',
+        width: '35%',
+        getContainer: useModalContainer,
+        async onOk () {
+          emits('update:open', false)
+          sessionStorage.removeItem(USER_INFO)
+          await exit(1);
+        },
+        onCancel () { },
+      });
+    } else {
       sessionStorage.setItem(USER_INFO, `ups-${new Date().valueOf()}`)
       router.push('/device-manage')
       formRef.value.resetFields();
       emits('update:open', false)
-    } catch (error) {
     }
+  } catch (error) {
   }
 }
 </script>
