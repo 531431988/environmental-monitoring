@@ -8,7 +8,7 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "build:test": "vue-tsc --noEmit && vite build --mode test",
-    "build:tauri": "npm run build && tauri"
+    "build:tauri": "npm run build && tauri build"
   },
   "dependencies": {
     "@iconify-json/ant-design": "^1.1.15",
