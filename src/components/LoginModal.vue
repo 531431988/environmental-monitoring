@@ -15,7 +15,9 @@
       <div class="flex my-32 justify-center m-auto">
         <a-button type="primary" ghost class="w-200 rounded-100 text-size-24"
           @click="form.password = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="w-200 rounded-100 ml-24 text-size-24" html-type="submit">登录</a-button>
+        <a-button type="primary" class="w-200 rounded-100 ml-24 text-size-24" html-type="submit">{{ title === '退出登录' ?
+          '退出' :
+          '登录'}}</a-button>
       </div>
     </a-form>
   </a-modal>
