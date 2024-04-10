@@ -8,10 +8,15 @@
     <div class="web-font-dd text-size-32 text-center mt-48 mb-32" style="color:#23AF98">修改密码</div>
     <a-form ref="formRef" :model="form" autocomplete="off" class="px-24" @finish="onFinish">
       <a-form-item name="password" :rules="[{ required: true, message: '请输入新密码' }]">
-        <a-input type="text" v-model:value="form.password" class=" rounded-100 px-24" placeholder="请输入新密码" />
+        <div @click="onClick('password')" class="readonly-input">
+          <a-input-password  readonly v-model:value="form.password" class=" rounded-100 px-24" placeholder="请输入新密码" />
+        </div>
       </a-form-item>
       <a-form-item name="confirmPassword" :rules="[{ required: true, message: '请两次输入新密码' }]">
-        <a-input type="text" v-model:value="form.confirmPassword" class=" rounded-100 px-24" placeholder="请两次输入新密码" />
+        <div @click="onClick('confirmPassword')" class="readonly-input">
+          <a-input-password readonly v-model:value="form.confirmPassword" class=" rounded-100 px-24"
+            placeholder="请两次输入新密码" />
+        </div>
       </a-form-item>
       <div class="flex my-32 justify-center m-auto">
         <a-button type="primary" ghost class="w-200 rounded-100 mr-24 text-size-24"
@@ -20,6 +25,7 @@
       </div>
     </a-form>
   </a-modal>
+  <Keyboard v-model:open="show" @ok="onOk" />
 </template>
 
 <script setup>
@@ -30,13 +36,24 @@ defineProps({
   open: Boolean,
 })
 const emits = defineEmits(['update:open'])
-
+const show = ref(false)
+const key = ref('')
 const router = useRouter()
 const form = reactive({
   password: '',
   confirmPassword: ''
 })
 const formRef = ref()
+
+function onClick (name) {
+  key.value = name
+  show.value = true
+}
+async function onOk (val) {
+  console.log(val, key.value);
+  form[key.value] = val
+}
+
 const onFinish = async values => {
   try {
     const { data } = await api.resetPwd({
