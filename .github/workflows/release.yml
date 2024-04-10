@@ -1,5 +1,5 @@
 # 可选，将显示在 GitHub 存储库的“操作”选项卡中的工作流名称
-name: TAURI CI
+name: Release CI
 
 # 指定此工作流的触发器
 on:
@@ -12,12 +12,12 @@ on:
 jobs:
   # 任务：创建 release 版本
   create-release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     outputs:
       RELEASE_UPLOAD_ID: ${{ steps.create_release.outputs.id }}
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       # 查询版本号（tag）
       - name: Query version number
         id: get_version
@@ -47,11 +47,11 @@ jobs:
 
     runs-on: ${{ matrix.platform }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       # 安装 Node.js
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v1
         with:
           node-version: 21.1.0
 
@@ -62,7 +62,7 @@ jobs:
           toolchain: stable
 
       # 使用 Rust 缓存，加快安装速度
-      - uses: Swatinem/rust-cache@v2
+      - uses: Swatinem/rust-cache@v1
 
       - name: install dependencies (ubuntu only)
         if: matrix.platform == 'ubuntu-20.04'
@@ -99,7 +99,7 @@ jobs:
       - name: Install app dependencies and build it
         # 这里的pubhome要修改为你package.json里面配置的编译命令
         run: yarn && yarn tauri:test
-      - uses: tauri-apps/tauri-action@v0.5
+      - uses: tauri-apps/tauri-action@v0.3
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
