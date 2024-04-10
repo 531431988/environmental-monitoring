@@ -3,9 +3,9 @@
     <div class="flex w-full table-thead">
       <span class="table-th flex-1">设备</span>
       <span class="table-th flex-1" v-if="mode == 1">类型</span>
-      <span class="table-th" :class="mode == 1 ? 'flex-1' : 'w-60'">等级</span>
-      <span class="table-th" :class="mode == 1 ? 'flex-1' : 'w-70'">报警值</span>
-      <span class="table-th" :class="mode == 1 ? 'flex-1' : 'w-130'">时间</span>
+      <span class="table-th" :class="mode == 1 ? 'flex-1' : 'w-80'">等级</span>
+      <span class="table-th" :class="mode == 1 ? 'flex-1' : 'w-80'">报警值</span>
+      <span class="table-th" :class="mode == 1 ? 'flex-1' : 'w-165'">时间</span>
     </div>
     <div class="flex-1">
       <vue3-seamless-scroll :step="0.1" :list="data" class="scroll" :limitScrollNum="limitScrollNum">
@@ -14,13 +14,13 @@
           <span class="table-td text-ellipsis whitespace-nowrap overflow-hidden flex-1">{{ item.name }}机柜{{
             item.shelf }}层{{ item.slot }}号 </span>
           <span class="table-td flex-1" v-if="mode == 1">{{ item.typeName }}</span>
-          <span class="table-td " :class="mode == 1 ? 'flex-1' : 'w-60'">
+          <span class="table-td " :class="mode == 1 ? 'flex-1' : 'w-80'">
             <a-badge status="error" v-if="item.level === 1" :text="`一级`" />
             <a-badge status="warning" v-if="item.level === 2" :text="`二级`" />
             <a-badge color="blue" v-if="item.level === 3" :text="`三级`" />
           </span>
-          <span class="table-td " :class="mode == 1 ? 'flex-1' : 'w-70'">{{ item.message }}</span>
-          <span class="table-td" :class="mode == 1 ? 'flex-1' : 'w-130'">{{ item.createdDate }}</span>
+          <span class="table-td " :class="mode == 1 ? 'flex-1' : 'w-80'">{{ item.message }}</span>
+          <span class="table-td" :class="mode == 1 ? 'flex-1' : 'w-165'">{{ item.createdDate }}</span>
         </div>
       </vue3-seamless-scroll>
     </div>
@@ -62,11 +62,12 @@ defineProps({
 
 .table-td,
 .table-th {
+  padding: 0 8px;
 
   &,
   :deep(.ant-badge-status-text) {
-    font-size: 12px !important;
-    line-height: 26px;
+    font-size: 14px !important;
+    line-height: 32px;
   }
 }
 

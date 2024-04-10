@@ -4,7 +4,7 @@
       <Card title="实时监控" class="h-full">
         <a-row :gutter="[8, 8]">
           <a-col :span="6" v-for="(item, index) in chartData" :key="index">
-            <Chart :type="item.type" :title="item.title" :data="item.data" @click="onLookDetail(item)" class=" px-16" />
+            <Chart :type="item.type" :title="item.title" :data="item.data" @click="onLookDetail(item)" />
           </a-col>
         </a-row>
       </Card>

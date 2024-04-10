@@ -22,9 +22,9 @@
         </a-form>
       </a-col>
       <a-col class="flex flex-col">
-        <a-button type="primary" @click="onClick(1)" class="h-54 text-size-18">解除报警</a-button>
-        <a-button type="primary" @click="onClick(2)" class="my-32 h-54 text-size-18">继电器合</a-button>
-        <a-button type="primary" @click="onClick(3)" class="h-54 text-size-18" danger>继电器断</a-button>
+        <a-button type="primary" @click="onClick(1)" class="text-size-24">解除报警</a-button>
+        <a-button type="primary" @click="onClick(2)" class="text-size-24 my-32">继电器合</a-button>
+        <a-button type="primary" @click="onClick(3)" danger class="text-size-24">继电器断</a-button>
       </a-col>
     </a-row>
   </div>
@@ -88,18 +88,18 @@ function onClick (type) {
   :deep(.ant-form-item) {
     line-height: 1;
     color: #fff !important;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 0;
 
     .ant-form-item-label>label {
       height: 32px;
       color: rgba(255, 255, 255, 0.6) !important;
-      font-size: 12px;
+      font-size: 14px;
     }
 
     .ant-form-item-control-input {
       min-height: 32px;
-      font-size: 12px;
+      font-size: 16px;
     }
   }
 }

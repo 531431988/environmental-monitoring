@@ -10,8 +10,10 @@
         </a-col>
         <a-col class="flex items-center">
           <span class="mr-24">短信推送</span><a-switch v-model:checked="levelOne.pushSms" />
-          <a-input type="text" v-if="levelOne.pushSms" placeholder="请输入手机号" class="w-150 h-54 text-size-18 ml-16"
-            readonly :maxlength="11" v-model:value="levelOne.receivers" @click="onClick('levelOne')" />
+          <div v-if="levelOne.pushSms" @click="onClick('levelOne')" class="readonly-input">
+            <a-input type="text" placeholder="请输入手机号" class="w-150 ml-16" readonly :maxlength="11"
+              v-model:value="levelOne.receivers" />
+          </div>
         </a-col>
         <a-col>
           <span class="mr-24">微信推送</span><a-switch v-model:checked="levelOne.pushWechat" />
@@ -28,16 +30,18 @@
         </a-col>
         <a-col class="flex items-center">
           <span class="mr-24">短信推送</span><a-switch v-model:checked="levelTwo.pushSms" />
-          <a-input type="text" v-if="levelTwo.pushSms" placeholder="请输入手机号" class="w-150 h-54 text-size-18 ml-16"
-            readonly :maxlength="11" v-model:value="levelTwo.receivers" @click="onClick('levelTwo')" />
+          <div v-if="levelTwo.pushSms" @click="onClick('levelTwo')" class="readonly-input">
+            <a-input type="text" placeholder="请输入手机号" class="w-150 ml-16" readonly :maxlength="11"
+              v-model:value="levelTwo.receivers" />
+          </div>
         </a-col>
         <a-col>
           <span class="mr-24">微信推送</span><a-switch v-model:checked="levelTwo.pushWechat" />
         </a-col>
       </a-row>
     </ConfigCard>
-    <div class="mt-32 flex justify-center">
-      <a-button type="primary" class="w-200 h-54 text-size-18 rounded-100" @click="onSave">保存</a-button>
+    <div class="mt-48 flex justify-center">
+      <a-button type="primary" class="w-200 rounded-100 text-size-24" @click="onSave">保存</a-button>
     </div>
   </div>
   <Keyboard v-model:open="show" :maxLength="11" @ok="onOk" />
@@ -101,19 +105,19 @@ async function onSave () {
   font-family: 'ddjbt' !important;
 
   :deep(.ant-switch) {
-    height: 48px;
-    line-height: 48px;
-    width: 80px;
+    height: 54px;
+    line-height: 54px;
+    width: 120px;
 
     .ant-switch-handle {
-      width: 42px;
-      height: 42px;
+      width: 50px;
+      height: 50px;
       border-radius: 100px;
       overflow: hidden;
     }
 
     &.ant-switch-checked .ant-switch-handle {
-      inset-inline-start: calc(100% - 42px)
+      inset-inline-start: calc(100% - 52px)
     }
   }
 }

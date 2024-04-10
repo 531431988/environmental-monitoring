@@ -3,12 +3,12 @@
     <a-row :gutter="16" class="h-full">
       <a-col :span="8" class="h-1/2">
         <Card title="数据采集-今日">
-          <Chart mode="2" :title="title" :data="dailyQuery" color="#23AF98" :height="256" :type="$route.query.type" />
+          <Chart mode="2" :title="title" :data="dailyQuery" color="#23AF98" :height="242" :type="$route.query.type" />
         </Card>
       </a-col>
       <a-col :span="8" class="h-1/2">
         <Card title="数据采集-7日">
-          <Chart mode="2" :title="title" :data="weeklyQuery" :height="256" :type="$route.query.type" />
+          <Chart mode="2" :title="title" :data="weeklyQuery" :height="242" :type="$route.query.type" />
         </Card>
       </a-col>
       <a-col :span="8" class="h-1/2">
@@ -16,12 +16,12 @@
           <Info />
         </Card>
       </a-col>
-      <a-col :span="16" class="h-1/2">
+      <a-col :span="15" class="h-1/2">
         <Card title="数据采集-30日">
-          <Chart mode="2" :title="title" :data="monthlyQuery" color="#00C4F6" :height="274" :type="$route.query.type" />
+          <Chart mode="2" :title="title" :data="monthlyQuery" color="#00C4F6" :height="260" :type="$route.query.type" />
         </Card>
       </a-col>
-      <a-col :span="8" class="h-1/2">
+      <a-col :span="9" class="h-1/2">
         <Warn mode="2" :limitScrollNum="9" :data="alarmLog" />
       </a-col>
     </a-row>

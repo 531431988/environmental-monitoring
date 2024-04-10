@@ -6,8 +6,8 @@
       colorLink: '#23af98',
       colorError: '#f44546',
       colorBorderSecondary: 'transparent',
-      controlHeight: 32,
-      // fontSize: 18,
+      controlHeight: 64,
+      fontSize: 20,
       fontFamily: 'ddjbt'
     }
   }">
@@ -43,6 +43,21 @@ ul {
 #app {
   overflow: hidden;
 
+  .readonly-input {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%
+    }
+  }
+
   .datav {
     background-color: #000;
     user-select: none;
@@ -54,12 +69,14 @@ ul {
   }
 
   .ant-modal-confirm-content {
-    font-size: 14px;
+    font-size: 26px;
+    padding: 16px 0;
   }
 
   .ant-modal-confirm-btns {
     button {
       border-radius: 100px;
+      min-width: 160px;
       margin-left: 16px;
       font-family: 'ddjbt';
     }

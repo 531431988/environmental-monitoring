@@ -4,7 +4,7 @@
     <div class="p-24 keyboard">
       <div class="m-auto text-center readonly">
         <a-input type="text" v-model:value="number" :maxlength="maxLength" readonly
-          class="mb-24  h-54 text-size-18 w-400 m-auto" placeholder="请输入" />
+          class="mb-24 text-size-32 w-400 m-auto" placeholder="请输入" />
       </div>
       <div class="flex flex-wrap justify-between">
         <div v-for="item in list" :key="item" class="m-8">
@@ -24,8 +24,8 @@
     </div>
     <template #footer>
       <div class="text-center">
-        <a-button class="mx-8 w-120 h-54 text-size-18" @click="number = ''; $emit('update:open', false)">取消</a-button>
-        <a-button type="primary" class="w-120 h-54 text-size-18" @click="onOk">确定</a-button>
+        <a-button class="mx-8 w-200 text-size-24" @click="number = ''; $emit('update:open', false)">取消</a-button>
+        <a-button type="primary" class="w-200 text-size-24" @click="onOk">确定</a-button>
       </div>
     </template>
 

@@ -38,7 +38,7 @@
             <div>{{ week }}</div>
             <div>{{ date }}</div>
           </div>
-          <span class="text-size-18 ">{{ time }}</span>
+          <span class="text-size-32">{{ time }}</span>
         </template>
         <template v-else>
           <ul class="nav list-none flex text-size-16" v-if="$route.path !== '/device-manage/edit'">
@@ -59,12 +59,12 @@
             <div class="i-ant-design:home-outlined text-size-20 text-success"></div>
           </div>
           <template v-if="isHome">
-            <div class="mx-32 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="onLogin">
+            <div class="mx-16 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="onLogin">
               <div class="i-ant-design:setting-outlined text-size-20 text-success"></div>
             </div>
           </template>
           <template v-else>
-            <div class="mx-32 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
+            <div class="mx-16 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
               <div class="i-ph:key-bold text-size-20 text-success"></div>
             </div>
           </template>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute title text-size-30px" @click="onGoHome">
+    <div class="absolute title text-size-36px" @click="onGoHome">
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
@@ -173,10 +173,10 @@ onUnmounted(() => {
   .nav {
     .item {
       font-size: 20px;
-      border-bottom: 5px solid transparent;
-      padding: 8px 0 3px;
+      border-bottom: 3px solid transparent;
+      padding: 8px 0;
       cursor: pointer;
-      margin-right: 18px;
+      margin-right: 24px;
 
       &.active {
         color: #4becd3;

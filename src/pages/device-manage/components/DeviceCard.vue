@@ -4,21 +4,21 @@
       <div class="flex items-center">
         <template v-if="data.currentStat === 'NORMAL'">
           <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
-          <span class=" text-size-14 text-success">正常</span>
+          <span class="text-size-18 text-success">正常</span>
         </template>
         <template v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
-          <span class=" text-size-14 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
-          <span class=" text-size-14 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
+          <span class="text-size-18 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
+          <span class="text-size-18 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
         </template>
         <template v-if="['OFFLINE', null].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
-          <span class=" text-size-14 text-warning">离线</span>
+          <span class="text-size-18 text-warning">离线</span>
         </template>
       </div>
-      <span class="text-size-14 text-white">{{ data.type == 2 ? '电压' : '温度' }}</span>
+      <span class="text-size-18 text-white">{{ data.type == 2 ? '电压' : '温度' }}</span>
     </div>
-    <h1 class=" text-size-18 text-white">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
+    <h1 class="text-size-24 text-white my-12">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
     <div class="flex items-center justify-between text-size-14">
       <div>地址/站号：{{ data.code }}</div>
       <div>波特率：{{ data.baudRate }}</div>
@@ -76,7 +76,7 @@ const className = computed(() => {
   }
 
   :deep(.ant-badge-status-text) {
-    font-size: 14px;
+    font-size: 20px;
     color: #fff;
   }
 
@@ -91,7 +91,7 @@ const className = computed(() => {
     top: 50px;
     right: 40px;
     font-size: 42px;
-    opacity: 0.2;
+    opacity: 0.15;
   }
 
   &.c::after {
@@ -122,16 +122,16 @@ const className = computed(() => {
     }
 
     &::before {
-      background: rgba(255, 255, 255, 0.05);
-      width: 50px;
+      background: rgba(255, 255, 255, 0.03);
+      width: 64px;
       right: 92px;
       height: 300px;
     }
 
     &::after {
-      width: 50px;
-      right: -58px;
-      background: rgba(255, 255, 255, 0.1);
+      width: 64px;
+      right: -24px;
+      background: rgba(255, 255, 255, 0.05);
       height: 300px;
     }
   }

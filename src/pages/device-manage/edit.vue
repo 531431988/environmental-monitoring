@@ -1,31 +1,31 @@
 <template>
   <div class="flex flex-col h-full edit">
-    <div class="p-16 mt-16">
+    <div class="p-16">
       <a-form ref="formRef" :model="form" autocomplete="off" @finish="onFinish">
         <ConfigCard title="设备基本信息">
           <div class="flex items-center justify-center">
             <a-row :gutter="16">
               <a-col>
                 <a-form-item label="设备名称" name="name" :rules="[{ required: true, message: '请输入' }]">
-                  <div @click="onClick('name')" class="readonly">
+                  <div @click="onClick('name')" class="readonly-input">
                     <a-input type="text" readonly v-model:value="form.name" placeholder="请输入" suffix="柜"
-                      class="w-100" />
+                      class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item name="shelf" :rules="[{ required: true, message: '请输入' }]">
-                  <div @click="onClick('shelf')" class="readonly">
+                  <div @click="onClick('shelf')" class="readonly-input">
                     <a-input type="text" readonly v-model:value="form.shelf" placeholder="请输入" suffix="层"
-                      class="w-100" />
+                      class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item name="slot" :rules="[{ required: true, message: '请输入' }]">
-                  <div @click="onClick('slot')" class="readonly">
+                  <div @click="onClick('slot')" class="readonly-input">
                     <a-input type="text" readonly v-model:value="form.slot" placeholder="请输入" suffix="号"
-                      class="w-100" />
+                      class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
@@ -39,22 +39,22 @@
               </a-col>
               <a-col>
                 <a-form-item label="地址/站号" name="code" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('code')" class="readonly">
-                    <a-input type="text" readonly v-model:value.number="form.code" placeholder="请输入" class="w-100" />
+                  <div @click="onClick('code')" class="readonly-input">
+                    <a-input type="text" readonly v-model:value.number="form.code" placeholder="请输入" class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
             </a-row>
           </div>
         </ConfigCard>
-        <ConfigCard title="RS485通信设置" class="my-24">
+        <ConfigCard title="RS485通信设置" class="my-16">
           <div class="flex items-center justify-center">
             <a-row :gutter="16">
               <a-col>
                 <a-form-item label="波特率" name="baudRate" :rules="[{ required: true, message: '请选择' }]">
                   <a-dropdown>
-                    <div class="readonly">
-                      <a-input type="text" readonly v-model:value="form.baudRate" placeholder="请选择" class="w-100" />
+                    <div class="readonly-input">
+                      <a-input type="text" readonly v-model:value="form.baudRate" placeholder="请选择" class="w-120" />
                     </div>
                     <template #overlay>
                       <a-menu @click="onSelect($event, 'baudRate')">
@@ -69,7 +69,7 @@
                       </a-menu>
                     </template>
                   </a-dropdown>
-                  <!--  <a-select v-model:value="form.baudRate" placeholder="请选择" class="!w-100">
+                  <!--  <a-select v-model:value="form.baudRate" placeholder="请选择" class="!w-120">
                     <a-select-option value="4800">4800</a-select-option>
                     <a-select-option value="9600">9600</a-select-option>
                     <a-select-option value="14400">14400</a-select-option>
@@ -114,15 +114,15 @@
             <a-row :gutter="16">
               <a-col>
                 <a-form-item label="工作区间" name="range" :rules="[{ required: true, message: '请选择' }]">
-                  <!-- <a-select v-model:value="form.range" placeholder="请选择" class="!w-100">
+                  <!-- <a-select v-model:value="form.range" placeholder="请选择" class="!w-120">
                     <a-select-option value="大于">大于</a-select-option>
                     <a-select-option value="小于">小于</a-select-option>
                     <a-select-option value="等于">等于</a-select-option>
                     <a-select-option value="区间值">区间值</a-select-option>
                   </a-select> -->
                   <a-dropdown>
-                    <div class="readonly">
-                      <a-input type="text" readonly v-model:value="form.range" placeholder="请选择" class="w-100" />
+                    <div class="readonly-input">
+                      <a-input type="text" readonly v-model:value="form.range" placeholder="请选择" class="w-120" />
                     </div>
                     <template #overlay>
                       <a-menu @click="onSelect($event, 'range')">
@@ -137,40 +137,40 @@
               </a-col>
               <a-col>
                 <a-form-item label="一级报警" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('firstAlarmMin')" class="readonly">
-                    <a-input type="text" readonly v-model:value="form.firstAlarmMin" placeholder="请输入" class="w-100" />
+                  <div @click="onClick('firstAlarmMin')" class="readonly-input">
+                    <a-input type="text" readonly v-model:value="form.firstAlarmMin" placeholder="请输入" class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item label="" name="firstAlarmMax" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('firstAlarmMax')" class="readonly">
-                    <a-input type="text" readonly v-model:value="form.firstAlarmMax" placeholder="请输入" class="w-100" />
+                  <div @click="onClick('firstAlarmMax')" class="readonly-input">
+                    <a-input type="text" readonly v-model:value="form.firstAlarmMax" placeholder="请输入" class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item label="二级报警" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('secondAlarmMin')" class="readonly">
-                    <a-input type="text" readonly v-model:value="form.secondAlarmMin" placeholder="请输入" class="w-100" />
+                  <div @click="onClick('secondAlarmMin')" class="readonly-input">
+                    <a-input type="text" readonly v-model:value="form.secondAlarmMin" placeholder="请输入" class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
               <a-col>
                 <a-form-item label="" name="secondAlarmMax" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('secondAlarmMax')" class="readonly">
-                    <a-input type="text" readonly v-model:value="form.secondAlarmMax" placeholder="请输入" class="w-100" />
+                  <div @click="onClick('secondAlarmMax')" class="readonly-input">
+                    <a-input type="text" readonly v-model:value="form.secondAlarmMax" placeholder="请输入" class="w-120" />
                   </div>
                 </a-form-item>
               </a-col>
             </a-row>
           </div>
         </ConfigCard>
-        <div class="flex justify-center mt-32">
-          <a-button type="primary" class="w-160 h-54 text-size-18 rounded-100">连接测试</a-button>
-          <a-button type="primary" ghost class="w-160 h-54 text-size-18 rounded-100 mx-24"
+        <div class="flex justify-center mt-48">
+          <a-button type="primary" class="w-200 rounded-100 text-size-24">连接测试</a-button>
+          <a-button type="primary" ghost class="w-200 rounded-100 mx-24 text-size-24"
             @click="$router.go(-1)">取消</a-button>
-          <a-button type="primary" class="w-160 h-54 text-size-18 rounded-100" html-type="submit">保存</a-button>
+          <a-button type="primary" class="w-200 rounded-100 text-size-24" html-type="submit">保存</a-button>
         </div>
       </a-form>
     </div>
@@ -258,19 +258,10 @@ async function onOk (val) {
 }
 
 .edit {
-
-  :deep(.readonly) {
-    position: relative;
-
-    &::after {
-      position: absolute;
-      content: '';
-      left: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%
+  :deep(.ant-radio-button-wrapper) {
+    &:not(:first-child)::before {
+      inset-block-start: 0;
+      padding-block: 0;
     }
   }
 

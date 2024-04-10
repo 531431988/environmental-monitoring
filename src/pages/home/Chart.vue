@@ -1,6 +1,6 @@
 <template>
   <div style="background: rgba(255, 255, 255, 0.1);">
-    <p class="web-font-dd text-center my-0 pt-12 text-size-14" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
+    <p class="web-font-dd text-center my-0 pt-12 text-size-18" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
       '温度' :
       '电压'}` }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />
@@ -57,15 +57,15 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 12
+        fontSize: 14
       },
     },
     data: [],
   },
   yAxis: {
     type: 'value',
-    min: 0,
-    splitNumber: 4,
+    scale: false,
+    splitNumber: 2,
     splitLine: {
       show: false,
     },
@@ -75,7 +75,7 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 12
+        fontSize: 14
       },
     },
   },
@@ -87,7 +87,10 @@ const option = reactive({
       smooth: true,
       data: [],
       label: {
-        show: true
+        show: true,
+        fontSize: 14,
+        color: '#fff',
+        textBorderColor: 'transparent'
       },
       lineStyle: {
         color: "#23AF84", // 线条颜色
