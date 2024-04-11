@@ -42,10 +42,9 @@ const alarmLog = ref([])
 const title = computed(() => {
   return route.query?.name
 })
-
 onMounted(async () => {
   try {
-    const { data } = await api.dailyQuery(1)
+    const { data } = await api.dailyQuery(route.query?.code || undefined)
     dailyQuery.value = data.map(item => ({
       name: dayjs(item.createTime).format('HH:mm'),
       value: item.data
@@ -54,7 +53,7 @@ onMounted(async () => {
 
   }
   try {
-    const { data } = await api.weeklyQuery(1)
+    const { data } = await api.weeklyQuery(route.query?.code || undefined)
     weeklyQuery.value = data.map(item => ({
       name: dayjs(item.createTime).format('MM-DD'),
       value: item.data
@@ -63,7 +62,7 @@ onMounted(async () => {
 
   }
   try {
-    const { data } = await api.monthlyQuery(1)
+    const { data } = await api.monthlyQuery(route.query?.code || undefined)
     monthlyQuery.value = data.map(item => ({
       name: dayjs(item.createTime).format('YYYY-MM-DD'),
       value: item.data

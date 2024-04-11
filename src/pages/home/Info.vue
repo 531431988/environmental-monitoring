@@ -5,12 +5,12 @@
         <a-form>
           <a-form-item label="设备名称">{{ form.name }}机柜{{ form.shelf }}层{{ form.slot }}号{{ form.type == 1 ? '温度' : '电压'
             }}</a-form-item>
-          <a-form-item :label="`最近报警阈值（${unit}）`">{{ form.lastAlarmData || '-' }}</a-form-item>
-          <a-form-item label="最近报警时间">{{ form.lastAlarmDate || '-' }}</a-form-item>
-          <a-form-item :label="`当前温度（${unit}）`">{{ form.currentData || '-' }}</a-form-item>
+          <a-form-item :label="`最近报警阈值（${unit}）`">{{ form.lastAlarmData }}</a-form-item>
+          <a-form-item label="最近报警时间">{{ form.lastAlarmDate }}</a-form-item>
+          <a-form-item :label="`当前温度（${unit}）`">{{ form.currentData }}</a-form-item>
           <a-row>
             <a-col :span="12">
-              <a-form-item label="地址/站号">{{ form.code || '-' }}</a-form-item>
+              <a-form-item label="地址/站号">{{ form.code }}</a-form-item>
             </a-col>
             <a-col :span="12">
               <a-form-item label="波特率">{{ form.baudRate }}</a-form-item>
