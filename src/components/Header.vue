@@ -97,7 +97,7 @@ const time = ref(dayjs().format('HH:mm:ss'))
 let timer = window.setInterval(() => {
   time.value = dayjs().format('HH:mm:ss')
 }, 1000)
-const title = ref('UPS蓄电池在线监测系统')
+const title = ref('蓄电池火灾防护系统')
 const loginTitle = ref('退出登录')
 const router = useRouter()
 const route = useRoute()
@@ -121,7 +121,7 @@ function onGoHome () {
   router.push('/')
 }
 function onLogin () {
-  loginTitle.value = 'UPS蓄电池在线监测系统'
+  loginTitle.value = '蓄电池火灾防护系统'
   openLogin.value = true
 }
 

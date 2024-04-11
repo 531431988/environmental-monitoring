@@ -17,7 +17,7 @@
           @click="form.password = ''; $emit('update:open', false)">取消</a-button>
         <a-button type="primary" class="w-200 rounded-100 ml-24 text-size-24" html-type="submit">{{ title === '退出登录' ?
           '退出' :
-          '登录'}}</a-button>
+          '登录' }}</a-button>
       </div>
     </a-form>
   </a-modal>
@@ -34,7 +34,7 @@ const props = defineProps({
   open: Boolean,
   title: {
     type: String,
-    default: 'UPS蓄电池在线监测系统'
+    default: '蓄电池火灾防护系统'
   }
 })
 const emits = defineEmits(['update:open', 'exit'])
