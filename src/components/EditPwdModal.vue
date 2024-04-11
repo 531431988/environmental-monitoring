@@ -9,13 +9,14 @@
     <a-form ref="formRef" :model="form" autocomplete="off" class="px-24" @finish="onFinish">
       <a-form-item name="password" :rules="[{ required: true, message: '请输入新密码' }]">
         <div @click="onClick('password')" class="readonly-input">
-          <a-input-password  readonly v-model:value="form.password" class=" rounded-100 px-24" placeholder="请输入新密码" />
+          <a-input-password :visibilityToggle="false" readonly v-model:value="form.password" class=" rounded-100 px-24"
+            placeholder="请输入新密码" />
         </div>
       </a-form-item>
       <a-form-item name="confirmPassword" :rules="[{ required: true, message: '请两次输入新密码' }]">
         <div @click="onClick('confirmPassword')" class="readonly-input">
-          <a-input-password readonly v-model:value="form.confirmPassword" class=" rounded-100 px-24"
-            placeholder="请两次输入新密码" />
+          <a-input-password :visibilityToggle="false" readonly v-model:value="form.confirmPassword"
+            class=" rounded-100 px-24" placeholder="请两次输入新密码" />
         </div>
       </a-form-item>
       <div class="flex my-32 justify-center m-auto">
@@ -25,7 +26,7 @@
       </div>
     </a-form>
   </a-modal>
-  <Keyboard v-model:open="show" @ok="onOk" />
+  <Keyboard v-model:open="show" :maxLength="8" @ok="onOk" />
 </template>
 
 <script setup>
