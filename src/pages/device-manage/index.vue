@@ -60,7 +60,7 @@ function onDel (item) {
   Modal.confirm({
     centered: true,
     title: '提示',
-    content: '确定要删除此条吗？',
+    content: '确定要删除此设备吗？',
     okText: '确定',
     cancelText: '取消',
     getContainer: useModalContainer,
