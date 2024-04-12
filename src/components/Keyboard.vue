@@ -46,10 +46,10 @@ const props = defineProps({
     default: ''
   }
 })
-const emits = defineEmits(['update:open', 'update:value'])
+const emits = defineEmits(['update:open', 'update:value', 'ok'])
 const list = ref(['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'])
 function onClick (val) {
-  if (props.value.length < props.maxLength) emits('update:value', props.value += val)
+  if (String(props.value).length < props.maxLength) emits('update:value', props.value += val)
 
 }
 function onDel () {
@@ -58,6 +58,7 @@ function onDel () {
 function onOk () {
   emits('update:open', false)
   emits('update:value', props.value)
+  emits('ok', props.value)
 }
 </script>
 
