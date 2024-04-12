@@ -15,7 +15,6 @@ const style = {
   alignItems: 'center',
   background: 'rgba(0, 0, 0, .5)',
   zIndex: 999,
-  'pointer-events': 'none'
 }
 
 function getInstance () {
@@ -56,7 +55,7 @@ function getInstance () {
     })
     const ele = document.createElement('div')
     instance = vn.mount(ele)
-    document.body.appendChild(ele)
+    document.querySelector('#datav .datav-scale').appendChild(ele)
   }
   return instance
 }
