@@ -35,6 +35,23 @@
                     <a-radio-button :value="1" class="w-80 text-center">温度</a-radio-button>
                     <a-radio-button :value="2" class="w-80 text-center">电压</a-radio-button>
                   </a-radio-group>
+                  <!-- <a-dropdown :trigger="['click']">
+                    <div class="readonly-input">
+                      <a-input type="text" readonly v-model:value="form.type" placeholder="请选择" class="w-120">
+                        <template #suffix>
+                          <div class="i-ant-design:down-outlined text-size-20 text-cool-gray-300"></div>
+                        </template>
+</a-input>
+</div>
+<template #overlay>
+                      <a-menu @click="onSelect($event, 'range')">
+                        <a-menu-item :key="1">温度</a-menu-item>
+                        <a-menu-item :key="2">电压</a-menu-item>
+                        <a-menu-item :key="3">继电器</a-menu-item>
+                        <a-menu-item :key="4">通信设备</a-menu-item>
+                      </a-menu>
+                    </template>
+</a-dropdown> -->
                 </a-form-item>
               </a-col>
               <a-col>
@@ -112,54 +129,57 @@
         <ConfigCard title="报警阈值设置">
           <div class="flex items-center justify-center">
             <a-row :gutter="16">
-              <a-col>
+              <!-- <a-col>
                 <a-form-item label="工作区间" name="range" :rules="[{ required: true, message: '请选择' }]">
-                  <!-- <a-select v-model:value="form.range" placeholder="请选择" class="!w-120">
+                  <a-select v-model:value="form.range" placeholder="请选择" class="!w-120">
                     <a-select-option value="大于">大于</a-select-option>
                     <a-select-option value="小于">小于</a-select-option>
                     <a-select-option value="等于">等于</a-select-option>
                     <a-select-option value="区间值">区间值</a-select-option>
-                  </a-select> -->
-                  <a-dropdown>
+                  </a-select>
+                  <a-dropdown :trigger="['click']">
                     <div class="readonly-input">
-                      <a-input type="text" readonly v-model:value="form.range" placeholder="请选择" class="w-120" />
+                      <a-input type="text" readonly v-model:value="form.range" placeholder="请选择" class="w-120">
+                        <template #suffix>
+                          <div class="i-ant-design:down-outlined text-size-20 text-cool-gray-300"></div>
+                        </template>
+                      </a-input>
                     </div>
                     <template #overlay>
                       <a-menu @click="onSelect($event, 'range')">
-                        <a-menu-item key="大于">大于</a-menu-item>
-                        <a-menu-item key="小于">小于</a-menu-item>
-                        <a-menu-item key="等于">等于</a-menu-item>
-                        <a-menu-item key="区间值">区间值</a-menu-item>
+                        <a-menu-item key="工作区间">工作区间</a-menu-item>
+                        <a-menu-item key="一级报警">一级报警</a-menu-item>
+                        <a-menu-item key="二级报警">二级报警</a-menu-item>
                       </a-menu>
                     </template>
                   </a-dropdown>
                 </a-form-item>
-              </a-col>
+              </a-col> -->
+              <!-- 大于正常就是一级 -->
               <a-col>
-                <a-form-item label="一级报警" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('firstAlarmMin')" class="readonly-input">
-                    <a-input type="text" readonly v-model:value="form.firstAlarmMin" placeholder="请输入" class="w-120" />
+                <a-form-item label="测量值超过" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
+                  <div class="flex items-center">
+                    <div @click="onClick('firstAlarmMin')" class="readonly-input">
+                      <a-input type="text" readonly v-model:value="form.firstAlarmMin" placeholder="请输入"
+                        class="w-120" />
+                    </div>
+                    <span class="text-white ml-8 text-size-16 opacity-80">
+                      时自动1级报警
+                    </span>
                   </div>
+                  <span class="text-white text-size-16 opacity-80">测量值低于一级报警值时为正常状态</span>
                 </a-form-item>
               </a-col>
+              <!-- 大于一级就是二级 -->
               <a-col>
-                <a-form-item label="" name="firstAlarmMax" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('firstAlarmMax')" class="readonly-input">
-                    <a-input type="text" readonly v-model:value="form.firstAlarmMax" placeholder="请输入" class="w-120" />
-                  </div>
-                </a-form-item>
-              </a-col>
-              <a-col>
-                <a-form-item label="二级报警" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('secondAlarmMin')" class="readonly-input">
-                    <a-input type="text" readonly v-model:value="form.secondAlarmMin" placeholder="请输入" class="w-120" />
-                  </div>
-                </a-form-item>
-              </a-col>
-              <a-col>
-                <a-form-item label="" name="secondAlarmMax" :rules="[{ required: true, message: '请选择' }]">
-                  <div @click="onClick('secondAlarmMax')" class="readonly-input">
-                    <a-input type="text" readonly v-model:value="form.secondAlarmMax" placeholder="请输入" class="w-120" />
+                <a-form-item label="测量值超过" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
+                  <div class="flex items-center">
+                    <div @click="onClick('secondAlarmMin')" class="readonly-input">
+                      <a-input type="text" readonly v-model:value="form.secondAlarmMin" placeholder="请输入" class="w-120" />
+                    </div>
+                    <span class="text-white ml-8 text-size-16 opacity-80">
+                      时自动2级报警
+                    </span>
                   </div>
                 </a-form-item>
               </a-col>
@@ -175,7 +195,7 @@
       </a-form>
     </div>
   </div>
-  <Keyboard v-model:open="show" @ok="onOk" />
+  <Keyboard v-model:open="show" v-model:value="form[key]" @ok="onOk" />
 </template>
 <route lang="json">{
   "name": "device-manage-edit",
@@ -244,9 +264,15 @@ const onFinish = async (values) => {
 };
 
 
-async function onOk (val) {
-  console.log(val, key.value);
-  form.value[key.value] = val
+function onOk (val) {
+  form.value[key.value] = String(val)
+  if (key.value === 'secondAlarmMin') {
+    if (form.value.secondAlarmMin <= form.value.firstAlarmMin) {
+      message.error('二级报警不能小于一级报警')
+      form.value[key.value] = ''
+    }
+  }
+
 }
 
 
