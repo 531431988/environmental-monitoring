@@ -16,7 +16,7 @@
           <span class="text-size-18 text-warning">离线</span>
         </template>
       </div>
-      <span class="text-size-18 text-white">{{ data.type == 2 ? '电压' : '温度' }}</span>
+      <span class="text-size-24 text-white">{{ data.type == 2 ? '电压' : '温度' }}</span>
     </div>
     <h1 class="text-size-24 text-white my-12">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
     <div class="flex items-center justify-between text-size-14">
