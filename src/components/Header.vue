@@ -50,7 +50,7 @@
       </div>
       <div class="flex items-center justify-between text-size-12 w-300px">
         <div>
-          <div>系统型号 LINUX</div>
+          <div>系统型号 U2204FN41</div>
           <div>软件版本 V1.0.0</div>
         </div>
         <div class="flex items-center">
