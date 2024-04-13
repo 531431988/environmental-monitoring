@@ -40,3 +40,10 @@ export const getCodes = () => http({
   url: `/monitor/device/getCodes`,
   method: "GET"
 });
+
+
+// 连接测试
+export const testing = (code) => http({
+  url: `/monitor/device/testing/${code}`,
+  method: "GET"
+});

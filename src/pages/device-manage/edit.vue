@@ -134,7 +134,7 @@
           </div>
         </ConfigCard>
         <div class="flex justify-center mt-48">
-          <a-button type="primary" class="w-200 rounded-100 text-size-24">连接测试</a-button>
+          <a-button type="primary" class="w-200 rounded-100 text-size-24" @click="onTest">连接测试</a-button>
           <a-button type="primary" ghost class="w-200 rounded-100 mx-24 text-size-24"
             @click="$router.go(-1)">取消</a-button>
           <a-button type="primary" class="w-200 rounded-100 text-size-24" html-type="submit">保存</a-button>
@@ -193,6 +193,19 @@ function onClick (name) {
 function onSelect (e, name) {
   form.value[name] = e.key
 }
+
+
+async function onTest () {
+  if(form.value.code === '') {
+    message.error('请输入设备编号')
+    return
+  }
+  const { data, code } = await api.testing(form.value.code)
+ if(code === 200) {
+   message.success('连接成功')
+ }
+}
+
 const onFinish = async (values) => {
   const isEdit = route.query?.code !== undefined
   try {
