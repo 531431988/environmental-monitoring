@@ -35,23 +35,6 @@
                     <a-radio-button :value="1" class="w-80 text-center">温度</a-radio-button>
                     <a-radio-button :value="2" class="w-80 text-center">电压</a-radio-button>
                   </a-radio-group>
-                  <!-- <a-dropdown :trigger="['click']">
-                    <div class="readonly-input">
-                      <a-input type="text" readonly v-model:value="form.type" placeholder="请选择" class="w-120">
-                        <template #suffix>
-                          <div class="i-ant-design:down-outlined text-size-20 text-cool-gray-300"></div>
-                        </template>
-</a-input>
-</div>
-<template #overlay>
-                      <a-menu @click="onSelect($event, 'range')">
-                        <a-menu-item :key="1">温度</a-menu-item>
-                        <a-menu-item :key="2">电压</a-menu-item>
-                        <a-menu-item :key="3">继电器</a-menu-item>
-                        <a-menu-item :key="4">通信设备</a-menu-item>
-                      </a-menu>
-                    </template>
-</a-dropdown> -->
                 </a-form-item>
               </a-col>
               <a-col>
@@ -69,7 +52,7 @@
             <a-row :gutter="24">
               <a-col>
                 <a-form-item label="波特率" name="baudRate" :rules="[{ required: true, message: '请选择' }]">
-                  <a-dropdown>
+                  <a-dropdown overlayClassName="baud-rate">
                     <div class="readonly-input">
                       <a-input type="text" readonly v-model:value="form.baudRate" placeholder="请选择" class="w-120" />
                     </div>
@@ -86,16 +69,6 @@
                       </a-menu>
                     </template>
                   </a-dropdown>
-                  <!--  <a-select v-model:value="form.baudRate" placeholder="请选择" class="!w-120">
-                    <a-select-option value="4800">4800</a-select-option>
-                    <a-select-option value="9600">9600</a-select-option>
-                    <a-select-option value="14400">14400</a-select-option>
-                    <a-select-option value="19200">19200</a-select-option>
-                    <a-select-option value="38400">38400</a-select-option>
-                    <a-select-option value="56000">56000</a-select-option>
-                    <a-select-option value="57600">57600</a-select-option>
-                    <a-select-option value="115200">115200</a-select-option>
-                  </a-select> -->
                 </a-form-item>
               </a-col>
               <a-col>
@@ -129,35 +102,9 @@
         <ConfigCard title="报警阈值设置">
           <div class="flex items-center justify-center">
             <a-row :gutter="24">
-              <!-- <a-col>
-                <a-form-item label="工作区间" name="range" :rules="[{ required: true, message: '请选择' }]">
-                  <a-select v-model:value="form.range" placeholder="请选择" class="!w-120">
-                    <a-select-option value="大于">大于</a-select-option>
-                    <a-select-option value="小于">小于</a-select-option>
-                    <a-select-option value="等于">等于</a-select-option>
-                    <a-select-option value="区间值">区间值</a-select-option>
-                  </a-select>
-                  <a-dropdown :trigger="['click']">
-                    <div class="readonly-input">
-                      <a-input type="text" readonly v-model:value="form.range" placeholder="请选择" class="w-120">
-                        <template #suffix>
-                          <div class="i-ant-design:down-outlined text-size-20 text-cool-gray-300"></div>
-                        </template>
-                      </a-input>
-                    </div>
-                    <template #overlay>
-                      <a-menu @click="onSelect($event, 'range')">
-                        <a-menu-item key="工作区间">工作区间</a-menu-item>
-                        <a-menu-item key="一级报警">一级报警</a-menu-item>
-                        <a-menu-item key="二级报警">二级报警</a-menu-item>
-                      </a-menu>
-                    </template>
-                  </a-dropdown>
-                </a-form-item>
-              </a-col> -->
               <!-- 大于正常就是一级 -->
               <a-col>
-                <a-form-item label="测量值超过" name="firstAlarmMin" :rules="[{ required: true, message: '请选择' }]">
+                <a-form-item label="测量值超过" name="firstAlarmMin" :rules="[{ required: true, message: '请输入' }]">
                   <div class="flex items-center">
                     <div @click="onClick('firstAlarmMin')" class="readonly-input">
                       <a-input type="text" readonly v-model:value="form.firstAlarmMin" placeholder="请输入"
@@ -172,7 +119,7 @@
               </a-col>
               <!-- 大于一级就是二级 -->
               <a-col>
-                <a-form-item label="测量值超过" name="secondAlarmMin" :rules="[{ required: true, message: '请选择' }]">
+                <a-form-item label="测量值超过" name="secondAlarmMin" :rules="[{ required: true, message: '请输入' }]">
                   <div class="flex items-center">
                     <div @click="onClick('secondAlarmMin')" class="readonly-input">
                       <a-input type="text" readonly v-model:value="form.secondAlarmMin" placeholder="请输入" class="w-120" />
@@ -265,7 +212,7 @@ const onFinish = async (values) => {
 
 
 function onOk (val) {
-  form.value[key.value] = String(val)
+  form.value[key.value] = val
   if (key.value === 'secondAlarmMin') {
     if (form.value.secondAlarmMin <= form.value.firstAlarmMin) {
       message.error('二级报警不能小于一级报警')
@@ -290,6 +237,10 @@ function onOk (val) {
       padding-block: 0;
     }
   }
-
+}
+</style>
+<style>
+.baud-rate .ant-dropdown-menu-item{
+  padding: 8px !important;
 }
 </style>
