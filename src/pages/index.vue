@@ -35,7 +35,7 @@ function formatChartData (data) {
 }
 
 useRequest(api.dashboard, {
-  pollingInterval: 10000,
+  pollingInterval: 60000,
   pollingWhenHidden: true,
   onSuccess: ({ data = [] }) => {
     chartData.value = formatChartData(data)
