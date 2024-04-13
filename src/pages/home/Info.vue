@@ -16,13 +16,12 @@
               <a-form-item label="波特率">{{ form.baudRate }}</a-form-item>
             </a-col>
           </a-row>
-          <a-form-item label="工作区间">{{ form.range }}</a-form-item>
-          <a-form-item :label="`一级报警阈值（${unit}）`">{{ form.firstAlarmMin }}-{{ form.firstAlarmMax }}</a-form-item>
-          <a-form-item :label="`二级报警阈值（${unit}）`">{{ form.secondAlarmMin }}-{{ form.secondAlarmMax }}</a-form-item>
+          <a-form-item :label="`一级报警阈值（${unit}）`">{{ form.firstAlarmMin }}</a-form-item>
+          <a-form-item :label="`二级报警阈值（（${unit}）`">{{ form.secondAlarmMin }}</a-form-item>
         </a-form>
       </a-col>
       <a-col class="flex flex-col">
-        <a-button type="primary" @click="onClick(1)" class="text-size-20">解除报警</a-button>
+        <a-button type="primary" v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(form.currentStat)"@click="onClick(1)" class="text-size-20">解除报警</a-button>
         <a-button type="primary" @click="onClick(2)" class="text-size-20 my-32">继电器合</a-button>
         <a-button type="primary" @click="onClick(3)" danger class="text-size-20">继电器断</a-button>
       </a-col>
