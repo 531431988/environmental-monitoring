@@ -4,7 +4,7 @@
       <a-form ref="formRef" :model="form" autocomplete="off" @finish="onFinish">
         <ConfigCard title="设备基本信息">
           <div class="flex items-center justify-center">
-            <a-row :gutter="16">
+            <a-row :gutter="24">
               <a-col>
                 <a-form-item label="设备名称" name="name" :rules="[{ required: true, message: '请输入' }]">
                   <div @click="onClick('name')" class="readonly-input">
@@ -66,7 +66,7 @@
         </ConfigCard>
         <ConfigCard title="RS485通信设置" class="my-16">
           <div class="flex items-center justify-center">
-            <a-row :gutter="16">
+            <a-row :gutter="24">
               <a-col>
                 <a-form-item label="波特率" name="baudRate" :rules="[{ required: true, message: '请选择' }]">
                   <a-dropdown>
@@ -128,7 +128,7 @@
         </ConfigCard>
         <ConfigCard title="报警阈值设置">
           <div class="flex items-center justify-center">
-            <a-row :gutter="16">
+            <a-row :gutter="24">
               <!-- <a-col>
                 <a-form-item label="工作区间" name="range" :rules="[{ required: true, message: '请选择' }]">
                   <a-select v-model:value="form.range" placeholder="请选择" class="!w-120">
@@ -163,11 +163,11 @@
                       <a-input type="text" readonly v-model:value="form.firstAlarmMin" placeholder="请输入"
                         class="w-120" />
                     </div>
-                    <span class="text-white ml-8 text-size-16 opacity-80">
+                    <span class="text-white ml-8 text-size-16">
                       时自动1级报警
                     </span>
                   </div>
-                  <span class="text-white text-size-16 opacity-80">测量值低于一级报警值时为正常状态</span>
+                  <span class="text-white text-size-14 opacity-80">测量值低于一级报警值时为正常状态</span>
                 </a-form-item>
               </a-col>
               <!-- 大于一级就是二级 -->
@@ -177,7 +177,7 @@
                     <div @click="onClick('secondAlarmMin')" class="readonly-input">
                       <a-input type="text" readonly v-model:value="form.secondAlarmMin" placeholder="请输入" class="w-120" />
                     </div>
-                    <span class="text-white ml-8 text-size-16 opacity-80">
+                    <span class="text-white ml-8 text-size-16">
                       时自动2级报警
                     </span>
                   </div>
