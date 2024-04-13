@@ -26,6 +26,7 @@ declare module 'vue' {
     ARadioButton: typeof import('ant-design-vue/es')['RadioButton']
     ARadioGroup: typeof import('ant-design-vue/es')['RadioGroup']
     ARow: typeof import('ant-design-vue/es')['Row']
+    ASwitch: typeof import('ant-design-vue/es')['Switch']
     Bg: typeof import('./components/Bg.vue')['default']
     Card: typeof import('./components/Card.vue')['default']
     Datav: typeof import('./components/datav/index.vue')['default']

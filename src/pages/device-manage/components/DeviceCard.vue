@@ -3,20 +3,23 @@
     <div class="flex justify-between">
       <div class="flex items-center">
         <template v-if="data.currentStat === 'NORMAL'">
-          <div class="w-10 h-10 rounded-100 bg-success mr-8"></div>
-          <span class="text-size-18 text-success">正常</span>
+          <div class="w-10 h-10 rounded-100 bg-white mr-8"></div>
+          <span class="text-size-18 text-white">在线</span>
         </template>
-        <template v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(data.currentStat)">
+       <!--  <template v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
           <span class="text-size-18 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
           <span class="text-size-18 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
-        </template>
+        </template> -->
         <template v-if="['OFFLINE', null].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
           <span class="text-size-18 text-warning">离线</span>
         </template>
       </div>
-      <span class="text-size-24 text-white">{{ data.type == 2 ? '电压' : '温度' }}</span>
+      <span class="text-size-24 text-white" v-if="data.type == 1">温度</span>
+      <span class="text-size-24 text-white" v-if="data.type == 2">电压</span>
+      <span class="text-size-24 text-white" v-if="data.type == 3">继电器</span>
+      <span class="text-size-24 text-white" v-if="data.type == 4">通信设备</span>
     </div>
     <h1 class="text-size-24 text-white my-12">{{ data.name }}机柜{{ data.shelf }}层{{ data.slot }}号</h1>
     <div class="flex items-center justify-between text-size-14">
@@ -48,8 +51,10 @@ const className = computed(() => {
   return {
     c: props.data.type === 1,
     v: props.data.type === 2,
-    warn: ['FIRST_LEVEL', 'SECOND_LEVEL'].includes(props.data.currentStat),
-    error: ['OFFLINE', null].includes(props.data.currentStat),
+    j: props.data.type === 3,
+    t: props.data.type === 4,
+    // warn: ['FIRST_LEVEL', 'SECOND_LEVEL'].includes(props.data.currentStat),
+    error: [1,2].includes(props.data.type) && ['OFFLINE', null].includes(props.data.currentStat),
   }
 })
 </script>
@@ -60,19 +65,25 @@ const className = computed(() => {
   color: #dcdcdc;
   border-radius: 16px;
   overflow: hidden;
-  background-image: linear-gradient(to right,
-      rgba(255, 255, 255, 0.2),
-      rgba(128, 128, 128, 0.2));
+  &.c {
+    background: #b35400;
+    //animation: warnBg 1s linear infinite;
+  }
 
-  &.warn {
-    background: rgba(244, 69, 70, 0.1);
-    animation: warnBg 1s linear infinite;
+  &.v {
+    background: #4577af;
+  }
+
+  &.j {
+    background: #2c2c2c;
+  }
+
+  &.t {
+    background: #51205a;
   }
 
   &.error {
-    background: linear-gradient(to right,
-        rgba(246, 184, 68, 0.5),
-        rgba(226, 179, 51, 0.5));
+    background: #6e6e6e;
   }
 
   :deep(.ant-badge-status-text) {
@@ -94,13 +105,13 @@ const className = computed(() => {
     opacity: 0.15;
   }
 
-  &.c::after {
+  /*   &.c::after {
     content: '°C';
   }
 
   &.v::after {
     content: 'V';
-  }
+  } */
 
   &::before {
     width: 100px;
