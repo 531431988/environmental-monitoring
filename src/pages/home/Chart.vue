@@ -1,6 +1,6 @@
 <template>
   <div class="chart-bg" :class="{'error': ['SECOND_LEVEL', 'FIRST_LEVEL'].includes(status)}">
-    <p class="web-font-dd text-center my-0 pt-12 text-size-18" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
+    <p class="text-center my-0 pt-12 text-size-18" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
       '温度' :
       '电压'}` }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />

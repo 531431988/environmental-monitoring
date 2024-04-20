@@ -38,10 +38,10 @@
             <div>{{ week }}</div>
             <div>{{ date }}</div>
           </div>
-          <span class="text-size-32">{{ time }}</span>
+          <span class="text-size-32 web-font-dd">{{ time }}</span>
         </template>
         <template v-else>
-          <ul class="nav list-none flex text-size-16" v-if="$route.path !== '/device-manage/edit'">
+          <ul class="nav list-none flex text-size-16 web-font-dd" v-if="$route.path !== '/device-manage/edit'">
             <li v-for="(item, index) in navList" :class="{ item: true, active: $route.path === item.to }" :key="index"
               @click="$router.push(item.to)">{{ item.text }}</li>
           </ul>
@@ -75,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="absolute title text-size-36px" @click="onGoHome">
+    <div class="absolute title text-size-38px web-font-dd" @click="onGoHome">
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>

@@ -8,7 +8,7 @@
       colorBorderSecondary: 'transparent',
       controlHeight: 64,
       fontSize: 20,
-      fontFamily: 'ddjbt'
+      fontFamily: 'alph'
     }
   }">
     <Datav :width="1280" :height="800" id="datav" mode="fit" class="flex flex-col">
@@ -26,8 +26,8 @@ html,
 #app {
   height: 100%;
   background: #022f30;
-  font-family: 'ddjbt';
   color: #b0d9d9;
+  font-family: "alph";
 }
 
 body {
