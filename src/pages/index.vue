@@ -1,10 +1,10 @@
 <template>
-  <a-row :gutter="[16, 16]" class="h-full px-12 pt-6 pb-12">
+  <a-row :gutter="[24, 24]" class="h-full px-12 pt-6 pb-12">
     <a-col :span="24" class="h-full">
       <Card title="实时监控" class="h-full">
-        <a-row :gutter="[8, 8]">
+        <a-row :gutter="[16, 16]">
           <a-col :span="8" v-for="(item, index) in chartData" :key="index">
-            <Chart :height="180" :status="item.status" :type="item.type" :title="item.title" :data="item.data" @click="onLookDetail(item)" />
+            <Chart :height="170" :status="item.status" :type="item.type" :title="item.title" :data="item.data" @click="onLookDetail(item)" />
           </a-col>
         </a-row>
       </Card>
