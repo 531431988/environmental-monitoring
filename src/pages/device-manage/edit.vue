@@ -204,7 +204,7 @@ async function onTest () {
  if(data) {
    message.success('连接成功')
  } else {
-  message.success('请检查设备信息和接线是否正确')
+  message.error('请检查设备信息和接线是否正确')
  }
 }
 
