@@ -61,7 +61,7 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 15
+        fontSize: 14
       },
     },
     data: [],
@@ -79,7 +79,7 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 15
+        fontSize: 14
       },
     },
   },
