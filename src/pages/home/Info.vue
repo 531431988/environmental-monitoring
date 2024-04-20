@@ -22,8 +22,8 @@
       </a-col>
       <a-col class="flex flex-col">
         <a-button type="primary" v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(form.currentStat)"@click="onClick(1)" class="text-size-20">解除报警</a-button>
-        <a-button type="primary" @click="onClick(2)" class="text-size-20 my-32">继电器合</a-button>
-        <a-button type="primary" @click="onClick(3)" danger class="text-size-20">继电器断</a-button>
+        <a-button type="primary" @click="onClick(2)" class="text-size-18 my-32">继电器合</a-button>
+        <a-button type="primary" @click="onClick(3)" danger class="text-size-18">继电器断</a-button>
       </a-col>
     </a-row>
   </div>
@@ -87,13 +87,13 @@ function onClick (type) {
   :deep(.ant-form-item) {
     line-height: 1;
     color: #fff !important;
-    font-size: 13px;
+    font-size: 15px;
     margin-bottom: 0;
 
     .ant-form-item-label>label {
       height: 32px;
       color: rgba(255, 255, 255, 0.6) !important;
-      font-size: 13px;
+      font-size: 15px;
     }
 
     .ant-form-item-control-input {

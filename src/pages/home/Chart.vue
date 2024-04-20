@@ -49,7 +49,7 @@ const option = reactive({
     top: 24,
     left: '5%',
     right: '5%',
-    bottom: 8,
+    bottom: 16,
     containLabel: true
   },
   xAxis: {
@@ -61,7 +61,7 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 14
+        fontSize: 15
       },
     },
     data: [],
@@ -79,7 +79,7 @@ const option = reactive({
     axisLabel: {
       textStyle: {
         color: 'rgba(255,255,255,0.5)',
-        fontSize: 14
+        fontSize: 15
       },
     },
   },
@@ -92,7 +92,7 @@ const option = reactive({
       data: [],
       label: {
         show: true,
-        fontSize: 14,
+        fontSize: 15,
         color: '#fff',
         textBorderColor: 'transparent'
       },
