@@ -32,7 +32,7 @@
       <div>停止位：{{ data.stopbits }}</div>
     </div>
     <div class="line"></div>
-    <transition>
+    <transition v-if="[1,2].includes(data.type)">
       <div class="operate flex justify-center items-center" v-if="data.show">
         <div class="i-ant-design:form-outlined text-size-52 text-success" @click.stop="$emit('edit')"></div>
         <div class="i-ant-design:delete-outlined  text-size-52 ml-32 text-error" @click.stop="$emit('del')"></div>
