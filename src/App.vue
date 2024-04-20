@@ -42,7 +42,9 @@ ul {
 
 #app {
   overflow: hidden;
-
+.ant-btn{
+  line-height: 1;
+}
   .readonly-input {
     position: relative;
 
