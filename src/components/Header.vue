@@ -79,7 +79,7 @@
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
-  <LoginModal v-model:open="openLogin" :title="loginTitle" @exit="onPower" />
+  <LoginModal v-model:open="openLogin" :title="loginTitle" />
   <EditPwdModal v-model:open="openEditPwd" />
 </template>
 
