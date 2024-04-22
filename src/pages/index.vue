@@ -20,6 +20,7 @@ import Warn from './home/Warn.vue'
 import { useRequest } from 'vue-request';
 import * as api from '@/api/home'
 import dayjs from 'dayjs';
+import { onUnmounted } from 'vue';
 const chartData = ref([])
 const warnData = ref([])
 const router = useRouter()
@@ -34,7 +35,7 @@ function formatChartData (data) {
   }))
 }
 
-useRequest(api.dashboard, {
+const { cancel } = useRequest(api.dashboard, {
   pollingInterval: 60000,
   onSuccess: ({ data = [] }) => {
     chartData.value = formatChartData(data)
@@ -54,6 +55,9 @@ onMounted(async () => {
   } catch (error) {
 
   }
+})
+onUnmounted(() => {
+  cancel()
 })
 
 </script>
