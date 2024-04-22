@@ -31,17 +31,17 @@
       </g>
     </svg>
 
-    <div class="flex items-center justify-between absolute left-24 right-24 top-20">
+    <div class="flex items-center justify-between absolute left-24 right-24 top-15">
       <div class="flex items-center">
         <template v-if="isHome">
           <div class="text-size-12 text-success pr-24">
             <div>{{ week }}</div>
             <div>{{ date }}</div>
           </div>
-          <span class="text-size-32">{{ time }}</span>
+          <span class="text-size-32 web-font-dd">{{ time }}</span>
         </template>
         <template v-else>
-          <ul class="nav list-none flex text-size-16" v-if="$route.path !== '/device-manage/edit'">
+          <ul class="nav list-none flex text-size-16 web-font-dd" v-if="$route.path !== '/device-manage/edit'">
             <li v-for="(item, index) in navList" :class="{ item: true, active: $route.path === item.to }" :key="index"
               @click="$router.push(item.to)">{{ item.text }}</li>
           </ul>
@@ -54,32 +54,32 @@
           <div>软件版本 V1.0.0</div>
         </div>
         <div class="flex items-center">
-          <div v-if="route.path !== '/'" class="w-40 h-40 rounded-100 btn flex justify-center items-center"
+          <div v-if="route.path !== '/'" class="w-48 h-48 rounded-100 btn flex justify-center items-center"
             @click="onGoHome">
             <div class="i-ant-design:home-outlined text-size-20 text-success"></div>
           </div>
           <template v-if="isHome">
-            <div class="mx-16 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="onLogin">
+            <div class="mx-16 w-48 h-48 rounded-100 btn flex justify-center items-center" @click="onLogin">
               <div class="i-ant-design:setting-outlined text-size-20 text-success"></div>
             </div>
           </template>
           <template v-else>
-            <div class="mx-16 w-40 h-40 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
+            <div class="mx-16 w-48 h-48 rounded-100 btn flex justify-center items-center" @click="openEditPwd = true">
               <div class="i-ph:key-bold text-size-20 text-success"></div>
             </div>
           </template>
-          <div class="w-40 h-40 rounded-100 btn flex justify-center items-center"
+          <div class="w-48 h-48 rounded-100 btn flex justify-center items-center"
             @click="loginTitle = '退出登录'; openLogin = true">
             <div class="i-mingcute:power-fill text-size-20 text-error"></div>
           </div>
         </div>
       </div>
     </div>
-    <div class="absolute title text-size-36px" @click="onGoHome">
+    <div class="absolute title text-size-40px web-font-dd" @click="onGoHome">
       <span v-for="(item, index) in title" :key="index">{{ item }}</span>
     </div>
   </div>
-  <LoginModal v-model:open="openLogin" :title="loginTitle" @exit="onPower" />
+  <LoginModal v-model:open="openLogin" :title="loginTitle" />
   <EditPwdModal v-model:open="openEditPwd" />
 </template>
 

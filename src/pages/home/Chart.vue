@@ -1,6 +1,6 @@
 <template>
-  <div style="background: rgba(255, 255, 255, 0.1);">
-    <p class="web-font-dd text-center my-0 pt-12 text-size-18" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
+  <div class="chart-bg" :class="{'error': ['SECOND_LEVEL', 'FIRST_LEVEL'].includes(status)}">
+    <p class="text-center my-0 pt-12 text-size-18" style="color: #bfffff;">{{ title }}{{ `-${type == 1 ?
       '温度' :
       '电压'}` }}</p>
     <v-chart class="chart" :option="option" :autoresize="true" :style="`height: ${height}px`" />
@@ -32,6 +32,10 @@ const props = defineProps({
   type: {
     type: [Number, String],
     default: 1
+  },
+  status: {
+    type: String,
+    default: ''
   }
 })
 use([
@@ -45,7 +49,7 @@ const option = reactive({
     top: 24,
     left: '5%',
     right: '5%',
-    bottom: 8,
+    bottom: 16,
     containLabel: true
   },
   xAxis: {
@@ -88,7 +92,7 @@ const option = reactive({
       data: [],
       label: {
         show: true,
-        fontSize: 14,
+        fontSize: 15,
         color: '#fff',
         textBorderColor: 'transparent'
       },
@@ -144,5 +148,28 @@ watch(() => props.data, (newVal) => {
 <style scoped>
 .chart {
   overflow: hidden;
+}
+</style>
+<style lang="less" scoped>
+.chart-bg{
+  background: rgba(255, 255, 255, 0.05);
+  &.error{
+    background: #b35400;
+    animation: warnBg 1s linear infinite;
+
+  }
+}
+@keyframes warnBg {
+  0% {
+    background: rgba(244, 69, 70, 0.05);
+  }
+
+  50% {
+    background: rgba(244, 69, 70, 0.8);
+  }
+
+  100% {
+    background: rgba(244, 69, 70, 0.2);
+  }
 }
 </style>

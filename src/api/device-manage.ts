@@ -43,7 +43,7 @@ export const getCodes = () => http({
 
 
 // 连接测试
-export const testing = (code) => http({
-  url: `/monitor/device/testing/${code}`,
+export const testing = (code, type) => http({
+  url: `/monitor/device/testing/${code}/${type}`,
   method: "GET"
 });

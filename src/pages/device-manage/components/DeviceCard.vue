@@ -6,15 +6,15 @@
           <div class="w-10 h-10 rounded-100 bg-white mr-8"></div>
           <span class="text-size-18 text-white">在线</span>
         </template>
+        <template v-else>
+          <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
+          <span class="text-size-18 text-warning">离线</span>
+        </template>
        <!--  <template v-if="['FIRST_LEVEL', 'SECOND_LEVEL'].includes(data.currentStat)">
           <div class="w-10 h-10 rounded-100 bg-error mr-8"></div>
           <span class="text-size-18 text-error" v-if="data.currentStat === 'FIRST_LEVEL'">一级告警</span>
           <span class="text-size-18 text-error" v-if="data.currentStat === 'SECOND_LEVEL'">二级告警</span>
         </template> -->
-        <template v-if="['OFFLINE', null].includes(data.currentStat)">
-          <div class="w-10 h-10 rounded-100 bg-warning mr-8"></div>
-          <span class="text-size-18 text-warning">离线</span>
-        </template>
       </div>
       <span class="text-size-24 text-white" v-if="data.type == 1">温度</span>
       <span class="text-size-24 text-white" v-if="data.type == 2">电压</span>
@@ -32,7 +32,7 @@
       <div>停止位：{{ data.stopbits }}</div>
     </div>
     <div class="line"></div>
-    <transition>
+    <transition v-if="[1,2].includes(data.type)">
       <div class="operate flex justify-center items-center" v-if="data.show">
         <div class="i-ant-design:form-outlined text-size-52 text-success" @click.stop="$emit('edit')"></div>
         <div class="i-ant-design:delete-outlined  text-size-52 ml-32 text-error" @click.stop="$emit('del')"></div>

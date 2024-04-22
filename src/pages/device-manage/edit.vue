@@ -200,9 +200,11 @@ async function onTest () {
     message.error('请输入设备编号')
     return
   }
-  const { data, code } = await api.testing(form.value.code)
- if(code === 200) {
+  const { data } = await api.testing(form.value.code, form.value.type)
+ if(data) {
    message.success('连接成功')
+ } else {
+  message.error('请检查设备信息和接线是否正确')
  }
 }
 
