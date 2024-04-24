@@ -86,7 +86,6 @@
 <script setup>
 import dayjs from 'dayjs'
 import zh from 'dayjs/locale/zh-cn'
-import anime from 'animejs'
 import { onMounted, onUnmounted, ref } from 'vue'
 import { USER_INFO } from '@/enume/cache'
 dayjs.locale(zh)
@@ -94,9 +93,6 @@ dayjs.locale(zh)
 const date = ref(dayjs().format('YYYY年MM日DD'))
 const week = ref(dayjs().format('dddd'))
 const time = ref(dayjs().format('HH:mm:ss'))
-let timer = window.setInterval(() => {
-  time.value = dayjs().format('HH:mm:ss')
-}, 1000)
 const title = ref('蓄电池火灾防护系统')
 const loginTitle = ref('退出登录')
 const router = useRouter()
@@ -152,6 +148,18 @@ onMounted(() => {
     direction: 'alternate',
     loop: true,
   }) */
+})
+let timer = 0;
+function loop (fn, time = 1000, immediate = true) {
+  if (timer !== 0) clearTimeout(timer)
+  if (immediate) fn && fn();
+  timer = setTimeout(() => {
+    fn && fn();
+    loop(fn, time, false);
+  }, time);
+}
+loop(() => {
+  time.value = dayjs().format('HH:mm:ss')
 })
 
 onUnmounted(() => {
