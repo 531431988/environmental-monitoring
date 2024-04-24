@@ -1,11 +1,11 @@
 import {
   createRouter,
-  createWebHistory,
+  createWebHashHistory,
 } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { USER_INFO } from '@/enume/cache'
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   extendRoutes: (routes) => {
     const homeRoute = routes.find((r) => r.path !== '/')
     if (homeRoute) {
