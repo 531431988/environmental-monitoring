@@ -14,6 +14,7 @@
     <Datav :width="1280" :height="800" id="datav" mode="fit" class="flex flex-col">
       <Header />
       <RouterView />
+      <Bg />
     </Datav>
   </a-config-provider>
 </template>
@@ -42,9 +43,11 @@ ul {
 
 #app {
   overflow: hidden;
-.ant-btn{
-  line-height: 1;
-}
+
+  .ant-btn {
+    line-height: 1;
+  }
+
   .readonly-input {
     position: relative;
 
